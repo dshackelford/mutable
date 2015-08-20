@@ -13,6 +13,7 @@
 
 -(void)initSnake:(double)snakeLengthInit headLink:(HeadLink *)headLinkInit container:(UIView *)containerInit button:(UIButton *)placeHolderButtonInit
 {
+    
     snakeArray = [[NSMutableArray alloc] init];
     
     for (int i=0; i < snakeLengthInit; i = i + 1)
@@ -121,7 +122,11 @@
                     if(i ==1)
                     {
                         gameStatus = NO;
+                        
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"DeathNotification" object:self];
+                        
                         break;
+                        
                     }
                     else
                     {

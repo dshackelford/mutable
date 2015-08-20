@@ -15,6 +15,8 @@
 {
     [super viewDidLoad];
     
+    
+    
     if (globalSnakeLength == 0)
     {
         globalSnakeLength = 100;

@@ -13,8 +13,10 @@
 
 -(void)viewDidLoad
 {
-    
+
     [super viewDidLoad];
+    [scrollView flashScrollIndicators];
+    
 }
 
 

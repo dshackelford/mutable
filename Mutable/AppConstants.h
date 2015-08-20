@@ -32,6 +32,9 @@ BOOL line;
 BOOL triangle;
 //double shapeCounter;
 
+BOOL notificationDeclared;
+
+
 
 NSMutableDictionary* restartDictionary; //used for restarts
 

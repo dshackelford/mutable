@@ -24,7 +24,7 @@
         position.x = arc4random()%((int)screenWidth - 70) + 50;
         position.y = arc4random()%((int)screenHeight - 70) + 50;
         
-        while (fabs([theHeadLink getPosition].y - position.y) < size.height/2 && fabs([theHeadLink getPosition].x - position.x) < size.width/2 && fabs([baseInit getPosition].x - position.x) < size.width/2 && fabs([baseInit getPosition].y - position.y) < size.height/2)
+        while (fabs([theHeadLink getPosition].y - position.y) < size.height/2 || fabs([theHeadLink getPosition].x - position.x) < size.width/2 || fabs([baseInit getPosition].x - position.x) < size.width/2 || fabs([baseInit getPosition].y - position.y) < size.height/2)
         {
             position.x = arc4random()%((int)screenWidth - 70) + 50;
             position.y = arc4random()%((int)screenHeight - 70) + 50;

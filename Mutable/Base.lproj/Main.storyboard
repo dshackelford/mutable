@@ -692,6 +692,10 @@
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
+                    <connections>
+                        <outlet property="contentView" destination="dPO-5f-XWY" id="RkN-Cb-lUS"/>
+                        <outlet property="scrollView" destination="4ep-Ag-lE4" id="oJV-o9-8ij"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nFA-bM-RsU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1454,9 +1458,9 @@
         <image name="newKamikaze.png" width="80" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Bu6-qs-DXt"/>
         <segue reference="eiv-3G-XgM"/>
-        <segue reference="P6k-iK-7Wa"/>
-        <segue reference="tNZ-MQ-dra"/>
+        <segue reference="dAf-tv-2lk"/>
         <segue reference="NZD-PQ-Ocu"/>
     </inferredMetricsTieBreakers>
 </document>

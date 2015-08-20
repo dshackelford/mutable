@@ -12,6 +12,8 @@
 @interface HowToPlayView : UIViewController
 {
 
+    __weak IBOutlet UIView *contentView;
+    __weak IBOutlet UIScrollView *scrollView;
 }
 
 

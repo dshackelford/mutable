@@ -14,6 +14,18 @@
 
 -(void)viewDidLoad
 {
+    
+    if (notificationDeclared == NO)
+    {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deathNotifcation:) name:@"DeathNotification"
+                                                   object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backgroundActivityNotification:) name:@"BackgroundActivityStarted"
+                                                   object:nil];
+        
+        notificationDeclared = YES;
+    }
+    
+    
     //ESTABLISH GESTURES
     [self establishGestures:self.view];
     
@@ -113,6 +125,37 @@
     
     [super viewDidLoad];
 }
+
+- (void)deathNotifcation:(NSNotification *) notification
+{
+    NSLog(@"Red a dnotifiaction");
+}
+
+-(void)backgroundActivityNotification:(NSNotification*)notification
+{
+    NSLog(@"Pause the timer");
+    
+    [theTimer invalidate];
+    
+    pauseButton.hidden = YES;
+    mainMenuButton.hidden = NO;
+    settingsButton.hidden = NO;
+    howToPlayButton.hidden = NO;
+    keepPlayingButton.hidden = NO;
+    endLevelLabel.hidden = NO;
+    endLevelLabel.text = [NSString stringWithFormat:@"PAUSED"];
+    ammoCount.hidden = YES;
+    levelCountLabel.hidden = YES;
+    shapeUnlockLabel.hidden = YES;
+    
+    
+    backgroundImage = [self makeGreyBackgroundMenuImage];
+    
+    [self.view insertSubview:backgroundImage aboveSubview:placeHolderButton];
+    
+    
+}
+
 
 #pragma mark - Level View
 
@@ -629,9 +672,6 @@
             }
 
         }
-        
-        
-        
         
         //THis is the polling thing i need to change
         if (didBulletHit == YES)
