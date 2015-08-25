@@ -8,28 +8,27 @@
 
 #import <UIKit/UIKit.h>
 #import "AppConstants.h"
+#import "AppUtilities.h"
+
+#import "BasicObject.h"
+#import "Base.h"
+#import "Gem.h"
+#import "Food.h"
+#import "Mine.h"
+#import "MineField.h"
+#import "Shifting.h"
+#import "TurretGun.h"
 
 #import "MovingObject.h"
-#import "Bullet.h"
-#import "Snake.h"
-#import "MineField.h"
-#import "Base.h"
-#import "BlockadeElement.h"
-#import "Kamikaze.h"
 #import "HeadLink.h"
-
-#import "Mine.h"
-#import "Gem.h"
-#import "Barrack.h"
-#import "TurretGun.h"
+#import "Snake.h"
+#import "Bullet.h"
+#import "BlockadeElement.h"
+#import "Barracade.h"
+#import "Arrow.h"
+#import "Drone.h"
 #import "Squadron.h"
 #import "DoubleBullet.h"
-#import "Arrow.h"
-#import "Barracade.h"
-#import "Food.h"
-#import "Shifting.h"
-
-#import "AppFile.h"
 
 
 @interface LevelViewController : UIViewController
@@ -38,7 +37,6 @@
     Snake* levelSnake;
     MineField* levelMineField;
     Base* levelEnemyBase;
-    Barrack* levelBarrack;
     HeadLink* levelHeadLink;
     Gem* levelGem;
     TurretGun* levelTurretGun;
@@ -55,16 +53,16 @@
     NSTimer* bigBulletTimer;
     
     //OBJECT ARRAYS
-    NSMutableArray* bulletArray;
-    NSMutableArray* kamikazeArray;
-    NSMutableArray* blockadeArray;
-    NSMutableArray* mineFieldLevelArray;
-    NSMutableArray* shiftingMineFieldArray;
+//    NSMutableArray* bulletArray;
+//    NSMutableArray* droneArray;
+//    NSMutableArray* blockadeArray;
+//    NSMutableArray* mineFieldLevelArray;
+//    NSMutableArray* shiftingMineFieldArray;
     NSMutableArray* mineArray;
     NSMutableArray* lifePowerUpArray;
-    
-    NSMutableArray* turretBulletArray;
-    NSMutableArray* projectileArray;
+//
+//    NSMutableArray* turretBulletArray;
+//    NSMutableArray* projectileArray;
     NSMutableArray* blockadeBarricadeArray;
     NSMutableArray* wallArray;
     
@@ -88,18 +86,19 @@
     BOOL regeneration;
     BOOL turretHit;
     
+    //MENU BUTTONS
     IBOutlet UIButton* howToPlayButton;
     IBOutlet UIButton* pauseButton;
     IBOutlet UIButton* mainMenuButton;
     IBOutlet UIButton* settingsButton;
 
+    //PROCEDURAL BUTTONS
     IBOutlet UIButton* placeHolderButton;
     IBOutlet UIButton* keepPlayingButton;
     IBOutlet UIButton* nextLevelButton;
     IBOutlet UIButton* restartButton;
-    
-    IBOutlet UIButton* circlShapeButton;
    
+    //LABELS
     IBOutlet UILabel* ammoCount;
     IBOutlet UILabel* endLevelLabel;
     IBOutlet UILabel* levelCountLabel;
@@ -107,15 +106,11 @@
     
     UIImageView* backgroundImage;
     
-    //--------------------------
-
-    NSMutableArray* positionsForMineFieldArray;
-    
     //COUNTERS
     double blockadeCounter;
     double lostCounter;
     double shiftCounter;
-    double kamikazeCounter;
+    double droneCounter;
     double healthCounter;
     double lifePowerUpCounter;
     double currentLevelLabelCounter;
@@ -141,7 +136,7 @@
 -(void)checkGameStatus;
 
 //WINNERS AND LOSERS
--(void)youLost:(NSString*)reasonStringInit;
+-(void)youLost;
 -(void)delayLostResponse;
 -(void)youWon;
 -(void)delayWonResponse;

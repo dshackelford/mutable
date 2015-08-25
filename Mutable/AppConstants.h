@@ -12,6 +12,8 @@ static double deltaTime = 0.01;
 NSString* iphoneType;
 NSString* userName;
 
+NSString* difficultySetting;
+
 double screenHeight;
 double screenWidth;
 
@@ -24,22 +26,17 @@ BOOL shapeShiftBool;
 BOOL won;
 BOOL restart;
 
-//static double kamikazeCount;
-
 BOOL circle;
 BOOL square;
 BOOL line;
 BOOL triangle;
-//double shapeCounter;
 
 BOOL notificationDeclared;
 
-
-
 NSMutableDictionary* restartDictionary; //used for restarts
 
-NSMutableArray* staticObjectArray;
-NSMutableArray* dynamicObjectArray;
+NSMutableArray* objectArray;
+
 NSMutableArray* snakeArrayFromConstants;
 
 #define pi = 3.14159;

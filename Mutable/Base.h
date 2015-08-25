@@ -9,6 +9,7 @@
 #import "MovingObject.h"
 #import "HeadLink.h"
 
+
 @interface Base : BasicObject
 {
     NSMutableArray* healthArray;
@@ -20,20 +21,19 @@
     double baseHealthCap;
 }
 
--(void)initBase:(HeadLink*)headLinkInit :(double)baseStrengthInit :(UIView*)container :(UIButton*)placeHolderButtonInit locationOverRide:(BOOL)locationOverRide Position:(CGPoint)positionInit;
+-(id)initBase:(HeadLink*)headLinkInit :(double)baseStrengthInit :(UIView*)container :(UIButton*)placeHolderButtonInit locationOverRide:(BOOL)locationOverRide Position:(CGPoint)positionInit;
 
 
 -(void)addHealth:(UIView*)container :(UIButton*)placeHolderButtonInit;
 
-
--(UIImageView*)makeHealthImage;
-
-
--(void)hitEnemyBase;
+-(void)hit;
 
 -(UIImageView*)getHealthBarImage;
 
 -(double)getEnemyBaseHealth;
 -(double)getBaseHealthCap;
+
+-(UIImageView*)makeHealthImage;
+
 @end
 

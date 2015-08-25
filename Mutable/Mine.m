@@ -13,6 +13,7 @@
 
 -(id)initMine:(CGPoint)positionInit :(UIView*)container :(UIButton*)placeHolderButtonInit
 {
+    character = @"Bad";
     
     self = [super init];
     
@@ -26,11 +27,29 @@
     
     [container insertSubview:theImage belowSubview:placeHolderButtonInit];
     
-//    [staticObjectArray addObject:self];
+    [objectArray addObject:self];
     
     return self;
-    
 }
 
+
+-(id)initRestart:(CGPoint)positionInit Container:(UIView*)container Placeholder:(UIButton*)placeHolderButtonInit Velocity:(CGVector)velocityInit
+{
+    self = [super init];
+    
+    size = CGSizeMake(28, 28);
+    
+    position = positionInit;
+    
+    imageFileName = @"mineImage2";
+    
+    [self setImage];
+    
+    [container insertSubview:theImage belowSubview:placeHolderButtonInit];
+    
+    [objectArray addObject:self];
+    
+    return self;
+}
 
 @end

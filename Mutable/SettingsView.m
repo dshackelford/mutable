@@ -15,59 +15,67 @@
 {
     [super viewDidLoad];
     
-    
-    
-    if (globalSnakeLength == 0)
+    if ([difficultySetting isEqual:@"Easy"])
     {
-        globalSnakeLength = 100;
-        [snakeLengthSlider setValue:globalSnakeLength];
+         easyButton.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.45];
     }
-    else
+    if ([difficultySetting isEqual:@"Medium"])
     {
-        theSnake = [[Snake alloc] init];
-        //globalSnakeLength = [theSnake getSnakeLength];
-        [snakeLengthSlider setValue:globalSnakeLength];
+        mediumButton.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.45];
+    }
+    if ([difficultySetting isEqual:@"Hard"])
+    {
+           hardButton.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.45];
     }
     
-    sliderLabel.text = [NSString stringWithFormat:@"%.f",[snakeLengthSlider value]];
 }
 
--(void)didSlideSnakeLengthSlider:(id)sender
-{
-    float someValue = [snakeLengthSlider value];
-    sliderLabel.text = [NSString stringWithFormat:@"%.f",someValue];
-    //Snake* theSnake = [[Snake alloc] init];
-    [theSnake setSnakeLength:[snakeLengthSlider value]];
-    globalSnakeLength = [snakeLengthSlider value];
-    
-}
 
--(void)didPressCircleButton:(id)sender
-{
-    circle = YES;
-    square = NO;
-    line = NO;
-}
-
--(void)didPressSquareButton:(id)sender
-{
-    square = YES;
-    circle = NO;
-    line = NO;
-}
-
--(void)didPressLineButton:(id)sender
-{
-    line = YES;
-    square = NO;
-    circle = NO;
-}
 -(IBAction)didPressRestartButton:(id)sender
 {
-    NSMutableDictionary* dictionaryFromFile = [NSMutableDictionary dictionaryWithContentsOfFile:[AppFile getPathToUserInfoFile]];
+    NSMutableDictionary* dictionaryFromFile = [NSMutableDictionary dictionaryWithContentsOfFile:[AppUtilities getPathToUserInfoFile]];
     [dictionaryFromFile setObject:@"0" forKey:@"currentLevel"];
     [dictionaryFromFile setObject:@"50" forKey:@"snakeLength"];
-    [dictionaryFromFile writeToFile:[AppFile getPathToUserInfoFile] atomically:YES ];
+    [dictionaryFromFile writeToFile:[AppUtilities getPathToUserInfoFile] atomically:YES ];
 }
 
+
+-(IBAction)didPressEasyButton:(id)sender
+{
+    difficultySetting = @"Easy";
+    
+    NSMutableDictionary* myDictionary = [NSMutableDictionary dictionaryWithContentsOfFile:[AppUtilities getPathToUserInfoFile]];
+    [myDictionary setObject:@"Easy" forKey:@"DifficultySetting"];
+    [myDictionary writeToFile:[AppUtilities getPathToUserInfoFile] atomically:YES];
+    
+    easyButton.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.45];
+    mediumButton.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0];
+    hardButton.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0];
+}
+
+-(IBAction)didPressMediumButton:(id)sender
+{
+    difficultySetting = @"Medium";
+    
+    NSMutableDictionary* myDictionary = [NSMutableDictionary dictionaryWithContentsOfFile:[AppUtilities getPathToUserInfoFile]];
+    [myDictionary setObject:@"Medium" forKey:@"DifficultySetting"];
+    [myDictionary writeToFile:[AppUtilities getPathToUserInfoFile] atomically:YES];
+    
+    easyButton.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0];
+    mediumButton.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.45];
+    hardButton.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0];
+}
+
+-(IBAction)didPressHardButton:(id)sender
+{
+    difficultySetting = @"Hard";
+    
+    NSMutableDictionary* myDictionary = [NSMutableDictionary dictionaryWithContentsOfFile:[AppUtilities getPathToUserInfoFile]];
+    [myDictionary setObject:@"Hard" forKey:@"DifficultySetting"];
+    [myDictionary writeToFile:[AppUtilities getPathToUserInfoFile] atomically:YES];
+    
+    easyButton.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0];
+    mediumButton.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0];
+    hardButton.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.45];
+}
 @end

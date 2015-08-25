@@ -11,8 +11,11 @@
 
 @implementation BlockadeElement
 
--(void)initBlockadeElement:(UIView*)container :(UIButton*)buttonInit
+-(id)initBlockadeElement:(UIView*)container :(UIButton*)buttonInit
 {
+    
+    self = [super init];
+    
     int locationDeterminant = arc4random()%100;
     
     //GO FROM BOTTOM
@@ -55,6 +58,10 @@
     [self setImage];
     
     [container insertSubview:theImage belowSubview:buttonInit];
+    
+    [objectArray addObject:self];
+    
+    return self;
 }
 
 
@@ -73,32 +80,50 @@
     
     [viewInit insertSubview:theImage belowSubview:placeHolderButtonInit];
     
-    [dynamicObjectArray addObject:self];
+    [objectArray addObject:self];
 }
 
 
 
 
--(void)move:(NSMutableArray*)blockadeArrayInit
+-(void)move:(id)objectTracker
 {
-    position.x = position.x + velocity.dx*deltaTime;
-    position.y = position.y + velocity.dy*deltaTime;
+    [self move];
     
-    theImage.center = position;
-    
-    if (position.x > (screenWidth + 15) || position.x < -10)
+    if (position.x > (screenWidth + 15) || position.x < -15)
     {
-        [blockadeArrayInit removeObject:self];
         [theImage removeFromSuperview];
+        [objectArray removeObject:self];
     }
     
-    if (position.y > (screenHeight + 15) || position.y < -10)
+    if (position.y > (screenHeight + 15) || position.y < -15)
     {
-        [blockadeArrayInit removeObject:self];
         [theImage removeFromSuperview];
+        [objectArray removeObject:self];
+    }
+    
+    for (int i = 0;i < [objectArray count]; i = i + 1)
+    {
+        id object = [objectArray objectAtIndex:i];
         
+        if (fabs([object getPosition].x - [self getPosition].x) < [object getSize].width/2 + [self getSize].width/2 && fabs([object getPosition].y - [self getPosition].y) < [object getSize].height/2 + [self getSize].height/2)
+        {
+            
+//            if ([[object getCharacter]  isEqualToString: @"Wall"])
+//            {
+//                [objectArray removeObject:object];
+//                [objectArray removeObject:self];
+//                [theImage removeFromSuperview];
+//                [[object getImage] removeFromSuperview];
+//                
+//                break;
+//            }
+            
+        }
     }
+
 }
+
 
 
 @end

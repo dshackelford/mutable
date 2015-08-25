@@ -14,12 +14,13 @@
     
 }
 
--(void)initBlockadeElement:(UIView*)container :(UIButton*)buttonInit;
+-(id)initBlockadeElement:(UIView*)container :(UIButton*)buttonInit;
 
 -(void)createBlockadeElementForBarracade:(CGPoint)initialPositionInit Center:(CGPoint)centerPosition View:(UIView*)viewInit PlaceHolder:(UIButton*)placeHolderButtonInit;
 
 
--(void)move:(NSMutableArray*)blockadeArrayInit;
+-(void)move;
+
 
 
 @end

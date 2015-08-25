@@ -11,7 +11,7 @@
 
 @implementation Squadron
 
-+(NSMutableArray*)makeTriangleSquadron:(CGPoint)targetPosition container:(UIView *)containerInit placeHolder:(UIButton *)placeHolderButton
++(void)makeTriangleSquadron:(CGPoint)targetPosition container:(UIView *)containerInit placeHolder:(UIButton *)placeHolderButton
 {
 
     //this needs a lot of work, use the double bullet math to make this work
@@ -23,29 +23,26 @@
     
     NSMutableArray* triangleSquadronArray = [[NSMutableArray alloc] init];
     
-    Kamikaze* leaderKamikaze = [[Kamikaze alloc] init];
+    Drone* leaderDrone = [[Drone alloc] init];
     
-    [leaderKamikaze initKamikaze:aPosition Container:containerInit PlaceHolderButton:placeHolderButton];
-    
-    
-    [triangleSquadronArray addObject:leaderKamikaze];
+    [leaderDrone initDrone:aPosition Container:containerInit PlaceHolderButton:placeHolderButton];
     
     
-    Kamikaze* leftWingKamikaze = [[Kamikaze alloc] init];
-    [leftWingKamikaze initKamikaze:CGPointMake(targetPosition.x - 35, targetPosition.y - 35) Container:containerInit PlaceHolderButton:placeHolderButton];
-    
-    [triangleSquadronArray addObject:leftWingKamikaze];
+    [triangleSquadronArray addObject:leaderDrone];
     
     
-    Kamikaze* rightWingKamikaze = [[Kamikaze alloc] init];
+    Drone* leftWingDrone = [[Drone alloc] init];
+    [leftWingDrone initDrone:CGPointMake(targetPosition.x - 35, targetPosition.y - 35) Container:containerInit PlaceHolderButton:placeHolderButton];
     
-    [rightWingKamikaze initKamikaze:CGPointMake(targetPosition.x + 35, targetPosition.y - 35) Container:containerInit PlaceHolderButton:placeHolderButton];
+    [triangleSquadronArray addObject:leftWingDrone];
+    
+    
+    Drone* rightWingKamikaze = [[Drone alloc] init];
+    
+    [rightWingKamikaze initDrone:CGPointMake(targetPosition.x + 35, targetPosition.y - 35) Container:containerInit PlaceHolderButton:placeHolderButton];
 
     
     [triangleSquadronArray addObject:rightWingKamikaze];
-    
-    return triangleSquadronArray;
-    
 }
 
 @end

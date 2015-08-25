@@ -15,7 +15,7 @@
     
 }
 
--(void)initFood:(Base*)enemyBase View:(UIView *)container placeHolder:(UIButton *)placeHolderButton;
+-(id)initFood:(Base*)enemyBase View:(UIView *)container placeHolder:(UIButton *)placeHolderButton;
 
 
 @end

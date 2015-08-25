@@ -22,10 +22,7 @@
     double bulletTwoTargetY;
 }
 
--(NSMutableArray*)createDoubleBullet:(HeadLink*)headLinkInit container:(UIView*)container placeHolder:(UIButton*)placeHolderButtonInit Target:(CGPoint)targetInit;
-
-
-//-(UIImageView*)makeDoubleBulletImage;
+-(void)createDoubleBullet:(HeadLink*)headLinkInit container:(UIView*)container placeHolder:(UIButton*)placeHolderButtonInit Target:(CGPoint)targetInit;
 
 
 @end

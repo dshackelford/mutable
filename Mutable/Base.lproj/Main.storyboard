@@ -771,6 +771,43 @@
                                     <action selector="didPressRestartButton:" destination="Na4-vL-RCq" eventType="touchUpInside" id="bcd-5E-tos"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Difficulty Setting" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nLc-Ah-zwg">
+                                <rect key="frame" x="0.0" y="269" width="145" height="30"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.45000000000000001" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pcd-SP-3r6">
+                                <rect key="frame" x="225" y="231" width="95" height="30"/>
+                                <state key="normal" title="Easy">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didPressEasyButton:" destination="Na4-vL-RCq" eventType="touchUpInside" id="sYZ-yS-FOe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7DA-qi-5CN">
+                                <rect key="frame" x="222" y="269" width="98" height="30"/>
+                                <state key="normal" title="Medium">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didPressMediumButton:" destination="Na4-vL-RCq" eventType="touchUpInside" id="245-aU-6ox"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GZF-9G-AJq">
+                                <rect key="frame" x="219" y="307" width="101" height="30"/>
+                                <state key="normal" title="Stupid Hard">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didPressHardButton:" destination="Na4-vL-RCq" eventType="touchUpInside" id="y3o-HP-Pzj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.066666666669999999" green="0.37647058820000001" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -805,6 +842,10 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
                     <connections>
+                        <outlet property="difficultyLabel" destination="nLc-Ah-zwg" id="1gs-Ra-cuw"/>
+                        <outlet property="easyButton" destination="pcd-SP-3r6" id="z0t-69-Z04"/>
+                        <outlet property="hardButton" destination="GZF-9G-AJq" id="e5P-uv-Rmo"/>
+                        <outlet property="mediumButton" destination="7DA-qi-5CN" id="rBt-dx-NAw"/>
                         <outlet property="restartButton" destination="1Zo-Rd-QlB" id="Ed4-GK-vWg"/>
                     </connections>
                 </viewController>
@@ -1437,18 +1478,35 @@
             </objects>
             <point key="canvasLocation" x="-650" y="310"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="BZh-Za-Z7a">
+            <objects>
+                <viewController id="q48-OR-fTS" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="obc-eF-et0"/>
+                        <viewControllerLayoutGuide type="bottom" id="VuL-CG-NGn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TFR-nI-ARr">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GMC-6S-8xa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
     </scenes>
     <resources>
         <image name="CircleShape.png" width="122" height="124"/>
         <image name="HomePageView.png" width="320" height="568"/>
         <image name="LineShape.png" width="166" height="208"/>
-        <image name="PointGem.png" width="120" height="120"/>
+        <image name="PointGem.png" width="49" height="92"/>
         <image name="Small Logo.png" width="250" height="250"/>
         <image name="Snake.png" width="494" height="60"/>
         <image name="SquareShape.png" width="122" height="120"/>
         <image name="TriangleShape.png" width="160" height="114"/>
         <image name="TurretGun.png" width="100" height="100"/>
-        <image name="arrow.png" width="120" height="30"/>
+        <image name="arrow.png" width="103" height="21"/>
         <image name="base2.png" width="120" height="120"/>
         <image name="blockadeElement.png" width="120" height="120"/>
         <image name="buttonBackground.png" width="320" height="20"/>

@@ -8,17 +8,17 @@
 
 #import "MovingObject.h"
 #import "Base.h"
-#import "Kamikaze.h"
+#import "Drone.h"
 #import "HeadLink.h"
 
-@interface Squadron : Kamikaze
+@interface Squadron : Drone
 {
     int squadronCount;
     NSString* squadronShape; //circle, square, triangle
 }
 
 
-+(NSMutableArray*)makeTriangleSquadron:(CGPoint)targetPosition container:(UIView*)containerInit placeHolder:(UIButton*)placeHolderButton;
++(void)makeTriangleSquadron:(CGPoint)targetPosition container:(UIView*)containerInit placeHolder:(UIButton*)placeHolderButton;
 
 
 

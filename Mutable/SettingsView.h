@@ -9,27 +9,26 @@
 #import <UIKit/UIKit.h>
 #import "AppConstants.h"
 #import "Snake.h"
-#import "AppFile.h"
+#import "AppUtilities.h"
 
 
 @interface SettingsView : UIViewController <UIScrollViewDelegate>
 {
     Snake* theSnake;
     
-    IBOutlet UIButton* circleButton;
-    IBOutlet UIButton* squareButton;
-    IBOutlet UIButton* lineButton;
+    IBOutlet UIButton* easyButton;
+    IBOutlet UIButton* mediumButton;
+    IBOutlet UIButton* hardButton;
+    IBOutlet UILabel* difficultyLabel;
+    
     IBOutlet UIButton* restartButton;
-    
-    IBOutlet UISlider* snakeLengthSlider;
-    IBOutlet UILabel* sliderLabel;
-    
 }
 
--(IBAction)didPressCircleButton:(id)sender;
--(IBAction)didPressSquareButton:(id)sender;
--(IBAction)didPressLineButton:(id)sender;
--(IBAction)didSlideSnakeLengthSlider:(id)sender;
+
 -(IBAction)didPressRestartButton:(id)sender;
+-(IBAction)didPressEasyButton:(id)sender;
+-(IBAction)didPressMediumButton:(id)sender;
+-(IBAction)didPressHardButton:(id)sender;
+
 
 @end

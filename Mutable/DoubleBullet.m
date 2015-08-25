@@ -11,7 +11,7 @@
 
 @implementation DoubleBullet
 
--(NSMutableArray*)createDoubleBullet:(HeadLink*)headLinkInit container:(UIView*)container placeHolder:(UIButton*)placeHolderButtonInit Target:(CGPoint)targetInit
+-(void)createDoubleBullet:(HeadLink*)headLinkInit container:(UIView*)container placeHolder:(UIButton*)placeHolderButtonInit Target:(CGPoint)targetInit
 {
     dx = targetInit.x - [headLinkInit getShapeCenter].x;
     dy = targetInit.y - [headLinkInit getShapeCenter].y;
@@ -98,7 +98,7 @@
     
     
     
-    [bulletOne initBullet:bulletOneTarget InitialPosition:bulletOneInitialPosition Container:container PlaceHolder:placeHolderButtonInit];
+    [bulletOne initBullet:bulletOneTarget InitialPosition:bulletOneInitialPosition Size:doubleBulletSize Container:container PlaceHolder:placeHolderButtonInit];
     
     
     Bullet* bulletTwo = [[Bullet alloc] init];
@@ -106,16 +106,9 @@
     [bulletTwo setSize:doubleBulletSize];
     
     
-    [bulletTwo initBullet:bulletTwoTarget InitialPosition:bulletTwoInitialPosition Container:container PlaceHolder:placeHolderButtonInit];
+    [bulletTwo initBullet:bulletTwoTarget InitialPosition:bulletTwoInitialPosition Size:doubleBulletSize Container:container PlaceHolder:placeHolderButtonInit];
 
-    
-    
-    
-    NSMutableArray* doubleBulletArray = [[NSMutableArray alloc] init];
-    [doubleBulletArray addObject:bulletOne];
-    [doubleBulletArray addObject:bulletTwo];
-    
-    return doubleBulletArray;
+
 }
 
 

@@ -16,9 +16,11 @@
 }
 
 
--(void)initHeadLink:(CGPoint)positionInit Velocity:(CGVector)velocityInit View:(UIView*)viewInit PlaceHolder:(UIButton*)placeHolderButton;
+-(id)initHeadLink:(CGPoint)positionInit Velocity:(CGVector)velocityInit View:(UIView*)viewInit PlaceHolder:(UIButton*)placeHolderButton;
 
 
--(void)move:(NSMutableArray*)snakeArrayInit;
+-(void)move;
+
+-(void)detectCollision;
 
 @end

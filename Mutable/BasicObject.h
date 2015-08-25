@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "AppConstants.h"
-#import "AppFile.h"
+#import "AppUtilities.h"
+
+
 
 @interface BasicObject : NSObject
 {
@@ -19,28 +21,32 @@
     UIImageView* theImage;
     
     NSString* imageFileName;
+    
+//    NSString* character;
 }
 
 
--(void)initBasicObject:(CGPoint)positionInit :(CGSize)sizeInit :(NSString*)imageFileStringInit;
+-(id)initBasicObject:(CGPoint)positionInit :(CGSize)sizeInit :(NSString*)imageFileStringInit;
+-(id)initRestart:(CGPoint)positionInit Container:(UIView*)container Placeholder:(UIButton*)placeHolderButtonInit Velocity:(CGVector)velocityInit;
 
-//-(Vector*)getPosition;
--(double)getLatitude;
--(double)getLongitude;
 
--(UIImageView*)getImage;
--(void)setImage;
+-(void)move;
+-(void)move:(id)objectTracker;
 
--(void)setSize:(CGSize)sizeInit;
--(void)setSize:(double)xInit :(double)yInit;
-
--(void)setLatitude:(double)latitudeInit;
--(void)setLongitude:(double)longitudeInit;
+-(void)hit;
+-(void)crash;
 
 
 -(CGPoint)getPosition;
--(void)setPosition:(CGPoint)pointInit;
+-(UIImageView*)getImage;
 -(CGSize)getSize;
 -(NSString*)getImageFileName;
+
+
+-(void)setPosition:(CGPoint)pointInit;
+-(void)setImage;
+-(void)setSize:(CGSize)sizeInit;
+-(void)setSize:(double)xInit :(double)yInit;
+
 
 @end

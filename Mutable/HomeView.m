@@ -22,19 +22,32 @@
     screenWidth = [UIScreen mainScreen].bounds.size.width;
     screenHeight = [UIScreen mainScreen].bounds.size.height;
     
-    if ([AppFile doesFileExistAtPath:[AppFile getPathToUserInfoFile]] == NO)
+    if ([AppUtilities doesFileExistAtPath:[AppUtilities getPathToUserInfoFile]] == NO)
     {
         NSFileManager* appInfo = [NSFileManager defaultManager];
         
-        [appInfo createFileAtPath:[AppFile getPathToUserInfoFile] contents:nil attributes:nil];
+        [appInfo createFileAtPath:[AppUtilities getPathToUserInfoFile] contents:nil attributes:nil];
         
-        NSArray* keys=@[@"userName"];
+        NSArray* keys=@[@"DifficultySetting"];
         
-        NSArray* objects=@[@"unknown"];
+        NSArray* objects=@[@"Easy"];
     
         NSMutableDictionary* myDictionary =[[NSMutableDictionary alloc] initWithObjects:objects forKeys:keys];
         
-        [myDictionary writeToFile:[AppFile getPathToUserInfoFile] atomically:YES ];
+        [myDictionary writeToFile:[AppUtilities getPathToUserInfoFile] atomically:YES ];
+    }
+    else //DIFFICULTY SETTING HAS TO BE ESTABLISHED IN HOMEVIEW BECUASE IT HAS TO BE READY FOR SETTINGS IF THE GAME IS NOT PLAYED IMMEDIATELY.
+    {
+        NSDictionary* myDictionary = [NSDictionary dictionaryWithContentsOfFile:[AppUtilities getPathToUserInfoFile]];
+        
+        if ([myDictionary objectForKey:@"DifficultySetting"] == nil)
+        {
+            difficultySetting = @"Easy";
+        }
+        else
+        {
+            difficultySetting = [myDictionary objectForKey:@"DifficultySetting"];
+        }
     }
     
     //MAKE THE ART FOR ALL TYPES OF IPHONE TYPES

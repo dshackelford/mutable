@@ -12,7 +12,7 @@
 @implementation MineField
 
 
-+(NSMutableArray*)makeRandomMineField:(Base *)baseInit headLink:(HeadLink*)headLinkInit container:(UIView *)containerInit placeholder:(UIButton *)placeHolderButton
++(void)makeRandomMineField:(Base *)baseInit headLink:(HeadLink*)headLinkInit container:(UIView *)containerInit placeholder:(UIButton *)placeHolderButton
 {
     //MAKE SURE THERE ARE THEIR RIGHT AMOUNT OF MINES ON EVERY LEVEL
     int maximumMines = currentLevel*2;
@@ -28,8 +28,6 @@
         minMines = currentLevel;
     }
     
-    //INITIALIZE THE A LOCAL ARRAY FOR RETURN
-    NSMutableArray* mineFieldArray = [[NSMutableArray alloc] init];
     for( double x = 0; x < 1 + arc4random()%10; x =  x + 1)
     {
 
@@ -58,19 +56,13 @@
         
         //ADD THE MINE TO THE ARRAY TO BE RETURNED TO THE LEVEL CONTROLLER
         Mine* aMine = [[Mine alloc] initMine:minePosition :containerInit :placeHolderButton];
-        //[aMine initMine:minePosition :containerInit :placeHolderButton];
-        [mineFieldArray addObject:aMine];
     }
-    
-    return mineFieldArray;
-
 }
 
 
-+(NSMutableArray*)makeBaseBarracade:(Base *)baseInit container:(UIView*)containerInit placeHolder:(UIButton*)placeHolderButton
++(void)makeBaseBarracade:(Base *)baseInit container:(UIView*)containerInit placeHolder:(UIButton*)placeHolderButton
 {
     NSMutableArray* arrayOfPositions = [[NSMutableArray alloc] init];
-    NSMutableArray* anArrayOfMines = [[NSMutableArray alloc] init];
     
     int numberOfMines = 5;
     
@@ -114,13 +106,8 @@
     for (int a = 0; a < [arrayOfPositions count]; a = a + 1)
     {
         Mine* aMine = [[Mine alloc] initMine: [[arrayOfPositions objectAtIndex:a] CGPointValue] :containerInit :placeHolderButton];
-        
-        //[aMine initMine: [[arrayOfPositions objectAtIndex:a] CGPointValue] :containerInit :placeHolderButton];
-        
-        [anArrayOfMines addObject:aMine];
     }
     
-    return anArrayOfMines;
 }
 
 

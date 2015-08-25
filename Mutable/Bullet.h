@@ -32,10 +32,9 @@
     
 }
 
--(void)initBullet:(CGPoint)targetInit InitialPosition:(CGPoint)initialPosition Container:(UIView*)container PlaceHolder:(UIButton*)placeHolderButtonInit;
+-(id)initBullet:(CGPoint)targetInit InitialPosition:(CGPoint)initialPosition Size:(CGSize)sizeInit Container:(UIView*)container PlaceHolder:(UIButton*)placeHolderButtonInit;
 
-//-(UIImageView*)makeBulletImage;
-//
 
+-(void)detectCollision;
 
 @end

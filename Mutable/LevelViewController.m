@@ -14,33 +14,37 @@
 
 -(void)viewDidLoad
 {
-    
+    //NOTIFICATION INITILIZER, LIMITED TO ONLY ONE OBSERVER
     if (notificationDeclared == NO)
     {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deathNotifcation:) name:@"DeathNotification"
                                                    object:nil];
+        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backgroundActivityNotification:) name:@"BackgroundActivityStarted"
                                                    object:nil];
         
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addLinksNotification:) name:@"AddLinks" object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(youWon) name:@"YouWon" object:nil];
+        
         notificationDeclared = YES;
     }
-    
     
     //ESTABLISH GESTURES
     [self establishGestures:self.view];
     
     //CREATE OBJECTS FILE IF FILE DOES NOT EXIST
-    if ([AppFile doesFileExistAtPath:[AppFile getPathToLevelObjectsFile]] == NO)
+    if ([AppUtilities doesFileExistAtPath:[AppUtilities getPathToLevelObjectsFile]] == NO)
     {
         NSFileManager* levelObjectsFile = [NSFileManager defaultManager];
     
-        [levelObjectsFile createFileAtPath:[AppFile getPathToLevelObjectsFile] contents:nil attributes:nil];
+        [levelObjectsFile createFileAtPath:[AppUtilities getPathToLevelObjectsFile] contents:nil attributes:nil];
     }
     
     //GRAB DATA FROM SAVED FILE TO SET UP LEVEL FROM PREVIOUS VERSIONS AND RESTARTS
-    if ([AppFile doesFileExistAtPath:[AppFile getPathToUserInfoFile]] == YES)
+    if ([AppUtilities doesFileExistAtPath:[AppUtilities getPathToUserInfoFile]] == YES)
     {
-        NSMutableDictionary* dictionaryFile = [NSMutableDictionary dictionaryWithContentsOfFile:[AppFile getPathToUserInfoFile]];
+        NSMutableDictionary* dictionaryFile = [NSMutableDictionary dictionaryWithContentsOfFile:[AppUtilities getPathToUserInfoFile]];
         
         NSString* snakeLengthFromFile = [dictionaryFile objectForKey:@"snakeLength"];
         
@@ -48,8 +52,8 @@
         {
             levelSnakeLength = [snakeLengthFromFile doubleValue] + 25;
         }
-        
         currentLevel = [[dictionaryFile objectForKey:@"currentLevel"] doubleValue];
+        currentLevel = 15;
     }
     
     //HIDE BUTTONS
@@ -72,7 +76,7 @@
     //GLOBAL VARIABLES
     lostCounter = 0;
     blockadeCounter = 0;
-    kamikazeCounter = 0;
+    droneCounter = 0;
     lifePowerUpCounter = 0;
     shapeShiftBool = NO;
     
@@ -89,35 +93,19 @@
     initialHeadVelocityY = 0;
     snakeVelocity = initialHeadVelocityX; //just in case user goes into shape shift and does not fire!
     
-    //ALLOCATION OF COMMON OBJECTS
-    levelHeadLink = [[HeadLink alloc] init];
-    levelSnake = [[Snake alloc] init];
-    levelMineField = [[MineField alloc] init];
-    levelEnemyBase = [[Base alloc] init];
-    levelGem = [[Gem alloc] init];
-    levelBarrack = [[Barrack alloc] init];
-    levelTurretGun = [[TurretGun alloc] init];
-    levelHeadLink = [[HeadLink alloc] init];
-    
     //ALLOCATION OF COMMON OBJECT ARRAYS
-    blockadeArray = [[NSMutableArray alloc] init];
-    kamikazeArray = [[NSMutableArray alloc] init];
-    bulletArray = [[NSMutableArray alloc] init];
-    mineFieldLevelArray = [[NSMutableArray alloc] init];
-    positionsForMineFieldArray = [[NSMutableArray alloc] init];
+//    blockadeArray = [[NSMutableArray alloc] init];
+//    droneArray = [[NSMutableArray alloc] init];
+//    bulletArray = [[NSMutableArray alloc] init];
+//    mineFieldLevelArray = [[NSMutableArray alloc] init];
+//    positionsForMineFieldArray = [[NSMutableArray alloc] init];
     lifePowerUpArray = [[NSMutableArray alloc] init];
     mineArray = [[NSMutableArray alloc] init];
-    turretBulletArray = [[NSMutableArray alloc] init];
-    projectileArray = [[NSMutableArray alloc] init];
-    wallArray = [[NSMutableArray alloc] init];
+//    turretBulletArray = [[NSMutableArray alloc] init];
+//    projectileArray = [[NSMutableArray alloc] init];
+//    wallArray = [[NSMutableArray alloc] init];
     
-    [projectileArray addObject:turretBulletArray];
-    [projectileArray addObject:bulletArray];
-    
-    [dynamicObjectArray removeAllObjects];
-    [staticObjectArray removeAllObjects];
-    dynamicObjectArray = [[NSMutableArray alloc] init];
-    staticObjectArray = [[NSMutableArray alloc] init];
+    objectArray = [[NSMutableArray alloc] init];
     snakeArrayFromConstants = [[NSMutableArray alloc] init];
     
     //GO INTO THE LEVEL
@@ -126,9 +114,18 @@
     [super viewDidLoad];
 }
 
+-(void)addLinksNotification:(NSNotification*)notification
+{
+    NSLog(@"Add links");
+    [levelSnake addLinksToSnake:15 headLink:levelHeadLink container:self.view];
+}
+
+
 - (void)deathNotifcation:(NSNotification *) notification
 {
     NSLog(@"Red a dnotifiaction");
+    [self youLost];
+    
 }
 
 -(void)backgroundActivityNotification:(NSNotification*)notification
@@ -163,6 +160,7 @@
 {
     gameStatus = YES;
     
+    //HINTS
     if (currentLevel == 6)
     {
         shapeUnlockLabel.hidden = NO;
@@ -179,122 +177,77 @@
         shapeUnlockLabel.text = @"TRIANGLE UNLOCKED";
     }
     
-    //MAKE HEADLINK
-    [levelHeadLink initHeadLink:CGPointMake(initialHeadLatitude, initialHeadLongitude) Velocity:CGVectorMake(initialHeadVelocityX, initialHeadVelocityY) View:self.view PlaceHolder:placeHolderButton];
-    
-    //MAKE SNAKE
-    [levelSnake initSnake:levelSnakeLength headLink:levelHeadLink container:self.view button:placeHolderButton];
 
-    
-    //IF RESTART, THEN WE NEED TO GRABE THE MINEFIELD FROM THE FILE AND ADD IT TO THE MINE ARRAY
-    if (restart == YES)
+    if (restart == NO)
     {
-        restart = NO;
+
+        //MAKE HEADLINK
+        levelHeadLink = [[HeadLink alloc] initHeadLink:CGPointMake(initialHeadLatitude, initialHeadLongitude) Velocity:CGVectorMake(initialHeadVelocityX, initialHeadVelocityY) View:self.view PlaceHolder:placeHolderButton];
         
-        NSMutableDictionary* levelObjectsDictionary = [NSMutableDictionary dictionaryWithContentsOfFile:[AppFile getPathToLevelObjectsFile]];
-        
-        NSMutableDictionary* mineFielDictionary = [levelObjectsDictionary objectForKey:@"MineFieldDictionary"];
-        
-        //DIVIDE DICTIONARY BY TWO BECASUE THERE X & Y FOR EVERY ONE COUNT
-        for (int i = 0; i < [mineFielDictionary count]/2; i = i + 1)
-        {
-            
-            double x = [[mineFielDictionary objectForKey:[NSString stringWithFormat:@"MineX%.d",i]] doubleValue];
-            double y = [[mineFielDictionary objectForKey:[NSString stringWithFormat:@"MineY%.d",i]] doubleValue];
-            
-            Mine* aMine = [[Mine alloc] initMine:CGPointMake(x, y) :self.view :placeHolderButton];
-            
-            [mineArray addObject:aMine];
-        }
-        
-        NSMutableDictionary* baseDictionary = [levelObjectsDictionary objectForKey:@"BaseDictionary"];
-        
-        CGPoint basePosition = CGPointMake([[baseDictionary objectForKey:@"BaseX"] doubleValue] ,[[baseDictionary objectForKey:@"BaseY"] doubleValue]);
-        
-        [levelEnemyBase initBase:levelHeadLink :5 :self.view :placeHolderButton locationOverRide:YES Position:basePosition];
-        
-        if (currentLevel > 12)
-        {
-            NSMutableDictionary* turretDictionary = [levelObjectsDictionary objectForKey:@"TurretGunDictionary"];
-            CGPoint turretPosition = CGPointMake([[turretDictionary objectForKey:@"TurretX"] doubleValue], [[turretDictionary objectForKey:@"TurretY"] doubleValue]);
-            [levelTurretGun initTurretGun:levelHeadLink Base:levelEnemyBase LocationOverRide:YES Position:turretPosition Velocity:CGVectorMake(0, 0) View:self.view PlaceHolder:placeHolderButton];
-        }
-        
-        [levelGem initGem:[levelEnemyBase getPosition] :self.view :[levelEnemyBase getHealthBarImage]];
-    }
-    else
-    {
-        
-        //SAVE STATIC OBJECTS TO DICTIONARY FOR POTENTIAL RESTART
-        restartDictionary = [[NSMutableDictionary alloc] init];
+        //MAKE SNAKE
+        levelSnake = [[Snake alloc] initSnake:levelSnakeLength headLink:levelHeadLink container:self.view button:placeHolderButton];
         
         //ENEMY BASE
-        [levelEnemyBase initBase:levelHeadLink :5 :self.view :placeHolderButton locationOverRide: NO Position:CGPointMake(0, 0)];
-
+        levelEnemyBase = [[Base alloc] initBase:levelHeadLink :5 :self.view :placeHolderButton locationOverRide: NO Position:CGPointMake(0, 0)];
+        
         //LEVEL GEM
-        [levelGem initGem:[levelEnemyBase getPosition] :self.view :[levelEnemyBase getHealthBarImage]];
-
+        levelGem = [[Gem alloc] initGem:[levelEnemyBase getPosition] :self.view :[levelEnemyBase getHealthBarImage]];
+        
         //MINE FIELD - adding the array gained from mine field class
         if (currentLevel > 0)
         {
-            [mineArray addObjectsFromArray:[MineField makeRandomMineField:levelEnemyBase headLink:levelHeadLink container:self.view placeholder:placeHolderButton]];
+            [MineField makeRandomMineField:levelEnemyBase headLink:levelHeadLink container:self.view placeholder:placeHolderButton];
         }
-    
+        
         //BUILD A Mine BARRACADE
         if (currentLevel > 5 && currentLevel < 10)
         {
-            [mineArray addObjectsFromArray:[MineField makeBaseBarracade:levelEnemyBase container:self.view placeHolder:placeHolderButton]];
+            [MineField makeBaseBarracade:levelEnemyBase container:self.view placeHolder:placeHolderButton];
         }
         
         //MAKE TURRET GUN
         if (currentLevel > 12)
         {
-            [levelTurretGun initTurretGun:levelHeadLink Base:levelEnemyBase LocationOverRide:NO Position:CGPointMake(0, 0) Velocity:CGVectorMake(0, 0) View:self.view PlaceHolder:placeHolderButton];
-            
-            NSMutableDictionary* turretGunDictionary = [[NSMutableDictionary alloc] init];
-            NSNumber* turretX = [NSNumber numberWithDouble:[levelTurretGun getPosition].x];
-            NSNumber* turretY = [NSNumber numberWithDouble:[levelTurretGun getPosition].y];
-            [turretGunDictionary setObject:turretX forKey:@"TurretX"];
-            [turretGunDictionary setObject:turretY forKey:@"TurretY"];
-            
-            [restartDictionary setObject:turretGunDictionary forKey:@"TurretGunDictionary"];
-            
+        levelTurretGun = [[TurretGun alloc] initTurretGun:levelHeadLink Base:levelEnemyBase LocationOverRide:NO Position:CGPointMake(0, 0) Velocity:CGVectorMake(0, 0) View:self.view PlaceHolder:placeHolderButton];
         }
         
         
-        //SAVE MINEFIELD TO RESTART DICTIONARY
-        NSMutableDictionary* mineFieldDictionary = [[NSMutableDictionary alloc] init];
-    
-        for (int i = 0;i < [mineArray count]; i = i + 1)
-        {
-            NSNumber* x = [NSNumber numberWithDouble:[[mineArray objectAtIndex:i] getLatitude]];
-            NSNumber* y = [NSNumber numberWithDouble:[[mineArray objectAtIndex:i] getLongitude]];
-        
-        
-            [mineFieldDictionary setObject:x forKey:[NSString stringWithFormat:@"MineX%.d", i]];
-            [mineFieldDictionary setObject:y forKey:[NSString stringWithFormat:@"MineY%.d", i]];
-        }
-
-        [restartDictionary setObject:mineFieldDictionary forKey:@"MineFieldDictionary"];
-        
-        
-        //SAVE BASE TO DICAIONARY
-        NSMutableDictionary* baseDictionary = [[NSMutableDictionary alloc] init];
-        NSNumber* baseX = [NSNumber numberWithDouble:[levelEnemyBase getLatitude]];
-        NSNumber* baseY = [NSNumber numberWithDouble:[levelEnemyBase getLongitude]];
-    
-        [baseDictionary setObject:baseX forKey:@"BaseX"];
-        [baseDictionary setObject:baseY forKey:@"BaseY"];
-        
-        [restartDictionary setObject:baseDictionary forKey:@"BaseDictionary"];
-        
-        
-        //WRITE RESTART DICTIONARY TO FILE
-        [restartDictionary writeToFile:[AppFile getPathToLevelObjectsFile] atomically:YES];
-    
+        //SAVE THE INITAL MAP LAYOUT TO FILE FOR POTENTIAL RESTART
+        [AppUtilities saveLevelForRestart];
     }
+    else
+    {
+        restart = NO;
+        
+        [AppUtilities getObjectsForLevelRestart:self.view :placeHolderButton];
+        
+        
+        //MAKE SNAKE
+        for (id object in objectArray)
+        {
+            if ([[NSString stringWithFormat:@"%@",[object class]] isEqualToString:@"HeadLink"])
+            {
+                levelHeadLink = object;
+                [levelHeadLink setVelocity:CGVectorMake(200, 0)];
+                break;
+            }
+            if([[NSString stringWithFormat:@"%@",[object class]] isEqualToString:@"Base"])
+            {
+                levelEnemyBase = object;
+            }
+            if([[NSString stringWithFormat:@"%@",[object class]] isEqualToString:@"Base"])
+            {
+                levelTurretGun = object;
+            }
+            
+        }
+        
+        levelSnake = [[Snake alloc] initSnake:levelSnakeLength headLink:levelHeadLink container:self.view button:placeHolderButton];
+        
+     }
     
     
+    //THIS IS GONNA PROVE A WARNING BECASUE I DON'T HAVE LEVEL OBJECTS ANYMORE
     if (currentLevel > 9)
     {
         blockadeBarricadeArray = [[NSMutableArray alloc] initWithArray:[Barracade makeBlockadeBarracade:[levelEnemyBase getPosition] View:self.view PlaceHolder:placeHolderButton]];
@@ -337,6 +290,21 @@
     }
     
     
+    
+    globalSnakeLength = [[levelSnake getSnakeArray] count];
+
+    
+    
+    //move the moving objects
+    for (int i = 0; i < [objectArray count]; i = i + 1)
+    {
+        id object = [objectArray objectAtIndex:i];
+        
+        [object move:levelHeadLink];
+    }
+    
+    
+    
     //Move bloackade barricade
     for (int i = 0; i < [blockadeBarricadeArray count]; i = i + 1)
     {
@@ -351,52 +319,27 @@
         
         if (blockadeCounter > 200)
         {
-            BlockadeElement* aBlockadeElement = [[BlockadeElement alloc] init];
-            
-            [aBlockadeElement initBlockadeElement: self.view : placeHolderButton];
+            BlockadeElement* aBlockadeElement = [[BlockadeElement alloc] initBlockadeElement: self.view : placeHolderButton];
         
-            [blockadeArray addObject:aBlockadeElement];
+//            [blockadeArray addObject:aBlockadeElement];
             
             blockadeCounter = 0;
         }
     }
     
-    //MOVING BLOCKADE
-    for(int i = 0; i < [blockadeArray count]; i = i + 1)
-    {
-        BlockadeElement* aBlockadeElement = [blockadeArray objectAtIndex:i];
-        
-        [aBlockadeElement move:blockadeArray];
-        
-        for (int g = 0; g < [wallArray count]; g = g +1)
-        {
-            BasicObject* aWallLink = [wallArray objectAtIndex:g];
-            
-            if (fabs([aBlockadeElement getPosition].x - [aWallLink getPosition].x) < [aBlockadeElement getSize].width/2 && fabs([aBlockadeElement getPosition].y - [aWallLink getPosition].y) < [aBlockadeElement getSize].height)
-            {
-                [[aBlockadeElement getImage] removeFromSuperview];
-                [blockadeArray removeObject:aBlockadeElement];
-                
-                [[aWallLink getImage] removeFromSuperview];
-                [wallArray removeObject:aWallLink];
-            }
-        }
-    }
-    
-    //MAKE KAMIKZES
+     //MAKE DRONES
     if (currentLevel > 15)
     {
         if (line == NO)
         {
-                kamikazeCounter = kamikazeCounter + 1;
+                droneCounter = droneCounter + 1;
         
-                if (kamikazeCounter > 250)
+                if (droneCounter > 250)
                 {
-                    kamikazeCounter = 0;
+                    droneCounter = 0;
                     
-                    Kamikaze* aKamikaze = [[Kamikaze alloc] init];
-        
-                    [aKamikaze initKamikaze:[levelHeadLink getPosition] Container:self.view PlaceHolderButton:placeHolderButton];
+                    Drone* aDrone = [[Drone alloc] initDrone:[levelHeadLink getPosition] Container:self.view PlaceHolderButton:placeHolderButton];
+    
                     
 //                    if (currentLevel > 15)
 //                    {
@@ -406,48 +349,8 @@
 //                    
 //                    }
                     
-                    [kamikazeArray addObject:aKamikaze];
+                    //[droneArray addObject:aDrone];
             
-            }
-        }
-    }
-    
-    //MOVE KAMIKAZE
-    for (int w = 0; w < [kamikazeArray count]; w = w + 1)
-    {
-        Kamikaze* aKamikaze = [kamikazeArray objectAtIndex:w];
-        
-        if (line == YES)
-        {
-            if ([aKamikaze getPosition].y < screenHeight/2)
-            {
-                [aKamikaze kamikazeMovement:CGPointMake(-10,-10) :kamikazeArray];
-            }
-            if ([aKamikaze getPosition].y > screenHeight/2)
-            {
-                [aKamikaze kamikazeMovement:CGPointMake(screenWidth +10, screenHeight + 10) :kamikazeArray];
-            }
-            
-        }
-        else
-        {
-            [aKamikaze kamikazeMovement:[levelHeadLink getPosition] :kamikazeArray];
-        }
-        
-        //KAMIKAZE WALL INTERACTION
-        for (int i = 0; i < [wallArray count]; i = i + 1)
-        {
-            BasicObject* aWallLink = [wallArray objectAtIndex:i];
-            
-            if (fabs([aKamikaze getPosition].x - [aWallLink getPosition].x) < [aKamikaze getSize].width/2 && fabs([aKamikaze getPosition].y - [aWallLink getPosition].y) < [aKamikaze getSize].height)
-            {
-                
-                [[aWallLink getImage] removeFromSuperview];
-                [wallArray removeObject:aWallLink];
-                [[aKamikaze getImage] removeFromSuperview];
-                [kamikazeArray removeObject:aKamikaze];
-                break;
-                
             }
         }
     }
@@ -463,9 +366,7 @@
             {
                 lifePowerUpCounter = 0;
            
-                Food* aFood = [[Food alloc] init];
-            
-                [aFood initFood:levelEnemyBase View:self.view placeHolder:placeHolderButton];
+                Food* aFood = [[Food alloc] initFood:levelEnemyBase View:self.view placeHolder:placeHolderButton];
             
                 [lifePowerUpArray addObject:aFood];
             }
@@ -483,25 +384,13 @@
             if (turretGunCounter > 100)
             {
                 turretGunCounter = 0;
+                
+                CGPoint theTarget = [levelHeadLink getPosition];
             
-                Arrow* anArrow = [[Arrow alloc] init];
-        
-                CGPoint theTarget = CGPointMake([levelHeadLink getLatitude], [levelHeadLink getLongitude]);
-            
-                [anArrow initArrow:theTarget InitialPosition:[levelTurretGun getPosition] Turret:levelTurretGun container:self.view placeHolder:placeHolderButton];
-        
-                [turretBulletArray addObject:anArrow];
+                Arrow* anArrow = [[Arrow alloc] initArrow:theTarget InitialPosition:[levelTurretGun getPosition] Turret:levelTurretGun container:self.view placeHolder:placeHolderButton];
             }
         }
     }
-    
-    
-    //MOVE HEADLINK
-    [levelHeadLink move:[levelSnake getSnakeArray]];
-    
-
-    //MOVE SNAKE
-    [levelSnake moveSnake: levelHeadLink : mineArray :blockadeArray : kamikazeArray : levelEnemyBase : levelGem :lifePowerUpArray View:self.view Arrow:turretBulletArray TurretGut:levelTurretGun :blockadeBarricadeArray];
     
     //AMMO COUNT
     if ([[levelSnake getSnakeArray] count] < 11)
@@ -515,11 +404,6 @@
     
     ammoCount.text = [NSString stringWithFormat:@"%.f",(double)[[levelSnake getSnakeArray] count]];
     
-    [levelTurretGun move];
-
-   // BULLET MOVER
-    [self moveBullet];
-    
     
     //GAME STATUS STUFF
     [self checkBaseHealth:regeneration];
@@ -527,164 +411,6 @@
     [self checkGameStatus];
 
 }
-
-#pragma mark - Move Bullet
-
--(void)moveBullet
-{
-    
-    didBulletHit = NO;
-    
-    for (int a = 0; a < [turretBulletArray count]; a = a + 1)
-    {
-        Arrow* anArrow = [turretBulletArray objectAtIndex:a];
-        [anArrow move];
-        
-        //BULLET REMOVAL
-        if ([anArrow getPosition].x > (screenWidth + 10) || [anArrow getPosition].x < -10)
-        {
-            [turretBulletArray removeObjectAtIndex:a];
-            [[anArrow getImage] removeFromSuperview];
-        }
-        if ([anArrow getPosition].y > (screenHeight + 10) || [anArrow getPosition].y < 0)
-        {
-            [turretBulletArray removeObjectAtIndex:a];
-            [[anArrow getImage] removeFromSuperview];
-        }
-        
-        
-        //WALL INTERACTION
-        for (int i = 0; i < [wallArray count]; i = i + 1)
-        {
-            BasicObject* object = [wallArray objectAtIndex:i];
-            
-            if (fabs([anArrow getPosition].x - [object getPosition].x) < [object getSize].width && fabs([anArrow getPosition].y - [object getPosition].y) < [object getSize].height)
-            {
-                
-                [[object getImage] removeFromSuperview];
-                [wallArray removeObject:object];
-                
-                [[anArrow getImage] removeFromSuperview];
-                [turretBulletArray removeObject:anArrow];
-            }
-        }
-    }
-       
-    
-    for (int i = 0; i < [bulletArray count]; i = i + 1)
-    {
-        Bullet* aBullet = [bulletArray objectAtIndex:i];
-        
-        [aBullet move];
-        
-        [aBullet getImage].center = [aBullet getPosition];
-        
-        if ([aBullet getPosition].x > (screenWidth + 10) || [aBullet getPosition].x < -10)
-        {
-            didBulletHit = YES;
-        }
-        if ([aBullet getPosition].y > (screenHeight + 10) || [aBullet getPosition].y < -10)
-        {
-            didBulletHit = YES;
-            
-        }
-        
-        UIImageView* aBulletImage = [aBullet getImage];
-            
-        //BLOACKADE INTERACTION
-        for (int j = 0; j < [blockadeArray count]; j = j + 1)
-        {
-            UIImageView* blockadeImage = [[blockadeArray objectAtIndex:j] getImage];
-            
-            if (fabs(aBulletImage.center.x - blockadeImage.center.x) < 15 && fabs(aBulletImage.center.y - blockadeImage.center.y) < 15)
-            {
-                [blockadeImage removeFromSuperview];
-                [blockadeArray removeObjectAtIndex:j];
-                
-                didBulletHit = YES;
-            }
-        }
-        
-        //BLOCKADE BARRRICADE INTERACTION
-        for (int e = 0; e < [blockadeBarricadeArray count]; e = e + 1)
-        {
-            BlockadeElement* aBlockadeBarricadeElement = [blockadeBarricadeArray objectAtIndex:e];
-            if (fabs([aBlockadeBarricadeElement getPosition].x - [aBullet getPosition].x) < [aBlockadeBarricadeElement getSize].width/2 && fabs([aBlockadeBarricadeElement getPosition].y - [aBullet getPosition].y) < [aBlockadeBarricadeElement getSize].height/2 )
-            {
-                [[aBlockadeBarricadeElement getImage]removeFromSuperview];
-                [blockadeBarricadeArray removeObject:aBlockadeBarricadeElement];
-                
-                didBulletHit = YES;
-                break;
-            }
-        }
-
-        //MINE FEILD INTERACTION
-        for (int j = 0; j < [mineArray count]; j = j + 1)
-        {
-            UIImageView* mineImage = [[mineArray objectAtIndex:j] getImage];
-            
-            if (fabs(aBulletImage.center.x - mineImage.center.x) < 15 && fabs(aBulletImage.center.y - mineImage.center.y) < 15 )
-            {
-                [mineImage removeFromSuperview];
-                [mineArray removeObjectAtIndex:j];
-                
-                didBulletHit = YES;
-            }
-            
-        }
-        
-        //ENEMY BASE INTERACTION
-        if ([levelEnemyBase getEnemyBaseHealth] > 0)
-        {
-            
-            if (fabs([aBullet getLatitude] - [levelEnemyBase getLatitude]) < 12 && fabs([aBullet getLongitude] - [levelEnemyBase getLongitude]) < 12)
-            {
-                didBulletHit = YES;
-                
-                
-                [levelEnemyBase hitEnemyBase];
-            
-            }
-        }
-        
-        //TURRET GUN INTERACTION
-        if ([levelTurretGun getTurretHealth] > 0)
-        {
-            if (fabs([aBullet getLatitude] - [levelTurretGun getLatitude]) < [levelTurretGun getSize].width/2 && fabs([aBullet getLongitude] - [levelTurretGun getLongitude]) < [levelTurretGun getSize].height/2)
-            {
-                didBulletHit = YES;
-                [levelTurretGun hitTurret];
-            }
-        }
-        
-        //KAMIKAZI INTERACTION
-        for (int h = 0; h < [kamikazeArray count]; h = h + 1)
-        {
-            UIImageView* aKamikaziImage = [[kamikazeArray objectAtIndex:h] getImage];
-                
-            if (fabs(aBulletImage.center.x - aKamikaziImage.center.x) < 10 && fabs(aBulletImage.center.y - aKamikaziImage.center.y) < 10)
-            {
-                [aKamikaziImage removeFromSuperview];
-                [kamikazeArray removeObjectAtIndex:h];
-                    
-                didBulletHit = YES;
-            }
-
-        }
-        
-        //THis is the polling thing i need to change
-        if (didBulletHit == YES)
-        {
-            [aBulletImage removeFromSuperview];
-            [bulletArray removeObjectAtIndex:i];
-        }
-
-    }
-    
-    
-}
-
 
 #pragma mark - Game Checkers
 
@@ -721,7 +447,7 @@
 {
     if (gameStatus == NO)
     {
-        [self youLost:[NSString stringWithFormat:@"DIED ON LEVEL %.f",currentLevel]];
+        [self youLost];
     }
     
     if (won == YES)
@@ -741,16 +467,24 @@
 {
     [theTimer invalidate];
     
+    //REMOVE IMAGES FROM SCREEN
+    for (id object in objectArray)
+    {
+        [[object getImage] removeFromSuperview];
+    }
+    
+    [objectArray removeAllObjects];
+    
     //SAVE LEVEL STATUS AND INFO
     NSString* levelString = [NSString stringWithFormat: @"%.f",currentLevel + 1];
     
-    NSMutableDictionary* dictionaryFromFile = [NSMutableDictionary dictionaryWithContentsOfFile:[AppFile getPathToUserInfoFile]];
+    NSMutableDictionary* dictionaryFromFile = [NSMutableDictionary dictionaryWithContentsOfFile:[AppUtilities getPathToUserInfoFile]];
     
     [dictionaryFromFile setObject:levelString forKey:@"currentLevel"];
 
     [dictionaryFromFile setObject:[NSString stringWithFormat:@"%.f",(double)[[levelSnake getSnakeArray] count]] forKey:@"snakeLength"];
     
-    [dictionaryFromFile writeToFile:[AppFile getPathToUserInfoFile] atomically:YES ];
+    [dictionaryFromFile writeToFile:[AppUtilities getPathToUserInfoFile] atomically:YES ];
     
     won = NO;
     
@@ -797,21 +531,26 @@
 }
 
 
--(void)youLost:(NSString*)reasonStringInit
+-(void)youLost
 {
     [theTimer invalidate];
     
+    NSLog(@"%f",currentLevel);
+    
     //REMOVE IMAGES FROM SCREEN
-    [mineArray removeAllObjects];
-    [bulletArray removeAllObjects];
-    [[levelEnemyBase getImage] removeFromSuperview];
-    [[levelGem getImage] removeFromSuperview];
+    for (id object in objectArray)
+    {
+        [[object getImage] removeFromSuperview];
+    }
+    
+    [objectArray removeAllObjects];
+
     
     //INSERT BACKGROUND IMAGE
     backgroundImage = [self makeRedBackgroundMenuImage];
     [self.view insertSubview:backgroundImage aboveSubview:placeHolderButton];
     
-    endLevelLabel.text = reasonStringInit;
+    endLevelLabel.text = [NSString stringWithFormat:@"DIED ON LEVEL %.f",currentLevel];
     endLevelLabel.hidden = NO;
     pauseButton.hidden = YES;
     ammoCount.hidden = YES;
@@ -819,6 +558,8 @@
     shapeUnlockLabel.hidden = YES;
     
     endLevelTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(delayLostResponse) userInfo:nil repeats:YES];
+    
+     NSLog(@"%f",currentLevel);
     
 }
 
@@ -963,16 +704,12 @@
         {
             CGPoint touchTarget = [aLongPress locationInView:self.view];
             
-            Bullet* newBullet = [[Bullet alloc] init];
-            
             //MAKE A BIG BULLET
             CGSize bulletSize = CGSizeMake(bigBulletCounter, bigBulletCounter);
             
+            Bullet* newBullet = [[Bullet alloc] initBullet:touchTarget InitialPosition:[levelHeadLink getShapeCenter] Size:bulletSize Container:self.view PlaceHolder:placeHolderButton];
+            
             [newBullet setSize:bulletSize];
-            
-            [newBullet initBullet:touchTarget InitialPosition:[levelHeadLink getShapeCenter] Container:self.view PlaceHolder:placeHolderButton];
-            
-            [bulletArray addObject:newBullet];
             
             bigBulletCounter = 0;
             
@@ -988,15 +725,19 @@
     {
         if ([[levelSnake getSnakeArray] count] > 0)
         {
-            
             CGPoint location = [aLongPress locationInView:self.view];
-            BasicObject* aLink = [[BasicObject alloc] init];
-            [aLink initBasicObject:location :CGSizeMake(10, 10) :@"Point"];
+            
+//            BasicObject* aLink = [[BasicObject alloc] initBasicObject:location :CGSizeMake(10, 10) :@"Point"];
+            
+            Bullet* aWallLink = [[Bullet alloc] initBullet:location InitialPosition:location Size:CGSizeMake(10, 10) Container:self.view PlaceHolder:placeHolderButton];
+            
+//            [aLink setCharacter:@"Wall"];
+            
             [levelSnake removeHowManyLinksFromSnake:1];
             
-            [self.view insertSubview:[aLink getImage] belowSubview:placeHolderButton];
+            //[self.view insertSubview:[aWallLink getImage] belowSubview:placeHolderButton];
         
-            [wallArray addObject:aLink];
+//            [wallArray addObject:aLink];
         }
     }
 }
@@ -1048,16 +789,9 @@
             if (circle == YES || line == YES || triangle == YES)
             {
             
-            Bullet* newBullet = [[Bullet alloc] init];
-            
-            CGSize bulletSize = CGSizeMake(10, 10);
-            
-            [newBullet setSize:bulletSize];
-
-            [newBullet initBullet:touchTarget InitialPosition:[levelHeadLink getShapeCenter] Container:self.view PlaceHolder: placeHolderButton];
-            
-        
-            [bulletArray addObject:newBullet];
+                CGSize bulletSize = CGSizeMake(10, 10);
+                
+                [[Bullet alloc] initBullet:touchTarget InitialPosition:[levelHeadLink getShapeCenter] Size:bulletSize Container:self.view PlaceHolder: placeHolderButton];
                 
             }
             
@@ -1066,7 +800,7 @@
                 
                 DoubleBullet* aDoubleBullet = [[DoubleBullet alloc] init];
             
-                [bulletArray addObjectsFromArray: [aDoubleBullet createDoubleBullet:levelHeadLink container:self.view placeHolder:placeHolderButton Target:touchTarget]];
+                [aDoubleBullet createDoubleBullet:levelHeadLink container:self.view placeHolder:placeHolderButton Target:touchTarget];
         
             }
             
@@ -1208,6 +942,14 @@
 -(IBAction)didPressMainMenu:(id)sender
 {
     [theTimer invalidate];
+    
+    //REMOVE IMAGES FROM SCREEN
+    for (id object in objectArray)
+    {
+        [[object getImage] removeFromSuperview];
+    }
+    
+    [objectArray removeAllObjects];
 }
 
 
@@ -1231,12 +973,13 @@
 -(IBAction)didPressRestartButton:(id)sender
 {
     restart = YES;
+    NSLog(@"%f",currentLevel);
 }
 
 
 -(IBAction)didPressCirlcShapeShiftButton:(id)sender
 {
-    circlShapeButton.contentEdgeInsets = UIEdgeInsetsMake(35, 70, 35, 70);
+//    circlShapeButton.contentEdgeInsets = UIEdgeInsetsMake(35, 70, 35, 70);
     NSLog(@"I pressed the button");
 }
 

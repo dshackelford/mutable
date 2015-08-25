@@ -11,8 +11,10 @@
 
 @implementation HeadLink
 
--(void)initHeadLink:(CGPoint)positionInit Velocity:(CGVector)velocityInit View:(UIView*)viewInit PlaceHolder:(UIButton*)placeHolderButton
+-(id)initHeadLink:(CGPoint)positionInit Velocity:(CGVector)velocityInit View:(UIView*)viewInit PlaceHolder:(UIButton*)placeHolderButton
 {
+    
+    self = [super init];
     
     position = positionInit;
     
@@ -28,13 +30,37 @@
     
     bounded = YES;
     
-    [dynamicObjectArray addObject:self];
+    [objectArray addObject:self];
+    
+    return self;
     
 }
 
-//THIS METHOD DETERMINES HOW TO MOVE HEADLINK, TAKES SNAKE ARRAY TO DETERMINE THE RAIDUS AND SPEED
--(void)move:(NSMutableArray*)snakeArrayInit
+-(id)initRestart:(CGPoint)positionInit Container:(UIView*)container Placeholder:(UIButton*)placeHolderButtonInit Velocity:(CGVector)velocityInit
 {
+    position = positionInit;
+    
+    size = CGSizeMake(10, 10);
+    
+    velocity = velocityInit;
+    
+    imageFileName = @"HeadLink";
+    
+    [self setImage];
+    
+    [container insertSubview:theImage belowSubview:placeHolderButtonInit];
+    
+    bounded = YES;
+    
+    [objectArray addObject:self];
+    
+    return self;
+}
+
+//THIS METHOD DETERMINES HOW TO MOVE HEADLINK, TAKES SNAKE ARRAY TO DETERMINE THE RAIDUS AND SPEED
+-(void)move:(id)objectTracker
+{
+    
     if (shapeShiftBool == NO)
     {
         if (position.y >= screenHeight || position.y <= 0)
@@ -57,16 +83,16 @@
     {
         if (circle == YES)
         {
-            shapeRadius = [snakeArrayInit count]/(2*M_PI);
+            shapeRadius = globalSnakeLength/(2*M_PI);
             
             [self moveInCircle];
         }
         
         if (square == YES)
         {
-            shapeRadius = [snakeArrayInit count]/4;
+            shapeRadius = globalSnakeLength/4;
             
-            if ([snakeArrayInit count] > 0)
+            if (globalSnakeLength > 0)
             {
                 [self moveInSquare];
             }
@@ -75,9 +101,9 @@
         
         if (triangle == YES)
         {
-            shapeRadius = [snakeArrayInit count]/3;
+            shapeRadius = globalSnakeLength/3;
             
-            if ([snakeArrayInit count] > 0)
+            if (globalSnakeLength > 0)
             {
                 [self moveInTriangle];
             }
@@ -86,11 +112,64 @@
         
         if (line == YES)
         {
-            shapeRadius = [snakeArrayInit count]/2;
+            shapeRadius = globalSnakeLength/2;
             
             [self moveInLine];
         }
     }
+    
+    //DETECT COLLISION
+    [self detectCollision];
+    
+}
+
+-(void)detectCollision
+{
+    for (int i = 0; i < [objectArray count]; i = i + 1)
+    {
+        id object = [objectArray objectAtIndex:i];
+        
+        if (object != self)
+        {
+            if (fabs([object getPosition].x - [self getPosition].x) < [object getSize].width/2 + [self getSize].width/2 && fabs([object getPosition].y - [self getPosition].y) < [object getSize].height/2 + [self getSize].height/2)
+            {
+                
+                
+                
+                [object crash];
+                break;
+                
+//                
+//                if ([[object getCharacter]  isEqualToString: @"Bad"])
+//                {
+////                    [[NSNotificationCenter defaultCenter] postNotificationName:@"DeathNotification" object:self];
+//                    gameStatus = NO;
+//                    break;
+//                }
+//                if ([[object getCharacter] isEqualToString: @"PowerUp"])
+//                {
+//                    [[NSNotificationCenter defaultCenter] postNotificationName:@"AddLinks" object:self];
+//                    [objectArray removeObject:object];
+//                    [[object getImage] removeFromSuperview];
+//                    break;
+//                }
+//            
+//                if ([[object getCharacter] isEqualToString:@"Great"])
+//                {
+//                
+//                    won = YES;
+////                    [[NSNotificationCenter defaultCenter] postNotificationName:@"YouWon" object:self];
+//                    break;
+//                }
+            }
+        }
+    }
+}
+
+-(void)hit
+{
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"DeathNotification" object:self];
+    
     
 }
 

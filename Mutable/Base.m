@@ -11,17 +11,21 @@
 
 @implementation Base
 
--(void)initBase:(HeadLink*)headLinkInit :(double)baseStrengthInit :(UIView*)container :(UIButton*)placeHolderButtonInit locationOverRide:(BOOL)locationOverRide Position:(CGPoint)positionInit
+-(id)initBase:(HeadLink*)headLinkInit :(double)baseStrengthInit :(UIView*)container :(UIButton*)placeHolderButtonInit locationOverRide:(BOOL)locationOverRide Position:(CGPoint)positionInit
 {
+    self = [super init];
+    
+    character = @"Bad";
+    
     if (locationOverRide == NO)
     {
-        position.x = arc4random()%((int)screenWidth - 150) + 150;
-        position.y = arc4random()%((int)screenHeight - 150) + 150;
+        position.x = arc4random()%((int)screenWidth - 150) + 90;
+        position.y = arc4random()%((int)screenHeight - 150) + 90;
     
         while (fabs([headLinkInit getPosition].y - position.y) < 80 || fabs([headLinkInit getPosition].x - position.x) < 80)
         {
-            position.x = arc4random()%((int)screenWidth - 70) + 50;
-            position.y = arc4random()%((int)screenHeight - 70) + 50;
+            position.x = arc4random()%((int)screenWidth - 150) + 90;
+            position.y = arc4random()%((int)screenHeight - 150) + 90;
         }
     }
     else
@@ -54,9 +58,72 @@
     }
     
     [container insertSubview:theImage belowSubview:placeHolderButtonInit];
+    
+    
+    [objectArray addObject:self];
+    
+    return self;
 
 }
 
+-(id)initRestart:(CGPoint)positionInit Container:(UIView*)container Placeholder:(UIButton*)placeHolderButtonInit Velocity:(CGVector)velocityInit
+{
+    self = [super init];
+    position = positionInit;
+    
+    size = CGSizeMake(45, 45);
+    
+    imageFileName = @"base2";
+    
+    [self setImage];
+    
+    enemyBaseHealth = 5;
+    baseHealthCap = enemyBaseHealth;
+    healthArray = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < enemyBaseHealth; i = i + 1)
+    {
+        UIImageView* aHealthImage = [self makeHealthImage];
+        
+        [container insertSubview:aHealthImage belowSubview:placeHolderButtonInit];
+        
+        [healthArray addObject:aHealthImage];
+        
+        aHealthImage.center = CGPointMake(position.x - 10 + 7*i, position.y);
+    }
+    
+    [container insertSubview:theImage belowSubview:placeHolderButtonInit];
+    
+    
+    [objectArray addObject:self];
+    
+    return self;
+
+    
+}
+
+#pragma mark - Interactions
+
+-(void)hit
+{
+    //INDEX HAS A MINUS 1 BECUASE HEALTH ARRAY STARTS AT O, NOT 1.
+    UIImageView* aHealthImage = [healthArray objectAtIndex:enemyBaseHealth-1];
+    
+    [aHealthImage removeFromSuperview];
+    
+    [healthArray removeObjectAtIndex:enemyBaseHealth-1];
+    
+    enemyBaseHealth = enemyBaseHealth-1;
+    
+    if (enemyBaseHealth == 0)
+    {
+        [theImage removeFromSuperview];
+        [objectArray removeObject:self];
+    }
+}
+
+
+//REGENERATION
 -(void)addHealth:(UIView*)container :(UIButton*)placeHolderButtonInit
 {
     UIImageView* aHealthImage = [self makeHealthImage];
@@ -75,6 +142,7 @@
 
 
 
+#pragma mark - Getters
 
 -(UIImageView*)getHealthBarImage
 {
@@ -91,23 +159,13 @@
 }
 
 
--(void)hitEnemyBase
-{
-    //INDEX HAS A MINUS 1 BECUASE HEALTH ARRAY STARTS AT O, NOT 1.
-    UIImageView* aHealthImage = [healthArray objectAtIndex:enemyBaseHealth-1];
-    
-    [aHealthImage removeFromSuperview];
-    
-    [healthArray removeObjectAtIndex:enemyBaseHealth-1];
-    
-    enemyBaseHealth = enemyBaseHealth-1;
-}
-
 -(double)getBaseHealthCap
 {
     return baseHealthCap;
 }
 
+
+#pragma mark - Health Image
 
 -(UIImageView*)makeHealthImage
 {

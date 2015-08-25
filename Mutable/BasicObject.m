@@ -11,9 +11,9 @@
 
 @implementation BasicObject
 
-
--(void)initBasicObject:(CGPoint)positionInit :(CGSize)sizeInit :(NSString*)imageFileStringInit
+-(id)initBasicObject:(CGPoint)positionInit :(CGSize)sizeInit :(NSString*)imageFileStringInit
 {
+    self = [super init];
     
     imageFileName = imageFileStringInit;
     
@@ -23,20 +23,47 @@
     
     [self setImage];
     
-//    [staticObjectArray addObject:self];
+    [objectArray addObject:self];
+    
+    return self;
 }
 
 
--(double)getLatitude
+-(id)initRestart:(CGPoint)positionInit Container:(UIView*)container Placeholder:(UIButton*)placeHolderButtonInit Velocity:(CGVector)velocityInit
 {
-    return position.x;
+    self = [super init];
+    
+    position = positionInit;
+    
+    return self;
 }
 
--(double)getLongitude
+#pragma mark - Move
+-(void)move
 {
-    return position.y;
+    
 }
 
+-(void)move:(id)objectTracker
+{
+    
+}
+
+#pragma mark - Interactions
+-(void)hit
+{
+    [theImage removeFromSuperview];
+    [objectArray removeObject:self];
+}
+
+-(void)crash
+{
+    gameStatus = NO;
+}
+
+
+
+#pragma mark - Getters
 
 -(CGPoint)getPosition
 {
@@ -60,21 +87,11 @@
 
 
 
--(void)setLatitude:(double)latitudeInit
-{
-    position.x = latitudeInit;
-}
-
--(void)setLongitude:(double)longitudeInit
-{
-    position.y = longitudeInit;
-}
-
+#pragma mark - Setters
 -(void)setPosition:(CGPoint)pointInit
 {
     position = pointInit;
 }
-
 
 -(void)setImage
 {
@@ -96,7 +113,6 @@
 {
     size = CGSizeMake(xInit, yInit);
 }
-
 
 
 @end

@@ -16,7 +16,7 @@
     
 }
 
--(void)initGem:(CGPoint)positionInit :(UIView*)container :(UIView*)healthImageInit;
+-(id)initGem:(CGPoint)positionInit :(UIView*)container :(UIView*)healthImageInit;
 
 
 @end

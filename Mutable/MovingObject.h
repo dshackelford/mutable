@@ -11,9 +11,6 @@
 
 @interface MovingObject : BasicObject
 {
-//    double velocityX;
-//    double velocityY;
-    
     CGVector velocity;
     
     CGPoint shapeCenter;
@@ -27,9 +24,10 @@
     double shapeCounter;
 }
 
--(void)initMovingObject:(CGPoint)positionInit :(CGVector)velocityInit :(CGSize)sizeInit :(NSString*)imageFileString;
+-(id)initMovingObject:(CGPoint)positionInit :(CGVector)velocityInit :(CGSize)sizeInit :(NSString*)imageFileString;
 
 -(void)move;
+-(void)move:(id)objectTracker;
 -(void)moveInCircle;
 -(void)moveInSquare;
 -(void)moveInLine;

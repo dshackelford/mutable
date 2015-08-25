@@ -32,11 +32,27 @@
 {
     // This is an example of a functional test case.
 
+    
+    NSString* value = @"key 1";
+    NSString* separator = @":";
+//    NSString* className = [self getSubstring:key betweenString:@" "];
+    
+    NSString* firstWord = [[value componentsSeparatedByString:@" "] objectAtIndex:0];
+    
+    
+//    NSRange firstInstance = [value rangeOfString:separator];
+//    NSRange secondInstance = [[value substringFromIndex:firstInstance.location + firstInstance.length] rangeOfString:separator];
+//    NSRange finalRange = NSMakeRange(firstInstance.location + separator.length, secondInstance.location);
+//    
+//    return [value substringWithRange:finalRange];
+    
     int x = 1;
     
     XCTAssert(x == 2, @"PASS");
 
 }
+
+
 
 - (void)testPerformanceExample {
     // This is an example of a performance test case.

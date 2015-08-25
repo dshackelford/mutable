@@ -7,12 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Kamikaze.h"
+#import "Drone.h"
 
-@implementation Kamikaze
+@implementation Drone
 
--(void)initKamikaze:(CGPoint)targetInit Container:(UIView*)viewInit PlaceHolderButton:(UIButton*)placeHolderButton
+-(id)initDrone:(CGPoint)targetInit Container:(UIView*)viewInit PlaceHolderButton:(UIButton*)placeHolderButton
 {
+    self = [super init];
+    
     int locationDeterminant = arc4random()%100;
     
     //GO FROM BOTTOM
@@ -55,12 +57,12 @@
     
     double hypotenuse = sqrt(dx*dx + dy*dy);
     
-    double kamikazeSpeed = 300;
+    double droneSpeed = 300;
     
-    double kamikazeTime = hypotenuse/kamikazeSpeed;
+    double droneTime = hypotenuse/droneSpeed;
     
-    double vx = dx/kamikazeTime;
-    double vy = dy/kamikazeTime;
+    double vx = dx/droneTime;
+    double vy = dy/droneTime;
     
     velocity = CGVectorMake(vx, vy);
     
@@ -87,31 +89,32 @@
     
     theImage.transform = CGAffineTransformMakeRotation(angleOfRotation);
     
+    [objectArray addObject:self];
     
-    [dynamicObjectArray addObject:self];
+    return self;
 }
 
--(void)kamikazeMovement:(CGPoint)targetInit :(NSMutableArray*)kamikazeArrayInit;
+-(void)move:(id)objectTracker
 {
-    [self moveKamikaze: targetInit];
+    [self moveDrone: [objectTracker getPosition]];
     
     theImage.center = position;
      
      if (position.x > (screenWidth + 5) || position.x < -5)
      {
-         [kamikazeArrayInit removeObject:self];
          [theImage removeFromSuperview];
      }
      
      if (position.y > (screenHeight + 5) || position.y < 5)
      {
-         [kamikazeArrayInit removeObject:self];
-         [theImage removeFromSuperview];
+        [theImage removeFromSuperview];
      }
+    
+    [self detectCollision];
 
 }
 
--(void)moveKamikaze:(CGPoint)targetInit
+-(void)moveDrone:(CGPoint)targetInit
 {
     double xDesitination = targetInit.x;
     double yDesitination = targetInit.y;
@@ -121,12 +124,12 @@
     
     double hypotenuse = sqrt(dx*dx + dy*dy);
     
-    double kamikaziVelocity = 145;
+    double droneVelocity = 145;
     
-    double kamikaziTime = hypotenuse/kamikaziVelocity;
+    double droneTime = hypotenuse/droneVelocity;
     
-    double vx = dx/kamikaziTime;
-    double vy = dy/kamikaziTime;
+    double vx = dx/droneTime;
+    double vy = dy/droneTime;
     
     //ROTATE IMAGE FOR ASETHETIC PURPOSES
     if (dy > 0 && dx < 0)
@@ -155,6 +158,17 @@
     position.x = position.x + velocity.dx*deltaTime;
     position.y = position.y + velocity.dy*deltaTime;
 
+}
+
+-(void)detectCollision
+{
+    for (id object in objectArray)
+    {
+        if (fabs([object getPosition].x - [self getPosition].x) < [object getSize].width/2 + [self getSize].width/2 && fabs([object getPosition].y - [self getPosition].y) < [object getSize].height/2 + [self getSize].height/2)
+        {
+            //How do I hit a link?
+        }
+    }
 }
 
 @end

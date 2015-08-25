@@ -11,8 +11,10 @@
 
 @implementation MovingObject
 
--(void)initMovingObject:(CGPoint)positionInit :(CGVector)velocityInit :(CGSize)sizeInit :(NSString*)imageFileString
+-(id)initMovingObject:(CGPoint)positionInit :(CGVector)velocityInit :(CGSize)sizeInit :(NSString*)imageFileString
 {
+    self = [super init];
+    
     velocity = velocityInit;
     
     size = sizeInit;
@@ -23,12 +25,21 @@
     
     [self setImage];
     
-    //[dynamicObjectArray addObject:self];
+    return self;
     
 }
 
-//MOVER METHODS FOR ALL MOVING OBJECTS
 -(void)move
+{
+    position.x = position.x + velocity.dx*deltaTime;
+    position.y = position.y + velocity.dy*deltaTime;
+    
+    theImage.center = position;
+}
+
+
+//MOVER METHODS FOR ALL MOVING OBJECTS
+-(void)move:(id)objectTracker
 {
     position.x = position.x + velocity.dx*deltaTime;
     position.y = position.y + velocity.dy*deltaTime;
@@ -397,28 +408,6 @@
             break;
     }
     
-    
-
-//    if (boundraryCondition == 1)
-//    {
-//        
-//        if (position.x > ACorner.x && position.y < shapeCenter.y) //turn down left
-//        {
-//            velocity.dx = -100;
-//            velocity.dy = 100;
-//        }
-//        if (position.x < BCorner.x && position.y > shapeCenter.y) //turn up left
-//        {
-//            velocity.dx = -100;
-//            velocity.dy = -100;
-//        }
-//        if (position.x < CCorner.x && position.y < shapeCenter.y) //tunr right
-//        {
-//            velocity.dx = 100;
-//            velocity.dy = 0;
-//        }
-//    }
-//    
     
     position.x = position.x + velocity.dx*deltaTime;
     position.y = position.y + velocity.dy*deltaTime;

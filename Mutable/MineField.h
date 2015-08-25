@@ -15,10 +15,9 @@
 
 }
 
-+(NSMutableArray*)makeRandomMineField:(Base*)baseInit headLink:(HeadLink*)headLinkInit container:(UIView*)containerInit placeholder:(UIButton*)placeHolderButton;
++(void)makeRandomMineField:(Base*)baseInit headLink:(HeadLink*)headLinkInit container:(UIView*)containerInit placeholder:(UIButton*)placeHolderButton;
 
-
-+(NSMutableArray*)makeBaseBarracade:(Base*)baseInit container:(UIView*)containerInit placeHolder:(UIButton*)placeHolderButton;
++(void)makeBaseBarracade:(Base*)baseInit container:(UIView*)containerInit placeHolder:(UIButton*)placeHolderButton;
 //add other mine configurations here...
 
 

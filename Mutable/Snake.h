@@ -14,7 +14,7 @@
 #import "Base.h"
 #import "Gem.h"
 #import "BlockadeElement.h"
-#import "Kamikaze.h"
+#import "Drone.h"
 #import "Arrow.h"
 #import "TurretGun.h"
 
@@ -30,15 +30,14 @@
 }
 
 
--(void)initSnake: (double)snakeLengthInit headLink:(HeadLink*)headLinkInit container:(UIView*)containerInit button:(UIButton*)placeHolderButtonInit;
+-(id)initSnake: (double)snakeLengthInit headLink:(HeadLink*)headLinkInit container:(UIView*)containerInit button:(UIButton*)placeHolderButtonInit;
 
 
 -(void)move:(HeadLink*)theHeadLink;
 
--(void)moveSnake:(HeadLink*)headLinkInit :(NSMutableArray*)mineFieldInit :(NSMutableArray*)blockadeArrayInit : (NSMutableArray*)kamikazeArrayInit : (Base*)enemyBaseInit : (Gem*)gemInit :(NSMutableArray*)LifePowerUpArrayInit View:(UIView*)viewInit Arrow:(NSMutableArray*)arrowArrayInit TurretGut:(TurretGun*)turretGunInit :(NSMutableArray*)blockadeBarricadeArrayInit;
-
 
 -(void)addLinksToSnake:(double)howManyInit headLink:(HeadLink*)headLinkInit container:(UIView*)containerInit;
+
 -(void)removeHowManyLinksFromSnake:(double)howMany;
 
 -(NSMutableArray*)getSnakeArray;

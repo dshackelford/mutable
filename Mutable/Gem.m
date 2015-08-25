@@ -11,12 +11,17 @@
 
 @implementation Gem
 
--(void)initGem:(CGPoint)positionInit :(UIView *)container :(UIView *)healthImageInit
+#pragma mark - Inits
+-(id)initGem:(CGPoint)positionInit :(UIView *)container :(UIView *)healthImageInit
 {
 
+    character = @"Great";
+    
+    self = [super init];
+    
     position = positionInit;
     
-    size = CGSizeMake(35,35);
+    size = CGSizeMake(19,26);
     
     imageFileName = @"PointGem";
     
@@ -24,7 +29,42 @@
     
     [container insertSubview:theImage belowSubview:healthImageInit];
     
-//    [staticObjectArray addObject:self];
+    [objectArray addObject:self];
+    
+    return self;
+
+}
+
+-(id)initRestart:(CGPoint)positionInit Container:(UIView*)container Placeholder:(UIButton*)placeHolderButtonInit Velocity:(CGVector)velocityInit
+{
+    self = [super init];
+    
+    position = positionInit;
+    
+    size = CGSizeMake(19,26);
+    
+    imageFileName = @"PointGem";
+    
+    [self setImage];
+    
+    //I should put the gem image below the health image, see the init above
+    [container insertSubview:theImage belowSubview:placeHolderButtonInit];
+    
+    [objectArray addObject:self];
+    
+    return self;
+}
+
+
+#pragma mark - Interactions
+-(void)crash
+{
+    won = YES;
+}
+
+-(void)hit
+{
+    
 }
 
 

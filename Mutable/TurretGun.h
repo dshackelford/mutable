@@ -21,13 +21,13 @@
 }
 
 
--(void)initTurretGun:(HeadLink*)theHeadLink Base:(Base*)baseInit LocationOverRide:(BOOL)locationOverRide Position:(CGPoint)positionInit Velocity:(CGVector)velocityInit View:(UIView *)viewInit PlaceHolder:(UIButton *)placeHolderButton;
+-(id)initTurretGun:(HeadLink*)theHeadLink Base:(Base*)baseInit LocationOverRide:(BOOL)locationOverRide Position:(CGPoint)positionInit Velocity:(CGVector)velocityInit View:(UIView *)viewInit PlaceHolder:(UIButton *)placeHolderButton;
 
 
 -(void)move;
 
 
--(void)hitTurret;
+-(void)hit;
 -(UIImageView*)getHealthBarImage;
 -(double)getTurretHealth;
 
