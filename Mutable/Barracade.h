@@ -10,8 +10,6 @@
 #import "BlockadeElement.h"
 
 
-
-
 @interface Barracade : MovingObject
 {
     

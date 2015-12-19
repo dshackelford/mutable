@@ -30,8 +30,10 @@
 #import "Squadron.h"
 #import "DoubleBullet.h"
 
+#import "MasterViewController.h"
 
-@interface LevelViewController : UIViewController
+
+@interface LevelViewController : MasterViewController
 {
     //OBJECTS [should only be one of a kind]
     Snake* levelSnake;
@@ -53,34 +55,11 @@
     NSTimer* bigBulletTimer;
     
     //OBJECT ARRAYS
-//    NSMutableArray* bulletArray;
-//    NSMutableArray* droneArray;
-//    NSMutableArray* blockadeArray;
-//    NSMutableArray* mineFieldLevelArray;
-//    NSMutableArray* shiftingMineFieldArray;
     NSMutableArray* mineArray;
     NSMutableArray* lifePowerUpArray;
-//
-//    NSMutableArray* turretBulletArray;
-//    NSMutableArray* projectileArray;
+
     NSMutableArray* blockadeBarricadeArray;
     NSMutableArray* wallArray;
-    
-    //SWIMPE GESTURES.
-    UISwipeGestureRecognizer* swipeRight;
-    UISwipeGestureRecognizer* swipeLeft;
-    UISwipeGestureRecognizer* swipeDown;
-    UISwipeGestureRecognizer* swipeUp;
-    UISwipeGestureRecognizer* doubleSwipeDown;
-    
-    //TAP GESTURES
-    UITapGestureRecognizer* singleTap;
-    UITapGestureRecognizer* doubleDoubleTap;
-    UILongPressGestureRecognizer* longPress;
-    UILongPressGestureRecognizer* doubleLongPress;
-    
-    UIPanGestureRecognizer* twoFingerTouch;
-    UIPinchGestureRecognizer* pinch;
 
     BOOL didBulletHit;
     BOOL regeneration;
@@ -127,10 +106,6 @@
 -(void)moveBullet;
 -(void)updateMovement;
 
-//BACKGROUNAD IMAGES
--(UIImageView*)makeGreyBackgroundMenuImage;
--(UIImageView*)makeGreenBackgroundMenuImage;
--(UIImageView*)makeRedBackgroundMenuImage;
 
 -(void)checkBaseHealth:(BOOL)regeneration;
 -(void)checkGameStatus;

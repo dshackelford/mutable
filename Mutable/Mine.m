@@ -13,8 +13,6 @@
 
 -(id)initMine:(CGPoint)positionInit :(UIView*)container :(UIButton*)placeHolderButtonInit
 {
-    character = @"Bad";
-    
     self = [super init];
     
     size = CGSizeMake(28, 28);
@@ -50,6 +48,16 @@
     [objectArray addObject:self];
     
     return self;
+}
+
+-(void)hide
+{
+    theImage.hidden = YES;
+}
+
+-(void)show
+{
+    theImage.hidden = NO;
 }
 
 @end

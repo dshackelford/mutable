@@ -10,8 +10,11 @@
 
 @interface Projectile : MovingObject
 {
-//    CGPoint targetPositionPoint;
+    //CGPoint target;
     double angleOfRotation;
 }
+
+
+-(double)findAngleOfRotation;
 
 @end

@@ -60,7 +60,7 @@
 }
 
 
-+(void)makeBaseBarracade:(Base *)baseInit container:(UIView*)containerInit placeHolder:(UIButton*)placeHolderButton
++(void)makeMineBarracade:(Base *)baseInit container:(UIView*)containerInit placeHolder:(UIButton*)placeHolderButton
 {
     NSMutableArray* arrayOfPositions = [[NSMutableArray alloc] init];
     

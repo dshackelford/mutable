@@ -13,10 +13,9 @@
 
 -(id)initBlockadeElement:(UIView*)container :(UIButton*)buttonInit
 {
-    
     self = [super init];
     
-    int locationDeterminant = arc4random()%100;
+    int locationDeterminant = arc4random()%100; //DETERMINES FROM TOP BOTTOM LEFT OR RIGHT FOR START PATH
     
     //GO FROM BOTTOM
     if(locationDeterminant < 25)
@@ -109,15 +108,6 @@
         if (fabs([object getPosition].x - [self getPosition].x) < [object getSize].width/2 + [self getSize].width/2 && fabs([object getPosition].y - [self getPosition].y) < [object getSize].height/2 + [self getSize].height/2)
         {
             
-//            if ([[object getCharacter]  isEqualToString: @"Wall"])
-//            {
-//                [objectArray removeObject:object];
-//                [objectArray removeObject:self];
-//                [theImage removeFromSuperview];
-//                [[object getImage] removeFromSuperview];
-//                
-//                break;
-//            }
             
         }
     }

@@ -11,54 +11,55 @@
 
 @implementation Shifting
 
-+(void)shiftMineField:(NSMutableArray*)mineFieldInit
++(void)shiftMineField
 {
     shiftCounter = shiftCounter +1;
     
-    if (shiftCounter > 100)
+    if (shiftCounter > 75)
     {
-        
-        for (int i = 0; i < [mineFieldInit count]; i = i + 3)
+        for (int i = 0; i < [objectArray count]; i = i + 3)
         {
-            UIImageView* anEnemyImage = [[mineFieldInit objectAtIndex:i] getImage];
-            anEnemyImage.hidden = YES;
+            BasicObject* object = [objectArray objectAtIndex:i];
+            [object hide];
         }
         
-        for (int i = 1; i < [mineFieldInit count]; i = i + 3)
+        for (int i = 0; i < [objectArray count]; i = i + 3)
         {
-            UIImageView* anEnemyImage = [[mineFieldInit objectAtIndex:i] getImage];
-            anEnemyImage.hidden = NO;
+            BasicObject* object = [objectArray objectAtIndex:i];
+            [object show];
+        }
+
+    }
+    
+    if (shiftCounter > 75 && shiftCounter < 150)
+    {
+        for (int i = 0; i < [objectArray count]; i = i + 3)
+        {
+            BasicObject* object = [objectArray objectAtIndex:i];
+            [object show];
+        }
+        
+        for (int i = 0; i < [objectArray count]; i = i + 3)
+        {
+            BasicObject* object = [objectArray objectAtIndex:i];
+            [object hide];
         }
     }
     
-    if (shiftCounter > 100 && shiftCounter < 200)
-    {
-        for (int i = 0; i < [mineFieldInit count]; i = i + 3)
-        {
-            UIImageView* anEnemyImage = [[mineFieldInit objectAtIndex:i] getImage];
-            anEnemyImage.hidden = NO;
-        }
-        
-        
-        for (int i = 1; i < [mineFieldInit count]; i = i + 3)
-        {
-            UIImageView* anEnemyImage = [[mineFieldInit objectAtIndex:i] getImage];
-            anEnemyImage.hidden = YES;
-        }
-    }
-    
-    if (shiftCounter >200)
+    if (shiftCounter >150)
     {
         shiftCounter = 0;
     }
 }
 
-+(void)showMineField:(NSMutableArray*)mineFieldInit
++(void)showMineField
 {
-    for (Mine* aMine in mineFieldInit)
+    
+    for (Mine* aMine in objectArray)
     {
-        [aMine getImage].hidden = NO;
+        [aMine show];
     }
+    
     shiftCounter = 0;
 }
 

@@ -78,6 +78,7 @@
 		69DFF2601AC0777B001D53CE /* SettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DFF25F1AC0777B001D53CE /* SettingsView.m */; };
 		69DFF2661AC07D76001D53CE /* HowToPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DFF2651AC07D76001D53CE /* HowToPlayView.m */; };
 		69E5F6A71B4CBEAD00BE4B6F /* lifePowerUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 69E5F6A61B4CBEAD00BE4B6F /* lifePowerUp.png */; };
+		69F647C51BA93B0800D8BD88 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F647C41BA93B0800D8BD88 /* MasterViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,6 +195,8 @@
 		69DFF2651AC07D76001D53CE /* HowToPlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HowToPlayView.m; sourceTree = "<group>"; };
 		69DFF2671AC07D89001D53CE /* HowToPlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HowToPlayView.h; sourceTree = "<group>"; };
 		69E5F6A61B4CBEAD00BE4B6F /* lifePowerUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lifePowerUp.png; sourceTree = "<group>"; };
+		69F647C41BA93B0800D8BD88 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		69F647C61BA93B1000D8BD88 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,8 +241,8 @@
 				691FE9F11ABA2F1700120DEA /* AppDelegate.h */,
 				691FE9F21ABA2F1700120DEA /* AppDelegate.m */,
 				699B56B31B6069E100B735C7 /* System */,
-				699B56B11B60665B00B735C7 /* MyObjects */,
 				69DFF25D1AC07618001D53CE /* ViewControllers */,
+				699B56B11B60665B00B735C7 /* MyObjects */,
 				691FE9F71ABA2F1700120DEA /* Main.storyboard */,
 				691FE9FA1ABA2F1700120DEA /* Images.xcassets */,
 				691FE9FC1ABA2F1700120DEA /* LaunchScreen.xib */,
@@ -397,6 +400,8 @@
 		69DFF25D1AC07618001D53CE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				69F647C61BA93B1000D8BD88 /* MasterViewController.h */,
+				69F647C41BA93B0800D8BD88 /* MasterViewController.m */,
 				697E125B1ABB6B5B0037D307 /* LevelViewController.h */,
 				697E12591ABB6B4E0037D307 /* LevelViewController.m */,
 				69DFF25C1AC07613001D53CE /* HomeView.h */,
@@ -568,6 +573,7 @@
 				691FE9F31ABA2F1700120DEA /* AppDelegate.m in Sources */,
 				6928114F1AC0E46A00697D34 /* Bullet.m in Sources */,
 				69A9FC621B3889F400767670 /* Snake.m in Sources */,
+				69F647C51BA93B0800D8BD88 /* MasterViewController.m in Sources */,
 				6974E9511B68545300CE51B9 /* Barracade.m in Sources */,
 				69DFF2661AC07D76001D53CE /* HowToPlayView.m in Sources */,
 				697E2DBB1B39BB8A00DD0696 /* Gem.m in Sources */,

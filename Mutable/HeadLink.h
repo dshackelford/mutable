@@ -18,9 +18,6 @@
 
 -(id)initHeadLink:(CGPoint)positionInit Velocity:(CGVector)velocityInit View:(UIView*)viewInit PlaceHolder:(UIButton*)placeHolderButton;
 
-
--(void)move;
-
 -(void)detectCollision;
 
 @end

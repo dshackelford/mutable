@@ -21,6 +21,8 @@ double currentLevel;
 double globalSnakeLength;
 double snakeVelocity;
 
+//double numberOfObjects = 10;
+
 BOOL gameStatus;
 BOOL shapeShiftBool;
 BOOL won;
@@ -31,13 +33,10 @@ BOOL square;
 BOOL line;
 BOOL triangle;
 
-BOOL notificationDeclared;
 
 NSMutableDictionary* restartDictionary; //used for restarts
 
 NSMutableArray* objectArray;
-
-NSMutableArray* snakeArrayFromConstants;
 
 #define pi = 3.14159;
 

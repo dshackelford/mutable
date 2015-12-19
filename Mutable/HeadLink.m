@@ -28,8 +28,6 @@
     
     [viewInit insertSubview:theImage belowSubview:placeHolderButton];
     
-    bounded = YES;
-    
     [objectArray addObject:self];
     
     return self;
@@ -49,8 +47,6 @@
     [self setImage];
     
     [container insertSubview:theImage belowSubview:placeHolderButtonInit];
-    
-    bounded = YES;
     
     [objectArray addObject:self];
     
@@ -134,33 +130,9 @@
             if (fabs([object getPosition].x - [self getPosition].x) < [object getSize].width/2 + [self getSize].width/2 && fabs([object getPosition].y - [self getPosition].y) < [object getSize].height/2 + [self getSize].height/2)
             {
                 
-                
-                
                 [object crash];
                 break;
-                
-//                
-//                if ([[object getCharacter]  isEqualToString: @"Bad"])
-//                {
-////                    [[NSNotificationCenter defaultCenter] postNotificationName:@"DeathNotification" object:self];
-//                    gameStatus = NO;
-//                    break;
-//                }
-//                if ([[object getCharacter] isEqualToString: @"PowerUp"])
-//                {
-//                    [[NSNotificationCenter defaultCenter] postNotificationName:@"AddLinks" object:self];
-//                    [objectArray removeObject:object];
-//                    [[object getImage] removeFromSuperview];
-//                    break;
-//                }
-//            
-//                if ([[object getCharacter] isEqualToString:@"Great"])
-//                {
-//                
-//                    won = YES;
-////                    [[NSNotificationCenter defaultCenter] postNotificationName:@"YouWon" object:self];
-//                    break;
-//                }
+
             }
         }
     }
@@ -168,7 +140,6 @@
 
 -(void)hit
 {
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"DeathNotification" object:self];
     
     
 }

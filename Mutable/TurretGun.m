@@ -16,9 +16,6 @@
 #pragma mark - Inits
 -(id)initTurretGun:(HeadLink*)theHeadLink Base:(Base*)baseInit LocationOverRide:(BOOL)locationOverRide Position:(CGPoint)positionInit Velocity:(CGVector)velocityInit View:(UIView *)viewInit PlaceHolder:(UIButton *)placeHolderButton
 {
-    
-    character = @"Bad";
-    
     self = [super init];
     
     size = CGSizeMake(45, 45);

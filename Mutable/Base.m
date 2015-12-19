@@ -15,8 +15,6 @@
 {
     self = [super init];
     
-    character = @"Bad";
-    
     if (locationOverRide == NO)
     {
         position.x = arc4random()%((int)screenWidth - 150) + 90;
@@ -33,6 +31,10 @@
         position = positionInit;
     }
     
+    if (currentLevel > 6)
+    {
+        regneration = YES;
+    }
     
     size = CGSizeMake(45,45);
     
@@ -98,8 +100,6 @@
     [objectArray addObject:self];
     
     return self;
-
-    
 }
 
 #pragma mark - Interactions
@@ -123,21 +123,28 @@
 }
 
 
+
+
+
+
 //REGENERATION
 -(void)addHealth:(UIView*)container :(UIButton*)placeHolderButtonInit
 {
-    UIImageView* aHealthImage = [self makeHealthImage];
+    if (regneration == YES && enemyBaseHealth > 0)
+    {
+        UIImageView* aHealthImage = [self makeHealthImage];
     
-    [container insertSubview:aHealthImage belowSubview:theImage];
+        [container insertSubview:aHealthImage belowSubview:theImage];
     
-    enemyBaseHealth = enemyBaseHealth + 1;
+        enemyBaseHealth = enemyBaseHealth + 1;
     
-    UIImageView* lastHealthImage = [healthArray lastObject];
+        UIImageView* lastHealthImage = [healthArray lastObject];
     
-    aHealthImage.center  = CGPointMake(lastHealthImage.center.x + 7, lastHealthImage.center.y);
+        aHealthImage.center  = CGPointMake(lastHealthImage.center.x + 7, lastHealthImage.center.y);
     
-    [healthArray addObject:aHealthImage];
-     
+        [healthArray addObject:aHealthImage];
+    }
+    
 }
 
 
@@ -164,6 +171,10 @@
     return baseHealthCap;
 }
 
+-(BOOL)getRegeneration
+{
+    return regneration;
+}
 
 #pragma mark - Health Image
 

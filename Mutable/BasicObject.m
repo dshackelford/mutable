@@ -38,6 +38,7 @@
     return self;
 }
 
+
 #pragma mark - Move
 -(void)move
 {
@@ -58,7 +59,18 @@
 
 -(void)crash
 {
-    gameStatus = NO;
+    //gameStatus = NO;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"DeathNotification" object:self];
+}
+
+-(void)hide
+{
+
+}
+
+-(void)show
+{
+
 }
 
 

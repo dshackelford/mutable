@@ -19,6 +19,8 @@
     double healthCounter;
     
     double baseHealthCap;
+    
+    BOOL regneration;
 }
 
 -(id)initBase:(HeadLink*)headLinkInit :(double)baseStrengthInit :(UIView*)container :(UIButton*)placeHolderButtonInit locationOverRide:(BOOL)locationOverRide Position:(CGPoint)positionInit;
@@ -32,6 +34,7 @@
 
 -(double)getEnemyBaseHealth;
 -(double)getBaseHealthCap;
+-(BOOL)getRegeneration;
 
 -(UIImageView*)makeHealthImage;
 

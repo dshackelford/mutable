@@ -16,8 +16,6 @@
 {
     self = [super init];
     
-    character = @"Bad";
-    
     size = CGSizeMake(25, 10);
     
     imageFileName = @"arrow";
@@ -96,7 +94,7 @@
         [theImage removeFromSuperview];
     }
     
-    [self detectCollision];
+    //[self detectCollision];
 }
 
 -(void)detectCollision
@@ -105,24 +103,16 @@
     {
         if (fabs([object getPosition].x - [self getPosition].x) < [object getSize].width/2 + [self getSize].width/2 && fabs([object getPosition].y - [self getPosition].y) < [object getSize].height/2 + [self getSize].height/2)
         {
-            
-//            if ([[object getCharacter] isEqualToString:@"Wall"])
-//            {
-//                [self hit];
-//                
-//                [object hit];
-//                
-//                break;
-//            }
+
         }
     }
 
 }
 
--(void)hit
-{
-    
-}
+//-(void)hit
+//{
+//    
+//}
 
 
 @end

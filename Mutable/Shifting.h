@@ -17,6 +17,6 @@ double shiftCounter;
     
 }
 
-+(void)shiftMineField:(NSMutableArray*)mineFieldInit;
-+(void)showMineField:(NSMutableArray*)mineFieldInit;
++(void)shiftMineField;
++(void)showMineField;
 @end

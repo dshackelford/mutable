@@ -17,8 +17,6 @@
     
     double shapeRadius;
     
-    BOOL bounded;
-    
     int boundraryCondition;
     
     double shapeCounter;

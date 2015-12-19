@@ -14,8 +14,6 @@
 -(id)initBullet:(CGPoint)targetInit InitialPosition:(CGPoint)initialPosition Size:(CGSize)sizeInit Container:(UIView*)container PlaceHolder:(UIButton*)placeHolderButtonInit
 {
     
-    character = @"Good";
-    
     self = [super init];
     
     if (shapeShiftBool == YES)
@@ -66,8 +64,7 @@
     }
     
     
-    [self detectCollision];
-    
+    [self detectCollision]; 
 }
 
 -(void)detectCollision
@@ -80,16 +77,14 @@
         {
             if (fabs([object getPosition].x - [self getPosition].x) < [object getSize].width/2 + [self getSize].width/2 && fabs([object getPosition].y - [self getPosition].y) < [object getSize].height/2 + [self getSize].height/2)
             {
-//                if ([[object getCharacter] isEqualToString:@"Bad"])
-//                {
-                    [theImage removeFromSuperview];
+
+                [theImage removeFromSuperview];
                     
-                    [objectArray removeObject:self];
+                [objectArray removeObject:self];
                     
-                    [object hit];
+                [object hit];
                 
-                    break;
-//                }
+                break;
             }
         }
     }

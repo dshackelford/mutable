@@ -21,8 +21,6 @@
     UIImageView* theImage;
     
     NSString* imageFileName;
-    
-//    NSString* character;
 }
 
 
@@ -35,6 +33,8 @@
 
 -(void)hit;
 -(void)crash;
+-(void)hide;
+-(void)show;
 
 
 -(CGPoint)getPosition;

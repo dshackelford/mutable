@@ -14,25 +14,16 @@
 
 -(void)viewDidLoad
 {
+    [self establishGestures];
+    
     //NOTIFICATION INITILIZER, LIMITED TO ONLY ONE OBSERVER
-    if (notificationDeclared == NO)
-    {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deathNotifcation:) name:@"DeathNotification"
-                                                   object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deathNotifcation:) name:@"DeathNotification" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backgroundActivityNotification:) name:@"BackgroundActivityStarted" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addLinksNotification:) name:@"AddLinks" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(youWonNotification:) name:@"YouWin" object:nil];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backgroundActivityNotification:) name:@"BackgroundActivityStarted"
-                                                   object:nil];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addLinksNotification:) name:@"AddLinks" object:nil];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(youWon) name:@"YouWon" object:nil];
-        
-        notificationDeclared = YES;
-    }
-    
-    //ESTABLISH GESTURES
-    [self establishGestures:self.view];
-    
+
     //CREATE OBJECTS FILE IF FILE DOES NOT EXIST
     if ([AppUtilities doesFileExistAtPath:[AppUtilities getPathToLevelObjectsFile]] == NO)
     {
@@ -53,6 +44,7 @@
             levelSnakeLength = [snakeLengthFromFile doubleValue] + 25;
         }
         currentLevel = [[dictionaryFile objectForKey:@"currentLevel"] doubleValue];
+        
         currentLevel = 15;
     }
     
@@ -86,33 +78,26 @@
         levelSnakeLength = 50;
     }
     
-    //INITIAL HEADLINK POSITION
     initialHeadLatitude = 10;
     initialHeadLongitude = 200;
-    initialHeadVelocityX = 200;
+    initialHeadVelocityX = 300;
     initialHeadVelocityY = 0;
+    
+    //INITIAL HEADLINK POSITION
     snakeVelocity = initialHeadVelocityX; //just in case user goes into shape shift and does not fire!
     
     //ALLOCATION OF COMMON OBJECT ARRAYS
-//    blockadeArray = [[NSMutableArray alloc] init];
-//    droneArray = [[NSMutableArray alloc] init];
-//    bulletArray = [[NSMutableArray alloc] init];
-//    mineFieldLevelArray = [[NSMutableArray alloc] init];
-//    positionsForMineFieldArray = [[NSMutableArray alloc] init];
     lifePowerUpArray = [[NSMutableArray alloc] init];
-    mineArray = [[NSMutableArray alloc] init];
-//    turretBulletArray = [[NSMutableArray alloc] init];
-//    projectileArray = [[NSMutableArray alloc] init];
-//    wallArray = [[NSMutableArray alloc] init];
-    
+
     objectArray = [[NSMutableArray alloc] init];
-    snakeArrayFromConstants = [[NSMutableArray alloc] init];
     
     //GO INTO THE LEVEL
     [self placeStaticObjects];
     
     [super viewDidLoad];
 }
+
+#pragma mark - Notifications
 
 -(void)addLinksNotification:(NSNotification*)notification
 {
@@ -123,9 +108,15 @@
 
 - (void)deathNotifcation:(NSNotification *) notification
 {
-    NSLog(@"Red a dnotifiaction");
+    NSLog(@"Death Notification recieved");
     [self youLost];
     
+}
+
+-(void)youWonNotification:(NSNotification *) notification
+{
+    NSLog(@"Won Notification Recieved");
+    [self youWon];
 }
 
 -(void)backgroundActivityNotification:(NSNotification*)notification
@@ -160,7 +151,7 @@
 {
     gameStatus = YES;
     
-    //HINTS
+    //HINTS FOR SHAPE SHIFT NOTIFICATIONS
     if (currentLevel == 6)
     {
         shapeUnlockLabel.hidden = NO;
@@ -177,10 +168,9 @@
         shapeUnlockLabel.text = @"TRIANGLE UNLOCKED";
     }
     
-
-    if (restart == NO)
+    
+    if (restart == NO) //A NORMAL START OF THE GAME FROM MAIN MENU
     {
-
         //MAKE HEADLINK
         levelHeadLink = [[HeadLink alloc] initHeadLink:CGPointMake(initialHeadLatitude, initialHeadLongitude) Velocity:CGVectorMake(initialHeadVelocityX, initialHeadVelocityY) View:self.view PlaceHolder:placeHolderButton];
         
@@ -202,7 +192,7 @@
         //BUILD A Mine BARRACADE
         if (currentLevel > 5 && currentLevel < 10)
         {
-            [MineField makeBaseBarracade:levelEnemyBase container:self.view placeHolder:placeHolderButton];
+            [MineField makeMineBarracade:levelEnemyBase container:self.view placeHolder:placeHolderButton];
         }
         
         //MAKE TURRET GUN
@@ -215,35 +205,34 @@
         //SAVE THE INITAL MAP LAYOUT TO FILE FOR POTENTIAL RESTART
         [AppUtilities saveLevelForRestart];
     }
-    else
+    else //IF I DO RESTART A LEVEL, I WANT IT TO LOOK THE SAME AS WHEN I STARTED
     {
         restart = NO;
         
         [AppUtilities getObjectsForLevelRestart:self.view :placeHolderButton];
         
-        
-        //MAKE SNAKE
+        //I ADD OBJECTS FROM RESTART DICTIONARY TO A NEW OBJECT ARRAY.
         for (id object in objectArray)
         {
             if ([[NSString stringWithFormat:@"%@",[object class]] isEqualToString:@"HeadLink"])
             {
                 levelHeadLink = object;
-                [levelHeadLink setVelocity:CGVectorMake(200, 0)];
+                [levelHeadLink setVelocity:CGVectorMake(snakeVelocity, 0)];
                 break;
             }
             if([[NSString stringWithFormat:@"%@",[object class]] isEqualToString:@"Base"])
             {
                 levelEnemyBase = object;
             }
-            if([[NSString stringWithFormat:@"%@",[object class]] isEqualToString:@"Base"])
+            if([[NSString stringWithFormat:@"%@",[object class]] isEqualToString:@"TurretGun"])
             {
                 levelTurretGun = object;
             }
             
         }
         
+        //MAKE SNAKE
         levelSnake = [[Snake alloc] initSnake:levelSnakeLength headLink:levelHeadLink container:self.view button:placeHolderButton];
-        
      }
     
     
@@ -280,20 +269,15 @@
     {
         if (currentLevel > 4)
         {
-            
-            [Shifting shiftMineField:mineArray];
+            [Shifting shiftMineField];
         }
     }
     if (line == YES)
     {
-        [Shifting showMineField:mineArray];
+        [Shifting showMineField];
     }
     
-    
-    
-    globalSnakeLength = [[levelSnake getSnakeArray] count];
-
-    
+    globalSnakeLength = [[levelSnake getSnakeArray] count]; //I use globalSnakeLength to talk to headlink shape shift radius
     
     //move the moving objects
     for (int i = 0; i < [objectArray count]; i = i + 1)
@@ -302,7 +286,6 @@
         
         [object move:levelHeadLink];
     }
-    
     
     
     //Move bloackade barricade
@@ -319,18 +302,16 @@
         
         if (blockadeCounter > 200)
         {
-            BlockadeElement* aBlockadeElement = [[BlockadeElement alloc] initBlockadeElement: self.view : placeHolderButton];
-        
-//            [blockadeArray addObject:aBlockadeElement];
+            [[BlockadeElement alloc] initBlockadeElement: self.view : placeHolderButton];
             
             blockadeCounter = 0;
         }
     }
     
-     //MAKE DRONES
+    //MAKE DRONES
     if (currentLevel > 15)
     {
-        if (line == NO)
+        if (line == NO) //LINE MAKES SNAKE HIDE FROM DRONES
         {
                 droneCounter = droneCounter + 1;
         
@@ -338,19 +319,7 @@
                 {
                     droneCounter = 0;
                     
-                    Drone* aDrone = [[Drone alloc] initDrone:[levelHeadLink getPosition] Container:self.view PlaceHolderButton:placeHolderButton];
-    
-                    
-//                    if (currentLevel > 15)
-//                    {
-//                        NSMutableArray* triangleSquadronArray = [Squadron makeTriangleSquadron:[levelHeadLink getPosition] container:self.view placeHolder:placeHolderButton];
-//                    
-//                        [kamikazeArray addObjectsFromArray:triangleSquadronArray];
-//                    
-//                    }
-                    
-                    //[droneArray addObject:aDrone];
-            
+                    [[Drone alloc] initDrone:[levelHeadLink getPosition] Container:self.view PlaceHolderButton:placeHolderButton];
             }
         }
     }
@@ -387,7 +356,7 @@
                 
                 CGPoint theTarget = [levelHeadLink getPosition];
             
-                Arrow* anArrow = [[Arrow alloc] initArrow:theTarget InitialPosition:[levelTurretGun getPosition] Turret:levelTurretGun container:self.view placeHolder:placeHolderButton];
+                [[Arrow alloc] initArrow:theTarget InitialPosition:[levelTurretGun getPosition] Turret:levelTurretGun container:self.view placeHolder:placeHolderButton];
             }
         }
     }
@@ -405,26 +374,8 @@
     ammoCount.text = [NSString stringWithFormat:@"%.f",(double)[[levelSnake getSnakeArray] count]];
     
     
-    //GAME STATUS STUFF
-    [self checkBaseHealth:regeneration];
-    
-    [self checkGameStatus];
-
-}
-
-#pragma mark - Game Checkers
-
-
--(void)checkBaseHealth:(BOOL)regeneration
-{
-    
-    if ([levelEnemyBase getEnemyBaseHealth] == 0)
-    {
-        [[levelEnemyBase getImage] removeFromSuperview];
-    }
-    
-    
-    if ([levelEnemyBase getEnemyBaseHealth] < [levelEnemyBase getBaseHealthCap] && [levelEnemyBase getEnemyBaseHealth] > 0 && currentLevel > 10)
+    //BASE HEALTH REGENERATION
+    if ([levelEnemyBase getEnemyBaseHealth] < [levelEnemyBase getBaseHealthCap] && [levelEnemyBase getRegeneration] == YES)
     {
         healthRegenerationCounter = healthRegenerationCounter + 1;
         
@@ -434,27 +385,10 @@
             healthRegenerationCounter = 0;
         }
     }
-
-    
-    if ([levelTurretGun getTurretHealth] == 0)
-    {
-        [[levelTurretGun getImage] removeFromSuperview];
-    }
-
 }
 
--(void)checkGameStatus
-{
-    if (gameStatus == NO)
-    {
-        [self youLost];
-    }
-    
-    if (won == YES)
-    {
-        [self youWon];
-    }
-}
+#pragma mark - Game Checkers
+
 
 -(BOOL)checkShapeShiftStatus
 {
@@ -535,7 +469,7 @@
 {
     [theTimer invalidate];
     
-    NSLog(@"%f",currentLevel);
+    //theTimer = nil;
     
     //REMOVE IMAGES FROM SCREEN
     for (id object in objectArray)
@@ -559,7 +493,7 @@
     
     endLevelTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(delayLostResponse) userInfo:nil repeats:YES];
     
-     NSLog(@"%f",currentLevel);
+    // NSLog(@"%f",currentLevel);
     
 }
 
@@ -587,92 +521,9 @@
     }
 }
 
-#pragma mark - Background Images
-
-
--(UIImageView*)makeGreyBackgroundMenuImage
-{
-    CGRect backgroundMenuFrame = CGRectMake(0, 0, screenWidth, screenHeight);
-    UIImageView* backgroundMenuImage = [[UIImageView alloc] initWithFrame:backgroundMenuFrame];
-    backgroundMenuImage.image = [UIImage imageNamed:@"greyBackground.png"];
-    return backgroundMenuImage;
-}
-
--(UIImageView*)makeGreenBackgroundMenuImage
-{
-    CGRect greenBackgroundFrame = CGRectMake(0, 0, screenWidth, screenHeight);
-    UIImageView* aGreenBackgroundImage = [[UIImageView alloc] initWithFrame:greenBackgroundFrame];
-    aGreenBackgroundImage.image = [UIImage imageNamed:@"GreenBackgroundMenu.png"];
-    return aGreenBackgroundImage;
-}
-
--(UIImageView*)makeRedBackgroundMenuImage
-{
-    CGRect redBackgroundFrame = CGRectMake(0, 0, screenWidth, screenHeight);
-    UIImageView* aRedBackgroundImage = [[UIImageView alloc] initWithFrame:redBackgroundFrame];
-    aRedBackgroundImage.image = [UIImage imageNamed:@"redBackground.png"];
-    return aRedBackgroundImage;
-}
-
 
 #pragma mark - UI Gestures
 
-
--(void)establishGestures:(UIView*)container
-{
-    
-    singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didSingleTap:)];
-    singleTap.numberOfTapsRequired = 1;
-    
-    doubleDoubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didDoubleTap:)];
-    doubleDoubleTap.numberOfTapsRequired = 2;
-    doubleDoubleTap.numberOfTouchesRequired = 2;
-    
-    
-    swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
-    swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
-    
-    
-    swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
-    swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
-    
-    swipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
-    swipeDown.direction = UISwipeGestureRecognizerDirectionDown;
-    
-    swipeUp = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
-    swipeUp.direction = UISwipeGestureRecognizerDirectionUp;
-    
-    doubleSwipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didDoubleSwipe:)];
-    doubleSwipeDown.direction = UISwipeGestureRecognizerDirectionDown;
-    doubleSwipeDown.numberOfTouchesRequired = 2;
-
-    
-    longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
-    longPress.numberOfTouchesRequired = 1;
-    longPress.minimumPressDuration = 0.25;
-    
-    doubleLongPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(doubleLongPress:)];
-    doubleLongPress.numberOfTouchesRequired = 2;
-    
-    
-    pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(didPinch:)];
-    [pinch requireGestureRecognizerToFail:doubleSwipeDown];
-    
-    [container addGestureRecognizer:singleTap];
-    [container addGestureRecognizer:longPress];
-    [container addGestureRecognizer:doubleDoubleTap];
-    [container addGestureRecognizer:swipeUp];
-    [container addGestureRecognizer:swipeDown];
-    [container addGestureRecognizer:swipeRight];
-    [container addGestureRecognizer:swipeLeft];
-    [container addGestureRecognizer:doubleLongPress];
-    [container addGestureRecognizer:pinch];
-    [container addGestureRecognizer:doubleSwipeDown];
-}
-
-
-
-//LONG PRESS
 -(void)longPress: (UILongPressGestureRecognizer *)aLongPress
 {
     if (aLongPress.state == UIGestureRecognizerStateBegan)
@@ -766,7 +617,6 @@
 }
 
 
-//DOUBLE TAP
 -(void)didDoubleTap:(UITapGestureRecognizer*)aDoubleTap //double tap with two fingers
 {
     if (shapeShiftBool == NO && currentLevel > 7)
@@ -777,7 +627,6 @@
 }
 
 
-//SINGLE TAP
 -(void)didSingleTap:(UITapGestureRecognizer*)aSingleTap
 {
     if (shapeShiftBool == YES)
@@ -788,11 +637,9 @@
             
             if (circle == YES || line == YES || triangle == YES)
             {
-            
                 CGSize bulletSize = CGSizeMake(10, 10);
                 
                 [[Bullet alloc] initBullet:touchTarget InitialPosition:[levelHeadLink getShapeCenter] Size:bulletSize Container:self.view PlaceHolder: placeHolderButton];
-                
             }
             
             if (square == YES)
@@ -810,8 +657,6 @@
     
 }
 
-
-//SWIPING
 -(void)didSwipe:(UISwipeGestureRecognizer*)swipe
 {
     //NO SHAPE SHIFTING
@@ -888,7 +733,6 @@
 }
 
 
-//PINCHING
 -(void)didPinch:(UIPinchGestureRecognizer *)aPinch
 {
     
@@ -962,7 +806,6 @@
 {
     globalSnakeLength  = [levelSnake getSnakeLength];
     [theTimer invalidate];
-    
 }
 
 -(IBAction)didPressNextLevel:(id)sender
@@ -974,6 +817,7 @@
 {
     restart = YES;
     NSLog(@"%f",currentLevel);
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 

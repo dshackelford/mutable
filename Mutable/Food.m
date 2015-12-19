@@ -14,8 +14,6 @@
 
 -(id)initFood:(Base*)enemyBase View:(UIView *)container placeHolder:(UIButton *)placeHolderButton
 {
-    character = @"PowerUp";
-    
     self = [super init];
     
     position.x = arc4random()%((int)screenWidth - 100) + 50;
@@ -83,6 +81,7 @@
 -(void)crash
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"AddLinks" object:self];
+    
     [objectArray removeObject:self];
     [theImage removeFromSuperview];
 }

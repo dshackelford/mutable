@@ -13,10 +13,7 @@
 
 #pragma mark - Inits
 -(id)initGem:(CGPoint)positionInit :(UIView *)container :(UIView *)healthImageInit
-{
-
-    character = @"Great";
-    
+{ 
     self = [super init];
     
     position = positionInit;
@@ -59,7 +56,7 @@
 #pragma mark - Interactions
 -(void)crash
 {
-    won = YES;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"YouWin" object:nil];
 }
 
 -(void)hit

@@ -13,9 +13,6 @@
 
 -(id)initSnake:(double)snakeLengthInit headLink:(HeadLink *)headLinkInit container:(UIView *)containerInit button:(UIButton *)placeHolderButtonInit
 {
-    
-    character = @"Good";
-    
     self = [super init];
     
     snakeArray = [[NSMutableArray alloc] init];
@@ -62,25 +59,21 @@
             {
                 id object = [objectArray objectAtIndex:i];
                 
-                if (fabs([object getPosition].x - [aLink getPosition].x) < [object getSize].width/2 + [aLink getSize].width/2 && fabs([object getPosition].y - [aLink getPosition].y) < [object getSize].height/2 + [aLink getSize].height/2)
+                if (fabs([object getPosition].x - [aLink getPosition].x) < [object getSize].width/2 + [aLink getSize].width/2 && fabs([object getPosition].y - [aLink getPosition].y) < [object getSize].height/2 + [aLink getSize].height/2 && object != objectTracker && [object class] != [Bullet class])
                 {
                     
-//                    if ([[object getCharacter]  isEqualToString: @"Bad"])
-//                    {
-                        for (int g = i; g < [snakeArray count]; g = g + 1)
-                        {
-                            [[[snakeArray objectAtIndex:g] getImage] removeFromSuperview];
-                            [snakeArray removeObjectAtIndex:g];
-                            
-                        }
+                    for (int g = i; g < [snakeArray count]; g = g + 1)
+                    {
+                        [[[snakeArray objectAtIndex:g] getImage] removeFromSuperview];
+                        [snakeArray removeObjectAtIndex:g];
+                    }
                         
-                        hit = YES;
+                    hit = YES;
                         
-                        [[object getImage] removeFromSuperview];
-                        [objectArray removeObject:object];
+                    [[object getImage] removeFromSuperview];
+                    [objectArray removeObject:object];
                         
-                        break;
-//                    }
+                    break;
                     
                 }
             }
