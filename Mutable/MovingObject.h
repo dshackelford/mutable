@@ -11,7 +11,7 @@
 
 @interface MovingObject : BasicObject
 {
-    CGVector velocity;
+    //CGVector velocity;
     
     CGPoint shapeCenter;
     
@@ -31,7 +31,7 @@
 -(void)moveInLine;
 -(void)moveInTriangle;
 
--(CGVector)getVelocity;
+//-(CGVector)getVelocity;
 -(CGPoint)getShapeCenter;
 -(double)getShapeRadius;
 -(void)resetShapeCounter;

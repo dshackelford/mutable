@@ -26,6 +26,7 @@
 		6928114F1AC0E46A00697D34 /* Bullet.m in Sources */ = {isa = PBXBuildFile; fileRef = 6928114E1AC0E46A00697D34 /* Bullet.m */; };
 		692B65651B6981BD00878A0E /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 692B65641B6981BD00878A0E /* Food.m */; };
 		692B65681B69C70F00878A0E /* Projectile.m in Sources */ = {isa = PBXBuildFile; fileRef = 692B65671B69C70F00878A0E /* Projectile.m */; };
+		693A8C171C271CC80084BD61 /* BlockadeBarricade.m in Sources */ = {isa = PBXBuildFile; fileRef = 693A8C161C271CC80084BD61 /* BlockadeBarricade.m */; };
 		6941A5561B3CA3DE0014B916 /* Mine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6941A5551B3CA3DE0014B916 /* Mine.m */; };
 		6942A8C31AC523E1004DD764 /* Ring.png in Resources */ = {isa = PBXBuildFile; fileRef = 6942A8C21AC523E1004DD764 /* Ring.png */; };
 		6942A8CF1AC527F5004DD764 /* MutableIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6942A8CE1AC527F5004DD764 /* MutableIcon.png */; };
@@ -121,6 +122,8 @@
 		692B65641B6981BD00878A0E /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Food.m; sourceTree = "<group>"; };
 		692B65661B69C70700878A0E /* Projectile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Projectile.h; sourceTree = "<group>"; };
 		692B65671B69C70F00878A0E /* Projectile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Projectile.m; sourceTree = "<group>"; };
+		693A8C151C271CBF0084BD61 /* BlockadeBarricade.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlockadeBarricade.h; sourceTree = "<group>"; };
+		693A8C161C271CC80084BD61 /* BlockadeBarricade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockadeBarricade.m; sourceTree = "<group>"; };
 		6941A5541B3CA3D70014B916 /* Mine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mine.h; sourceTree = "<group>"; };
 		6941A5551B3CA3DE0014B916 /* Mine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mine.m; sourceTree = "<group>"; };
 		6942A8C21AC523E1004DD764 /* Ring.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ring.png; sourceTree = "<group>"; };
@@ -345,6 +348,8 @@
 				69A9FC671B388A3900767670 /* BlockadeElement.m */,
 				6974E9521B68545800CE51B9 /* Barracade.h */,
 				6974E9501B68545300CE51B9 /* Barracade.m */,
+				693A8C151C271CBF0084BD61 /* BlockadeBarricade.h */,
+				693A8C161C271CC80084BD61 /* BlockadeBarricade.m */,
 				692B65691B69C82700878A0E /* Projectiles */,
 			);
 			name = MovingObjects;
@@ -569,6 +574,7 @@
 				69D743011B86E0AB00844502 /* Tracker.m in Sources */,
 				6974E94F1B6842D500CE51B9 /* Arrow.m in Sources */,
 				697E2DB91B39BADB00DD0696 /* Base.m in Sources */,
+				693A8C171C271CC80084BD61 /* BlockadeBarricade.m in Sources */,
 				692B65651B6981BD00878A0E /* Food.m in Sources */,
 				691FE9F31ABA2F1700120DEA /* AppDelegate.m in Sources */,
 				6928114F1AC0E46A00697D34 /* Bullet.m in Sources */,

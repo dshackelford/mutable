@@ -13,7 +13,6 @@
 
 -(id)initBullet:(CGPoint)targetInit InitialPosition:(CGPoint)initialPosition Size:(CGSize)sizeInit Container:(UIView*)container PlaceHolder:(UIButton*)placeHolderButtonInit
 {
-    
     self = [super init];
     
     if (shapeShiftBool == YES)
@@ -61,6 +60,7 @@
     if (position.x > (screenWidth + 10) || position.x < -10 || position.y > (screenHeight + 10) || position.y < -10)
     {
         [theImage removeFromSuperview];
+        [objectArray removeObject:self];
     }
     
     
@@ -91,6 +91,11 @@
 }
 
 -(void)crash
+{
+    
+}
+
+-(void)hit
 {
     
 }

@@ -29,6 +29,7 @@
 #import "Drone.h"
 #import "Squadron.h"
 #import "DoubleBullet.h"
+#import "BlockadeBarricade.h"
 
 #import "MasterViewController.h"
 

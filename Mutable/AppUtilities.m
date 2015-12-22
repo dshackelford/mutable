@@ -10,6 +10,7 @@
 #import "AppUtilities.h"
 #import "AppConstants.h"
 #import "BasicObject.h"
+#import "Base.h"
 
 @implementation AppUtilities
 
@@ -53,6 +54,10 @@
         [anotherDictionary setObject:[NSNumber numberWithDouble:[object getPosition].x ] forKey:@"x"];
         [anotherDictionary setObject:[NSNumber numberWithDouble:[object getPosition].y] forKey:@"y"];
         
+        [anotherDictionary setObject:[NSNumber numberWithDouble:[object getVelocity].dx] forKey:@"dx"];
+        
+        [anotherDictionary setObject:[NSNumber numberWithDouble:[object getVelocity].dy] forKey:@"dy"];
+        
         //SAVE LOCAL DICTIONARY TO BIGGER DICTIONARY WITH KEY OF OBJECT ELEMENT NUMBER
         //CHECK IF KEY ALREADY EXITS, MAINLY FOR THE MINEFIELD
         if ([aDictionary objectForKey:[NSString stringWithFormat:@"%@",[object class]]] == nil)
@@ -78,21 +83,33 @@
     //GRAB DICTIONARY FROM FILE FOR RESTART
     NSMutableDictionary* aDictionary = [NSMutableDictionary dictionaryWithContentsOfFile:[AppUtilities getPathToLevelObjectsFile]];
     
+    NSDictionary* baseDictionary = [aDictionary objectForKey:@"Base"];
+    
+    CGPoint basePostion = CGPointMake([[baseDictionary objectForKey:@"x"] doubleValue],[[baseDictionary objectForKey:@"y"] doubleValue]);
+    
+    Base* aBase  = [[Base alloc] initRestart:basePostion Container:container Placeholder:placeHolderButton Velocity:CGVectorMake(0, 0)];
+    
     //ITERATE THROUGH DICTIONARY TO GRAB EACH SMALLER DICATIONARY FOR EACH OBJECT
     for (NSString* key in [aDictionary allKeys])
     {
-        //GRAB SMALLER DICTIONARY THAT HOLDS THE X AND Y
+        //GRAB SMALLER DICTIONARY THAT HOLDS THE X AND Y and dx & dy
         NSDictionary* smallDictionary = [aDictionary objectForKey:key];
         
         NSString* className = [[key componentsSeparatedByString:@" "] objectAtIndex:0];
         
-        CGPoint postion = CGPointMake([[smallDictionary objectForKey:@"x"] doubleValue],[[smallDictionary objectForKey:@"y"] doubleValue]);
-        
-        id object = [[NSClassFromString(className) alloc] initRestart:postion Container:container Placeholder:placeHolderButton Velocity:CGVectorMake(0, 0)];
-        
-    }
+        if ([className isEqualToString:@"Base"])
+        {
+            
+        }
+        else
+        {
+            CGPoint postion = CGPointMake([[smallDictionary objectForKey:@"x"] doubleValue],[[smallDictionary objectForKey:@"y"] doubleValue]);
+            
+            CGVector velocity = CGVectorMake([[smallDictionary objectForKey:@"dx"] doubleValue], [[smallDictionary objectForKey:@"dy"] doubleValue]);
+            
+            id object = [[NSClassFromString(className) alloc] initRestart:postion Container:container Placeholder:placeHolderButton Velocity:velocity];
+        }
+    }    
 }
-
-
 
 @end

@@ -12,8 +12,11 @@
 
 @interface Barracade : MovingObject
 {
-    
+    double barricadeRadius;
 }
+
+
+-(id)initBlockadeBarricadeElement:(Base*)baseInit Location:(CGPoint)locationInit View:(UIView*)container PlaceHolder:(UIButton*)placeHolderButtonInit;
 
 +(NSMutableArray*)makeBlockadeBarracade:(CGPoint)basePosition View:(UIView*)viewInit PlaceHolder:(UIButton*)placeHolderButtonInit;
 

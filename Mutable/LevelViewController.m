@@ -201,6 +201,8 @@
         levelTurretGun = [[TurretGun alloc] initTurretGun:levelHeadLink Base:levelEnemyBase LocationOverRide:NO Position:CGPointMake(0, 0) Velocity:CGVectorMake(0, 0) View:self.view PlaceHolder:placeHolderButton];
         }
         
+        [BlockadeBarricade createBlockadeBarricade:levelEnemyBase View:self.view PlaceHolder:placeHolderButton];
+        
         
         //SAVE THE INITAL MAP LAYOUT TO FILE FOR POTENTIAL RESTART
         [AppUtilities saveLevelForRestart];
@@ -228,19 +230,11 @@
             {
                 levelTurretGun = object;
             }
-            
         }
         
         //MAKE SNAKE
         levelSnake = [[Snake alloc] initSnake:levelSnakeLength headLink:levelHeadLink container:self.view button:placeHolderButton];
      }
-    
-    
-    //THIS IS GONNA PROVE A WARNING BECASUE I DON'T HAVE LEVEL OBJECTS ANYMORE
-    if (currentLevel > 9)
-    {
-        blockadeBarricadeArray = [[NSMutableArray alloc] initWithArray:[Barracade makeBlockadeBarracade:[levelEnemyBase getPosition] View:self.view PlaceHolder:placeHolderButton]];
-    }
     
     
     //START FRAME RATE
@@ -287,15 +281,7 @@
         [object move:levelHeadLink];
     }
     
-    
-    //Move bloackade barricade
-    for (int i = 0; i < [blockadeBarricadeArray count]; i = i + 1)
-    {
-        BlockadeElement* aBlockadeElement = [blockadeBarricadeArray objectAtIndex:i];
-        [aBlockadeElement moveInSquare];
-    }
-    
-    //MAKE BLOCKADE
+    //MAKE BLOCKADE ELEMENT
     if (currentLevel > 2)
     {
         blockadeCounter = blockadeCounter + 1;
@@ -820,12 +806,6 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-
--(IBAction)didPressCirlcShapeShiftButton:(id)sender
-{
-//    circlShapeButton.contentEdgeInsets = UIEdgeInsetsMake(35, 70, 35, 70);
-    NSLog(@"I pressed the button");
-}
 
 
 @end

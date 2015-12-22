@@ -11,15 +11,11 @@
 
 @interface DoubleBullet : Bullet
 {
-    double bulletOneX;
-    double bulletOneY;
-    double bulletOneTargetX;
-    double bulletOneTargetY;
     
-    double bulletTwoX;
-    double bulletTwoY;
-    double bulletTwoTargetX;
-    double bulletTwoTargetY;
+    double bulletX;
+    double bulletY;
+    
+
 }
 
 -(void)createDoubleBullet:(HeadLink*)headLinkInit container:(UIView*)container placeHolder:(UIButton*)placeHolderButtonInit Target:(CGPoint)targetInit;

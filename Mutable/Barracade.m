@@ -13,113 +13,62 @@
 
 @implementation Barracade
 
-+(NSMutableArray*)makeBlockadeBarracade:(CGPoint)basePosition View:(UIView *)viewInit PlaceHolder:(UIButton*)placeHolderButtonInit
+-(id)initBlockadeBarricadeElement:(Base*)baseInit Location:(CGPoint)locationInit View:(UIView*)container PlaceHolder:(UIButton*)placeHolderButtonInit
 {
-    NSMutableArray* aBarracadeArray = [[NSMutableArray alloc] init];
+    self = [super init];
     
-    double barracadeRadius = 50;
+    barricadeRadius = 50;
     
-    for (int i = 0; i < 4; i = i + 1)
-    {
-        BlockadeElement* aBlockadeElement = [[BlockadeElement alloc] init];
-        
-        CGPoint aPosition;
-        CGVector aVelocity;
-        
-        if(i == 0) //bottom
-        {
-            aPosition = CGPointMake(basePosition.x, basePosition.y + barracadeRadius);
-            aVelocity = CGVectorMake(-100, 0);
-        }
-        if(i == 1) //right
-        {
-            aPosition = CGPointMake(basePosition.x + barracadeRadius, basePosition.y);
-            aVelocity = CGVectorMake(0, 100);
-        }
-        if(i == 2) //top
-        {
-            aPosition = CGPointMake(basePosition.x, basePosition.y - barracadeRadius);
-            aVelocity = CGVectorMake(100, 0);
-        }
-        if(i == 3) //left
-        {
-            aPosition = CGPointMake(basePosition.x - barracadeRadius, basePosition.y);
-            aVelocity = CGVectorMake(0, -100);
-        }
-        
-        
-        [aBlockadeElement createBlockadeElementForBarracade:aPosition  Center:basePosition View:viewInit PlaceHolder:placeHolderButtonInit];
-        
-        [aBlockadeElement setVelocity:aVelocity];
-        [aBlockadeElement setShapeRadius:barracadeRadius*2];
-         
-        [aBarracadeArray addObject:aBlockadeElement];
-    }
+    size = CGSizeMake(23, 23);
     
-    return aBarracadeArray;
+    position = locationInit;
+    
+    imageFileName = @"blockadeElement";
+    
+    shapeCenter = [baseInit getPosition];
+    
+    shapeRadius = 50;
+    
+    [self setImage];
+    
+    [container insertSubview:theImage belowSubview:placeHolderButtonInit];
+    
+    [objectArray addObject:self];
+    
+    return self;
 }
 
 
-+(void)moveBlockadeBarracade:(NSMutableArray*)barracadeArrayInit BasePosition:(CGPoint)basePositionInit
+
+-(void)move:(id)tracker
 {
+    [self moveInSquare];
+}
+
+-(id)initRestart:(CGPoint)positionInit Container:(UIView*)container Placeholder:(UIButton*)placeHolderButtonInit Velocity:(CGVector)velocityInit
+{
+    self = [super init];
     
-//    double barracadeRadius = 40;
-//    
-//    Vector* topRightCorner = [[Vector alloc] init];
-//    [topRightCorner setVector:[basePositionInit getX] + barracadeRadius/2 :[basePositionInit getY] - barracadeRadius/2];
-//    
-//    Vector* topLeftCorner = [[Vector alloc] init];
-//    [topLeftCorner setVector:[basePositionInit getX] - barracadeRadius/2 :[basePositionInit getY] - barracadeRadius/2];
-//    
-//    Vector* bottomRightCorner = [[Vector alloc] init];
-//    [bottomRightCorner setVector:[basePositionInit getX] + barracadeRadius/2 :[basePositionInit getY] + barracadeRadius/2];
-//    
-//    Vector* bottomLeftCorner = [[Vector alloc] init];
-//    [bottomLeftCorner setVector:[basePositionInit getX] - barracadeRadius/2 :[basePositionInit getY] + barracadeRadius/2];
-//    
-//    
-//    for (BlockadeElement* aBlockadeElement in barracadeArrayInit)
-//    {
+    position = positionInit;
     
-//    //turn down at top right corner
-//    if ([[aBlockadeElement getPosition] getX] > [topRightCorner getX] && [[aBlockadeElement getPosition] getY] < [basePositionInit getY])
-//    {
-//        [aBlockadeElement setVelocityX:0];
-//        [aBlockadeElement setVelocityY:200];
-//    }
-//    
-//    //Go left at bottom right corner
-//    if ([[aBlockadeElement getPosition] getX] > [basePositionInit getX] && [[aBlockadeElement getPosition] getY] > [bottomRightCorner getY])
-//    {
-//        [aBlockadeElement setVelocityX:-200];
-//        [aBlockadeElement setVelocityY:0];
-//    }
-//    
-//    
-//    //turn up at bottom left corner
-//    if ([[aBlockadeElement getPosition] getX] < [bottomLeftCorner getX] && [[aBlockadeElement getPosition] getY] > [basePositionInit getY] )
-//    {
-//        [aBlockadeElement setVelocityX:0];
-//        [aBlockadeElement setVelocityY:-200];
-//    }
-//    
-//    
-//    //turn right at top left corner
-//    if ([[aBlockadeElement getPosition] getY] < [topLeftCorner getY] && [[aBlockadeElement getPosition] getX] < [basePositionInit getX])
-//    {
-//        [aBlockadeElement setVelocityX:200];
-//        [aBlockadeElement setVelocityY:0];
-//    }
-//        
-//        
-//        [aBlockadeElement setLatitude:[aBlockadeElement getLatitude] + [aBlockadeElement getVelocityX]*deltaTime];
-//        [aBlockadeElement setLongitude:[aBlockadeElement getLongitude] + [aBlockadeElement getVelocityY]*deltaTime];
-//        
-//        [aBlockadeElement getImage].center = CGPointMake([aBlockadeElement getLatitude], [aBlockadeElement getLongitude]);
-//    }
+    size = CGSizeMake(23,23);
     
+    shapeRadius = 50;
     
-//    }
+    imageFileName = @"blockadeElement";
+    
+    shapeCenter = [[objectArray objectAtIndex:0] getPosition];
+    
+    velocity = velocityInit;
+    
+    [self setImage];
+    
+    //I should put the gem image below the health image, see the init above
+    [container insertSubview:theImage belowSubview:placeHolderButtonInit];
+    
+    [objectArray addObject:self];
+    
+    return self;
 }
 
 

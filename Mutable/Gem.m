@@ -44,8 +44,9 @@
     
     [self setImage];
     
+    
     //I should put the gem image below the health image, see the init above
-    [container insertSubview:theImage belowSubview:placeHolderButtonInit];
+    [container insertSubview:theImage belowSubview:[[objectArray objectAtIndex:0] getHealthBarImage] ];
     
     [objectArray addObject:self];
     

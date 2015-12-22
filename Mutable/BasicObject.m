@@ -97,6 +97,10 @@
     return imageFileName;
 }
 
+-(CGVector)getVelocity
+{
+    return velocity;
+}
 
 
 #pragma mark - Setters

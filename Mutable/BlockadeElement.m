@@ -101,16 +101,16 @@
         [objectArray removeObject:self];
     }
     
-    for (int i = 0;i < [objectArray count]; i = i + 1)
-    {
-        id object = [objectArray objectAtIndex:i];
-        
-        if (fabs([object getPosition].x - [self getPosition].x) < [object getSize].width/2 + [self getSize].width/2 && fabs([object getPosition].y - [self getPosition].y) < [object getSize].height/2 + [self getSize].height/2)
-        {
-            
-            
-        }
-    }
+//    for (int i = 0;i < [objectArray count]; i = i + 1)
+//    {
+//        id object = [objectArray objectAtIndex:i];
+//        
+//        if (fabs([object getPosition].x - [self getPosition].x) < [object getSize].width/2 + [self getSize].width/2 && fabs([object getPosition].y - [self getPosition].y) < [object getSize].height/2 + [self getSize].height/2)
+//        {
+//            
+//            
+//        }
+//    }
 
 }
 

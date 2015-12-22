@@ -18,97 +18,48 @@
     
     double theta = fabs(atan(dy/dx));
     
-    double separation = 9;
+    double separation = 11;
     
     //CALCULATE STARTING AND TARGET POSITIONS FOR DOUBLE BULLETS THAT ARE SHIFTED RELATIVE TO ANGLE OF FIRE
-    if (dx > 0 && dy < 0) //top right quadrant
+    
+    for (int i = -1; i < 2; i = i + 2)
     {
-        bulletOneX = [headLinkInit getShapeCenter].x + sin(theta)*separation;
-        bulletOneY = [headLinkInit getShapeCenter].y + cos(theta)*separation;
-        
-        bulletOneTargetX = targetInit.x + sin(theta)*separation;
-        bulletOneTargetY = targetInit.y + cos(theta)*separation;
-        
-        bulletTwoTargetX = targetInit.x - sin(theta)*separation;
-        bulletTwoTargetY = targetInit.y - cos(theta)*separation;
-        
-        bulletTwoX = [headLinkInit getShapeCenter].x - sin(theta)*separation;
-        bulletTwoY = [headLinkInit getShapeCenter].y - cos(theta)*separation;
+        if (dx > 0 && dy < 0) //top right quadrant
+        {
+            bulletX = [headLinkInit getShapeCenter].x + i*sin(theta)*separation;
+            bulletY = [headLinkInit getShapeCenter].y + i*cos(theta)*separation;
+            
+            targetX = targetInit.x + i*sin(theta)*separation;
+            targetY = targetInit.y + i*cos(theta)*separation;
+        }
+        else if (dx < 0 && dy < 0) //top left quadrant
+        {
+            bulletX = [headLinkInit getShapeCenter].x + i*sin(theta)*separation;
+            bulletY = [headLinkInit getShapeCenter].y - i*cos(theta)*separation;
+            
+            targetX = targetInit.x + i*sin(theta)*separation;
+            targetY = targetInit.y - i*cos(theta)*separation;
+        }
+        else if ( dx < 0 && dy > 0)//bottom left quadrant
+        {
+            bulletX = [headLinkInit getShapeCenter].x + i*sin(theta)*separation;
+            bulletY = [headLinkInit getShapeCenter].y + i*cos(theta)*separation;
+            
+            targetX = targetInit.x + i*sin(theta)*separation;
+            targetY = targetInit.y + i*cos(theta)*separation;
+        }
+        else //bottom right
+        {
+            bulletX = [headLinkInit getShapeCenter].x + i*sin(theta)*separation;
+            bulletY = [headLinkInit getShapeCenter].y - i*cos(theta)*separation;
+            
+            targetX = targetInit.x + i*sin(theta)*separation;
+            targetY = targetInit.y - i*cos(theta)*separation;
+        }
 
+        
+        [[Bullet alloc] initBullet:CGPointMake(targetX, targetY) InitialPosition:CGPointMake(bulletX, bulletY) Size:CGSizeMake(7, 7) Container:container PlaceHolder:placeHolderButtonInit];
     }
-    else if (dx < 0 && dy < 0) //top left quadrant
-    {
-        
-        bulletOneX = [headLinkInit getShapeCenter].x + sin(theta)*separation;
-        bulletOneY = [headLinkInit getShapeCenter].y - cos(theta)*separation;
-        
-        bulletOneTargetX = targetInit.x + sin(theta)*separation;
-        bulletOneTargetY = targetInit.y - cos(theta)*separation;
-        
-        bulletTwoTargetX = targetInit.x - sin(theta)*separation;
-        bulletTwoTargetY = targetInit.y + cos(theta)*separation;
-        
-        bulletTwoX = [headLinkInit getShapeCenter].x - sin(theta)*separation;
-        bulletTwoY = [headLinkInit getShapeCenter].y + cos(theta)*separation;
-        
-    }
-    else if (dx < 0 && dy > 0) //bottom left quadrant
-    {
-        bulletOneX = [headLinkInit getShapeCenter].x + sin(theta)*separation;
-        bulletOneY = [headLinkInit getShapeCenter].y + cos(theta)*separation;
-        
-        bulletOneTargetX = targetInit.x + sin(theta)*separation;
-        bulletOneTargetY = targetInit.y + cos(theta)*separation;
-        
-        bulletTwoTargetX = targetInit.x - sin(theta)*separation;
-        bulletTwoTargetY = targetInit.y - cos(theta)*separation;
-        
-        bulletTwoX = [headLinkInit getShapeCenter].x - sin(theta)*separation;
-        bulletTwoY = [headLinkInit getShapeCenter].y - cos(theta)*separation;
-    }
-    else
-    {
-        bulletOneX = [headLinkInit getShapeCenter].x + sin(theta)*separation;
-        bulletOneY = [headLinkInit getShapeCenter].y - cos(theta)*separation;
-        
-        bulletOneTargetX = targetInit.x + sin(theta)*separation;
-        bulletOneTargetY = targetInit.y - cos(theta)*separation;
-        
-        bulletTwoTargetX = targetInit.x - sin(theta)*separation;
-        bulletTwoTargetY = targetInit.y + cos(theta)*separation;
-        
-        bulletTwoX = [headLinkInit getShapeCenter].x - sin(theta)*separation;
-        bulletTwoY = [headLinkInit getShapeCenter].y + cos(theta)*separation;
-    }
-    
-    
-    CGPoint bulletOneInitialPosition = CGPointMake(bulletOneX, bulletOneY);
-    
-    CGPoint bulletOneTarget = CGPointMake(bulletOneTargetX, bulletOneTargetY);
-    
-    CGPoint bulletTwoTarget = CGPointMake(bulletTwoTargetX, bulletTwoTargetY);
-
-    
-    CGPoint bulletTwoInitialPosition = CGPointMake(bulletTwoX, bulletTwoY);
-    
-    Bullet* bulletOne = [[Bullet alloc] init];
-    
-    CGSize doubleBulletSize = CGSizeMake(7, 7);
-    [bulletOne setSize:doubleBulletSize];
-    
-    
-    
-    [bulletOne initBullet:bulletOneTarget InitialPosition:bulletOneInitialPosition Size:doubleBulletSize Container:container PlaceHolder:placeHolderButtonInit];
-    
-    
-    Bullet* bulletTwo = [[Bullet alloc] init];
-
-    [bulletTwo setSize:doubleBulletSize];
-    
-    
-    [bulletTwo initBullet:bulletTwoTarget InitialPosition:bulletTwoInitialPosition Size:doubleBulletSize Container:container PlaceHolder:placeHolderButtonInit];
-
-
 }
 
 

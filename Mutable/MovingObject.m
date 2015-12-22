@@ -185,7 +185,7 @@
 {
     shapeCounter = shapeCounter + deltaTime;
     
-    if (shapeCounter <= deltaTime)
+    if (shapeCounter <= deltaTime && shapeCenter.x == 0 && shapeCenter.y == 0)
     {
         double centerX = 0;
         double centerY = 0;
@@ -215,10 +215,11 @@
     }
     
     
-    CGPoint topRight = CGPointMake(shapeCenter.x + shapeRadius/2,shapeCenter.y - shapeRadius/2);
-    CGPoint topLeft = CGPointMake(shapeCenter.x - shapeRadius/2, shapeCenter.y - shapeRadius/2);
-    CGPoint bottomRight = CGPointMake(shapeCenter.x + shapeRadius/2, shapeCenter.y + shapeRadius/2);
-    CGPoint bottomLeft = CGPointMake(shapeCenter.x - shapeRadius/2, shapeCenter.y + shapeRadius/2);
+    
+    CGPoint topRight = CGPointMake(shapeCenter.x + shapeRadius,shapeCenter.y - shapeRadius);
+    CGPoint topLeft = CGPointMake(shapeCenter.x - shapeRadius, shapeCenter.y - shapeRadius);
+    CGPoint bottomRight = CGPointMake(shapeCenter.x + shapeRadius, shapeCenter.y + shapeRadius);
+    CGPoint bottomLeft = CGPointMake(shapeCenter.x - shapeRadius, shapeCenter.y + shapeRadius);
     
     //turn down at top right corner
     if (position.x > topRight.x && position.y < shapeCenter.y)
@@ -417,10 +418,10 @@
 }
 
 
--(CGVector)getVelocity
-{
-    return velocity;
-}
+//-(CGVector)getVelocity
+//{
+//    return velocity;
+//}
 
 -(CGPoint)getShapeCenter
 {

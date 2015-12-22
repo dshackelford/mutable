@@ -21,6 +21,8 @@
     UIImageView* theImage;
     
     NSString* imageFileName;
+    
+    CGVector velocity;
 }
 
 
@@ -41,6 +43,7 @@
 -(UIImageView*)getImage;
 -(CGSize)getSize;
 -(NSString*)getImageFileName;
+-(CGVector)getVelocity;
 
 
 -(void)setPosition:(CGPoint)pointInit;
