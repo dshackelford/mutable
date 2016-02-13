@@ -110,7 +110,7 @@
         [theImage removeFromSuperview];
      }
     
-    [self detectCollision];
+   // [self detectCollision];
 
 }
 
@@ -160,15 +160,5 @@
 
 }
 
--(void)detectCollision
-{
-    for (id object in objectArray)
-    {
-        if (fabs([object getPosition].x - [self getPosition].x) < [object getSize].width/2 + [self getSize].width/2 && fabs([object getPosition].y - [self getPosition].y) < [object getSize].height/2 + [self getSize].height/2)
-        {
-            //How do I hit a link?
-        }
-    }
-}
 
 @end

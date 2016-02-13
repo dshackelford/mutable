@@ -38,13 +38,14 @@
     {
         BOOL hit = NO;
         
+        //BACKWARDS ITERATION THROUGH SNAKE , CAN'T USE FAST ENUMERATION BECASUE REMOVAL AT CERTAIN INDEX IS REQUIRED
         for (double i = [snakeArray count] - 1; i > -1; i = i - 1)
         {
             MovingObject* aLink = [snakeArray objectAtIndex:i];
-            
-            if (i == 0) //link directly after the headlink
+
+            if (i == 0) //THE LINK DIRECTLY BEHIND HEADLINK
             {
-                [aLink setPosition:[objectTracker getPosition]];
+                [aLink setPosition:[objectTracker getPosition]]; //THE OBJECT TRACKER IS HEADLINK
             }
             else
             {
@@ -55,13 +56,13 @@
             
             [aLink getImage].center = [aLink getPosition];
             
-            for (int i = 0;i < [objectArray count]; i = i + 1)
+            //ITERATE THROUGH ALL OBJECTS IN SCREEN FOR INTERACTION
+            for (id object in objectArray)
             {
-                id object = [objectArray objectAtIndex:i];
-                
+                //MAKE SURE BULLET IS WITHIN DISTANCE & NOT A BULLET & NOT THE HEADLINK
                 if (fabs([object getPosition].x - [aLink getPosition].x) < [object getSize].width/2 + [aLink getSize].width/2 && fabs([object getPosition].y - [aLink getPosition].y) < [object getSize].height/2 + [aLink getSize].height/2 && object != objectTracker && [object class] != [Bullet class])
                 {
-                    
+                    //REMOVE THE DEAD LINKS AFTER THE LINK THAT HAS BEEN HIT
                     for (int g = i; g < [snakeArray count]; g = g + 1)
                     {
                         [[[snakeArray objectAtIndex:g] getImage] removeFromSuperview];
@@ -69,7 +70,8 @@
                     }
                         
                     hit = YES;
-                        
+            
+                    //REMOVE THE OBJCET THAT HAS HIT THE SNAKE
                     [[object getImage] removeFromSuperview];
                     [objectArray removeObject:object];
                         
@@ -78,6 +80,7 @@
                 }
             }
             
+            //GET OUT OF THE LOOP TO SAVE MEMORY
             if (hit == YES)
             {
                 break;
@@ -85,22 +88,6 @@
 
         }
     }
-    
-//                if (i == 0) //link directly after the headlink
-//                {
-//                    [aLink setVelocity:[theHeadLink getVelocity]];
-//                }
-//                else
-//                {
-//                    MovingObject* anotherLink = [snakeArray objectAtIndex:i - 1];
-//    
-//                    [aLink setVelocity:[anotherLink getVelocity]];
-//                }
-//    
-//                [aLink move];
-//                
-//        }
-//    }
 }
 
 

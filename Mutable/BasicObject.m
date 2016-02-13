@@ -51,17 +51,18 @@
 }
 
 #pragma mark - Interactions
+
+-(void)crash
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"DeathNotification" object:self];
+}
+
 -(void)hit
 {
     [theImage removeFromSuperview];
     [objectArray removeObject:self];
 }
 
--(void)crash
-{
-    //gameStatus = NO;
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"DeathNotification" object:self];
-}
 
 -(void)hide
 {

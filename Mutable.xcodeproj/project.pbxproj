@@ -27,6 +27,8 @@
 		692B65651B6981BD00878A0E /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 692B65641B6981BD00878A0E /* Food.m */; };
 		692B65681B69C70F00878A0E /* Projectile.m in Sources */ = {isa = PBXBuildFile; fileRef = 692B65671B69C70F00878A0E /* Projectile.m */; };
 		693A8C171C271CC80084BD61 /* BlockadeBarricade.m in Sources */ = {isa = PBXBuildFile; fileRef = 693A8C161C271CC80084BD61 /* BlockadeBarricade.m */; };
+		693A8C191C29F10B0084BD61 /* MovingWall.m in Sources */ = {isa = PBXBuildFile; fileRef = 693A8C181C29F10B0084BD61 /* MovingWall.m */; };
+		693A8C1C1C29F1D10084BD61 /* WallLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 693A8C1B1C29F1D10084BD61 /* WallLink.m */; };
 		6941A5561B3CA3DE0014B916 /* Mine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6941A5551B3CA3DE0014B916 /* Mine.m */; };
 		6942A8C31AC523E1004DD764 /* Ring.png in Resources */ = {isa = PBXBuildFile; fileRef = 6942A8C21AC523E1004DD764 /* Ring.png */; };
 		6942A8CF1AC527F5004DD764 /* MutableIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6942A8CE1AC527F5004DD764 /* MutableIcon.png */; };
@@ -79,6 +81,7 @@
 		69DFF2601AC0777B001D53CE /* SettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DFF25F1AC0777B001D53CE /* SettingsView.m */; };
 		69DFF2661AC07D76001D53CE /* HowToPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DFF2651AC07D76001D53CE /* HowToPlayView.m */; };
 		69E5F6A71B4CBEAD00BE4B6F /* lifePowerUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 69E5F6A61B4CBEAD00BE4B6F /* lifePowerUp.png */; };
+		69E955D51C2C64CF009F4C6D /* ViewPopulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E955D41C2C64CF009F4C6D /* ViewPopulator.m */; };
 		69F647C51BA93B0800D8BD88 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F647C41BA93B0800D8BD88 /* MasterViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -124,6 +127,10 @@
 		692B65671B69C70F00878A0E /* Projectile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Projectile.m; sourceTree = "<group>"; };
 		693A8C151C271CBF0084BD61 /* BlockadeBarricade.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlockadeBarricade.h; sourceTree = "<group>"; };
 		693A8C161C271CC80084BD61 /* BlockadeBarricade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockadeBarricade.m; sourceTree = "<group>"; };
+		693A8C181C29F10B0084BD61 /* MovingWall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovingWall.m; sourceTree = "<group>"; };
+		693A8C1A1C29F1120084BD61 /* MovingWall.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovingWall.h; sourceTree = "<group>"; };
+		693A8C1B1C29F1D10084BD61 /* WallLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallLink.m; sourceTree = "<group>"; };
+		693A8C1D1C29F1D60084BD61 /* WallLink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WallLink.h; sourceTree = "<group>"; };
 		6941A5541B3CA3D70014B916 /* Mine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mine.h; sourceTree = "<group>"; };
 		6941A5551B3CA3DE0014B916 /* Mine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mine.m; sourceTree = "<group>"; };
 		6942A8C21AC523E1004DD764 /* Ring.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ring.png; sourceTree = "<group>"; };
@@ -198,6 +205,8 @@
 		69DFF2651AC07D76001D53CE /* HowToPlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HowToPlayView.m; sourceTree = "<group>"; };
 		69DFF2671AC07D89001D53CE /* HowToPlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HowToPlayView.h; sourceTree = "<group>"; };
 		69E5F6A61B4CBEAD00BE4B6F /* lifePowerUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lifePowerUp.png; sourceTree = "<group>"; };
+		69E955D31C2C64C6009F4C6D /* ViewPopulator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewPopulator.h; sourceTree = "<group>"; };
+		69E955D41C2C64CF009F4C6D /* ViewPopulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewPopulator.m; sourceTree = "<group>"; };
 		69F647C41BA93B0800D8BD88 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		69F647C61BA93B1000D8BD88 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -350,6 +359,10 @@
 				6974E9501B68545300CE51B9 /* Barracade.m */,
 				693A8C151C271CBF0084BD61 /* BlockadeBarricade.h */,
 				693A8C161C271CC80084BD61 /* BlockadeBarricade.m */,
+				693A8C1A1C29F1120084BD61 /* MovingWall.h */,
+				693A8C181C29F10B0084BD61 /* MovingWall.m */,
+				693A8C1D1C29F1D60084BD61 /* WallLink.h */,
+				693A8C1B1C29F1D10084BD61 /* WallLink.m */,
 				692B65691B69C82700878A0E /* Projectiles */,
 			);
 			name = MovingObjects;
@@ -409,6 +422,8 @@
 				69F647C41BA93B0800D8BD88 /* MasterViewController.m */,
 				697E125B1ABB6B5B0037D307 /* LevelViewController.h */,
 				697E12591ABB6B4E0037D307 /* LevelViewController.m */,
+				69E955D31C2C64C6009F4C6D /* ViewPopulator.h */,
+				69E955D41C2C64CF009F4C6D /* ViewPopulator.m */,
 				69DFF25C1AC07613001D53CE /* HomeView.h */,
 				69DFF25A1AC0760B001D53CE /* HomeView.m */,
 				69DFF25E1AC07774001D53CE /* SettingsView.h */,
@@ -563,6 +578,7 @@
 				699B56AC1B6045B900B735C7 /* Squadron.m in Sources */,
 				69196FC81B3A024000DAB092 /* HeadLink.m in Sources */,
 				69A9FC6A1B388A4600767670 /* Shifting.m in Sources */,
+				693A8C1C1C29F1D10084BD61 /* WallLink.m in Sources */,
 				699B56B01B60655A00B735C7 /* BasicObject.m in Sources */,
 				69196FCA1B3A368F00DAB092 /* EasterEggView.m in Sources */,
 				69A9FC6E1B388A6D00767670 /* Drone.m in Sources */,
@@ -581,9 +597,11 @@
 				69A9FC621B3889F400767670 /* Snake.m in Sources */,
 				69F647C51BA93B0800D8BD88 /* MasterViewController.m in Sources */,
 				6974E9511B68545300CE51B9 /* Barracade.m in Sources */,
+				69E955D51C2C64CF009F4C6D /* ViewPopulator.m in Sources */,
 				69DFF2661AC07D76001D53CE /* HowToPlayView.m in Sources */,
 				697E2DBB1B39BB8A00DD0696 /* Gem.m in Sources */,
 				697E125A1ABB6B4E0037D307 /* LevelViewController.m in Sources */,
+				693A8C191C29F10B0084BD61 /* MovingWall.m in Sources */,
 				69DFF25B1AC0760B001D53CE /* HomeView.m in Sources */,
 				691FE9F01ABA2F1700120DEA /* main.m in Sources */,
 				69A7B4601B4E0F0200E62477 /* TurretGun.m in Sources */,

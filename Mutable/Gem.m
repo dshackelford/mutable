@@ -44,8 +44,7 @@
     
     [self setImage];
     
-    
-    //I should put the gem image below the health image, see the init above
+    //THE FIRST OBJCET IN THE RESTART OBJECT ARRY IS THE BASE
     [container insertSubview:theImage belowSubview:[[objectArray objectAtIndex:0] getHealthBarImage] ];
     
     [objectArray addObject:self];

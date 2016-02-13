@@ -45,6 +45,50 @@
     [self moveInSquare];
 }
 
+-(void)moveInSquare
+{
+    shapeCounter = shapeCounter + deltaTime;
+    
+    
+    CGPoint topRight = CGPointMake(shapeCenter.x + shapeRadius,shapeCenter.y - shapeRadius);
+    CGPoint topLeft = CGPointMake(shapeCenter.x - shapeRadius, shapeCenter.y - shapeRadius);
+    CGPoint bottomRight = CGPointMake(shapeCenter.x + shapeRadius, shapeCenter.y + shapeRadius);
+    CGPoint bottomLeft = CGPointMake(shapeCenter.x - shapeRadius, shapeCenter.y + shapeRadius);
+    
+    //turn down at top right corner
+    if (position.x > topRight.x && position.y < shapeCenter.y)
+    {
+        velocity.dx = 0;
+        velocity.dy = snakeVelocity/3;
+    }
+    
+    //Go left at bottom right corner
+    if (position.x > shapeCenter.x && position.y > bottomRight.y)
+    {
+        velocity.dx = -snakeVelocity/3;
+        velocity.dy = 0;
+    }
+    
+    
+    //turn up at bottom left corner
+    if (position.x < bottomLeft.x && position.y > shapeCenter.y)
+    {
+        velocity.dx = 0;
+        velocity.dy = -snakeVelocity/3;
+    }
+    
+    
+    //turn right at top left corner
+    if (position.y < topLeft.y  && position.x < shapeCenter.x)
+    {
+        velocity.dx = snakeVelocity/3;
+        velocity.dy = 0;
+    }
+    
+    [self move];
+}
+
+
 -(id)initRestart:(CGPoint)positionInit Container:(UIView*)container Placeholder:(UIButton*)placeHolderButtonInit Velocity:(CGVector)velocityInit
 {
     self = [super init];
@@ -63,7 +107,6 @@
     
     [self setImage];
     
-    //I should put the gem image below the health image, see the init above
     [container insertSubview:theImage belowSubview:placeHolderButtonInit];
     
     [objectArray addObject:self];

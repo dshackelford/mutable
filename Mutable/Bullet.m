@@ -39,7 +39,10 @@
     
     if (dx == 0 && dy == 0)
     {
-        velocity = CGVectorMake(0, 0);
+        if (wallBool == NO)
+        {
+            velocity = CGVectorMake(0, 0);
+        }
     }
     else
     {
@@ -55,8 +58,14 @@
 
 -(void)move:(id)objectTracker
 {
-    [self move];
-    
+    if (wallBool == YES)
+    {
+        [self moveInCircle];
+    }
+    else
+    {
+        [self move];
+    }
     if (position.x > (screenWidth + 10) || position.x < -10 || position.y > (screenHeight + 10) || position.y < -10)
     {
         [theImage removeFromSuperview];
@@ -69,26 +78,74 @@
 
 -(void)detectCollision
 {
-    for (int i = 0; i < [objectArray count]; i = i + 1)
+    for(id object in objectArray)
     {
-        id object = [objectArray objectAtIndex:i];
-        
-        if(object != self)
+        //IF OBJECT FOR INTERACTION IS A BULLET OR ITSELF, DON'T WANT TO DO ANYTHING
+        if ([[NSString stringWithFormat:@"%@",[object class]] isEqualToString:@"Bullet"] || object == self || [object class] == [HeadLink class])
+        {
+            
+        }
+        //IF IT INTERATCTS WITH ANYTHING ELSE, THEN IT'LL 'HIT' ITS TARGET
+        else
         {
             if (fabs([object getPosition].x - [self getPosition].x) < [object getSize].width/2 + [self getSize].width/2 && fabs([object getPosition].y - [self getPosition].y) < [object getSize].height/2 + [self getSize].height/2)
             {
-
+                //REMOVE THE BULLET WHEN IT HITS
                 [theImage removeFromSuperview];
-                    
+                
                 [objectArray removeObject:self];
-                    
+                
+                //HIT THE OTHER OBJECT THAT THIS BULLET IS HITTING
                 [object hit];
                 
+                //DON'T NEED TO CONTINUE ITERATION
                 break;
             }
         }
     }
+    
 }
+
+-(void)moveInCircle
+{
+    shapeCounter = shapeCounter + deltaTime;
+    
+    double lateralPosition = 0;
+    double longitudinalPosition = 0;
+    
+    if (velocity.dx > 0)
+    {
+        lateralPosition = -shapeRadius*cos(shapeCounter + M_PI_2);
+        longitudinalPosition = -shapeRadius*sin(shapeCounter+ M_PI_2);
+        
+    }
+    
+    if (velocity.dx < 0)
+    {
+        lateralPosition = shapeRadius*cos(shapeCounter + M_PI_2);
+        longitudinalPosition = shapeRadius*sin(shapeCounter+ M_PI_2);
+        
+    }
+    
+//    if(velocity.dy > 0)
+//    {
+//        lateralPosition = shapeRadius*cos(shapeCounter);
+//        longitudinalPosition = shapeRadius*sin(shapeCounter);
+//        
+//    }
+//    
+//    if (velocity.dy < 0)
+//    {
+//        lateralPosition = -shapeRadius*cos(shapeCounter);
+//        longitudinalPosition = -shapeRadius*sin(shapeCounter);
+//    }
+    
+    position.x =  shapeCenter.x + lateralPosition;
+    position.y =  shapeCenter.y + longitudinalPosition;
+    
+    theImage.center = position;
+}
+
 
 -(void)crash
 {
@@ -98,6 +155,11 @@
 -(void)hit
 {
     
+}
+
+-(void)setWallBool:(BOOL)boolInit
+{
+    wallBool = boolInit;
 }
 
 

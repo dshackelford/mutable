@@ -9,6 +9,7 @@
 #import "MovingObject.h"
 
 
+
 @interface HeadLink : MovingObject
 {
 

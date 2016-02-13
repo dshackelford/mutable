@@ -49,37 +49,10 @@
 
 -(void)moveInCircle
 {
-
     shapeCounter = shapeCounter + deltaTime;
-    
-    //DETERMINE CENTER POINT FOR ROTATION
-    if (shapeCounter <= deltaTime)
-    {
-        if (velocity.dx < 0)
-        {
-            shapeCenter = CGPointMake(position.x, position.y - shapeRadius);
-        }
-        
-        if (velocity.dx > 0)
-        {
-            
-            shapeCenter = CGPointMake(position.x, position.y + shapeRadius);
-        }
-        
-        if (velocity.dy < 0)
-        {
-            shapeCenter = CGPointMake(position.x + shapeRadius, position.y);
-        }
-        
-        if (velocity.dy > 0)
-        {
-            shapeCenter = CGPointMake(position.x - shapeRadius, position.y);
-        }
-    }
-    
+
     double lateralPosition = 0;
     double longitudinalPosition = 0;
-    
     
     if (velocity.dx > 0)
     {
@@ -185,7 +158,7 @@
 {
     shapeCounter = shapeCounter + deltaTime;
     
-    if (shapeCounter <= deltaTime && shapeCenter.x == 0 && shapeCenter.y == 0)
+    if (shapeCounter <= deltaTime)
     {
         double centerX = 0;
         double centerY = 0;
@@ -216,10 +189,10 @@
     
     
     
-    CGPoint topRight = CGPointMake(shapeCenter.x + shapeRadius,shapeCenter.y - shapeRadius);
-    CGPoint topLeft = CGPointMake(shapeCenter.x - shapeRadius, shapeCenter.y - shapeRadius);
-    CGPoint bottomRight = CGPointMake(shapeCenter.x + shapeRadius, shapeCenter.y + shapeRadius);
-    CGPoint bottomLeft = CGPointMake(shapeCenter.x - shapeRadius, shapeCenter.y + shapeRadius);
+    CGPoint topRight = CGPointMake(shapeCenter.x + shapeRadius/2,shapeCenter.y - shapeRadius/2);
+    CGPoint topLeft = CGPointMake(shapeCenter.x - shapeRadius/2, shapeCenter.y - shapeRadius/2);
+    CGPoint bottomRight = CGPointMake(shapeCenter.x + shapeRadius/2, shapeCenter.y + shapeRadius/2);
+    CGPoint bottomLeft = CGPointMake(shapeCenter.x - shapeRadius/2, shapeCenter.y + shapeRadius/2);
     
     //turn down at top right corner
     if (position.x > topRight.x && position.y < shapeCenter.y)
@@ -251,10 +224,7 @@
         velocity.dy = 0;
     }
     
-    position.x = position.x + velocity.dx*deltaTime;
-    position.y = position.y + velocity.dy*deltaTime;
-    
-    theImage.center = position;
+    [self move];
 }
 
 

@@ -30,8 +30,11 @@
 #import "Squadron.h"
 #import "DoubleBullet.h"
 #import "BlockadeBarricade.h"
+#import "WallLink.h"
+#import "MovingWall.h"
 
 #import "MasterViewController.h"
+#import "ViewPopulator.h"
 
 
 @interface LevelViewController : MasterViewController
@@ -43,6 +46,8 @@
     HeadLink* levelHeadLink;
     Gem* levelGem;
     TurretGun* levelTurretGun;
+    ViewPopulator* theViewPopulator;
+    
     
     double initialHeadLatitude;
     double initialHeadLongitude;

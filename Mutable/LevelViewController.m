@@ -45,7 +45,7 @@
         }
         currentLevel = [[dictionaryFile objectForKey:@"currentLevel"] doubleValue];
         
-        currentLevel = 15;
+        //currentLevel = 15;
     }
     
     //HIDE BUTTONS
@@ -80,14 +80,18 @@
     
     initialHeadLatitude = 10;
     initialHeadLongitude = 200;
-    initialHeadVelocityX = 300;
+    initialHeadVelocityX = 200;
     initialHeadVelocityY = 0;
     
     //INITIAL HEADLINK POSITION
     snakeVelocity = initialHeadVelocityX; //just in case user goes into shape shift and does not fire!
     
     //ALLOCATION OF COMMON OBJECT ARRAYS
-    lifePowerUpArray = [[NSMutableArray alloc] init];
+    
+    theViewPopulator = [[ViewPopulator alloc] init];
+    [theViewPopulator prepViewPopulator];
+    
+//    lifePowerUpArray = [[NSMutableArray alloc] init];
 
     objectArray = [[NSMutableArray alloc] init];
     
@@ -281,71 +285,8 @@
         [object move:levelHeadLink];
     }
     
-    //MAKE BLOCKADE ELEMENT
-    if (currentLevel > 2)
-    {
-        blockadeCounter = blockadeCounter + 1;
-        
-        if (blockadeCounter > 200)
-        {
-            [[BlockadeElement alloc] initBlockadeElement: self.view : placeHolderButton];
-            
-            blockadeCounter = 0;
-        }
-    }
+    [theViewPopulator populateView:levelHeadLink Base:levelEnemyBase TurretGun:levelTurretGun View:self.view PlaceHolder:placeHolderButton];
     
-    //MAKE DRONES
-    if (currentLevel > 15)
-    {
-        if (line == NO) //LINE MAKES SNAKE HIDE FROM DRONES
-        {
-                droneCounter = droneCounter + 1;
-        
-                if (droneCounter > 250)
-                {
-                    droneCounter = 0;
-                    
-                    [[Drone alloc] initDrone:[levelHeadLink getPosition] Container:self.view PlaceHolderButton:placeHolderButton];
-            }
-        }
-    }
-    
-    //MAKE LIFE POWER UPS
-    if ([[levelSnake getSnakeArray] count] < 40)
-    {
-        lifePowerUpCounter = lifePowerUpCounter + 1;
-        
-        if ([lifePowerUpArray count] < 4)
-        {
-            if (lifePowerUpCounter > 400)
-            {
-                lifePowerUpCounter = 0;
-           
-                Food* aFood = [[Food alloc] initFood:levelEnemyBase View:self.view placeHolder:placeHolderButton];
-            
-                [lifePowerUpArray addObject:aFood];
-            }
-        }
-    }
-    
-    //MAKE TURRET GUN FIRE BULLETS
-    if (currentLevel > 12 && line == NO)
-    {
-        turretGunCounter = turretGunCounter + 1;
-        
-        if ([levelTurretGun getTurretHealth] > 0)
-        {
-        
-            if (turretGunCounter > 100)
-            {
-                turretGunCounter = 0;
-                
-                CGPoint theTarget = [levelHeadLink getPosition];
-            
-                [[Arrow alloc] initArrow:theTarget InitialPosition:[levelTurretGun getPosition] Turret:levelTurretGun container:self.view placeHolder:placeHolderButton];
-            }
-        }
-    }
     
     //AMMO COUNT
     if ([[levelSnake getSnakeArray] count] < 11)
@@ -369,6 +310,28 @@
         {
             [levelEnemyBase addHealth:self.view :placeHolderButton];
             healthRegenerationCounter = 0;
+        }
+    }
+}
+
+-(void)detectCollision
+{
+    for (id object in objectArray)
+    {
+        for (id object2 in objectArray)
+        {
+            if (fabs([object getPosition].x - [object2 getPosition].x) < [object getSize].width && fabs([object getPosition].y - [object2 getPosition].y) < [object getSize].height)
+            {
+                if ([object class] == [Bullet class] || [object2 class] == [Bullet class])
+                {
+                     
+                }
+                
+                if ( [object class] == [HeadLink class] || [object2 class] == [HeadLink class])
+                {
+                    
+                }
+            }
         }
     }
 }
@@ -415,7 +378,7 @@
     [self.view insertSubview:backgroundImage aboveSubview:placeHolderButton];
     
     endLevelLabel.text = [NSString stringWithFormat:@"YOU BEAT LEVEL %.f!",currentLevel];
-    currentLevel = currentLevel + 1;
+    //currentLevel = currentLevel + 1;
     endLevelLabel.hidden = NO;
     ammoCount.hidden = YES;
     pauseButton.hidden = YES;
@@ -455,8 +418,6 @@
 {
     [theTimer invalidate];
     
-    //theTimer = nil;
-    
     //REMOVE IMAGES FROM SCREEN
     for (id object in objectArray)
     {
@@ -465,7 +426,6 @@
     
     [objectArray removeAllObjects];
 
-    
     //INSERT BACKGROUND IMAGE
     backgroundImage = [self makeRedBackgroundMenuImage];
     [self.view insertSubview:backgroundImage aboveSubview:placeHolderButton];
@@ -477,9 +437,12 @@
     levelCountLabel.hidden = YES;
     shapeUnlockLabel.hidden = YES;
     
-    endLevelTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(delayLostResponse) userInfo:nil repeats:YES];
+    triangle = NO;
+    square = NO;
+    circle = NO;
+    line = NO;
     
-    // NSLog(@"%f",currentLevel);
+    endLevelTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(delayLostResponse) userInfo:nil repeats:YES];
     
 }
 
@@ -517,7 +480,34 @@
         if (shapeShiftBool == NO)
         {
             shapeShiftBool = YES;
+            
             circle = YES;
+            
+            //DETEMINE THE SHAPE RADIUS TO ALLOW THE CENTER TO BE FOUND LATER
+            [levelHeadLink setShapeRadius: [[levelSnake getSnakeArray] count]/(2*M_PI)];
+            
+            //DETERMINE CENTER POINT FOR ROTATION
+            if ([levelHeadLink getVelocity].dx < 0)
+            {
+                [levelHeadLink setShapeCenter: CGPointMake([levelHeadLink getPosition].x, [levelHeadLink getPosition].y - [levelHeadLink getShapeRadius])];
+            }
+            
+            if ([levelHeadLink getVelocity].dx > 0)
+            {
+                [levelHeadLink setShapeCenter: CGPointMake([levelHeadLink getPosition].x, [levelHeadLink getPosition].y + [levelHeadLink getShapeRadius])];
+            }
+            
+            if ([levelHeadLink getVelocity].dy < 0)
+            {
+                
+                [levelHeadLink setShapeCenter: CGPointMake([levelHeadLink getPosition].x + [levelHeadLink getShapeRadius], [levelHeadLink getPosition].y)];
+            }
+            
+            if ([levelHeadLink getVelocity].dy > 0)
+            {
+                [levelHeadLink setShapeCenter: CGPointMake([levelHeadLink getPosition].x - [levelHeadLink getShapeRadius], [levelHeadLink getPosition].y)];
+            }
+            
         }
         
         if (square == YES)
@@ -525,10 +515,11 @@
            bigBulletTimer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(bigBulletCounter) userInfo:nil repeats:YES];
         }
         
-        if (triangle == YES)
-        {
-            ammoCount.backgroundColor = [UIColor greenColor];
-        }
+//        if (triangle == YES)
+//        {
+//            ammoCount.backgroundColor = [UIColor greenColor];
+//            [MovingWall createTheWall:levelHeadLink View:self.view];
+//        }
         
     }
     
@@ -557,27 +548,20 @@
             ammoCount.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.45];
         }
     }
-
+    
     if (triangle == YES)
     {
         if ([[levelSnake getSnakeArray] count] > 0)
         {
             CGPoint location = [aLongPress locationInView:self.view];
             
-//            BasicObject* aLink = [[BasicObject alloc] initBasicObject:location :CGSizeMake(10, 10) :@"Point"];
-            
-            Bullet* aWallLink = [[Bullet alloc] initBullet:location InitialPosition:location Size:CGSizeMake(10, 10) Container:self.view PlaceHolder:placeHolderButton];
-            
-//            [aLink setCharacter:@"Wall"];
+            [[Bullet alloc] initBullet:location InitialPosition:location Size:CGSizeMake(10, 10) Container:self.view PlaceHolder:placeHolderButton];
             
             [levelSnake removeHowManyLinksFromSnake:1];
-            
-            //[self.view insertSubview:[aWallLink getImage] belowSubview:placeHolderButton];
-        
-//            [wallArray addObject:aLink];
         }
     }
 }
+
 
 -(void)bigBulletCounter
 {

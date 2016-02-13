@@ -56,9 +56,9 @@
 //THIS METHOD DETERMINES HOW TO MOVE HEADLINK, TAKES SNAKE ARRAY TO DETERMINE THE RAIDUS AND SPEED
 -(void)move:(id)objectTracker
 {
-    
     if (shapeShiftBool == NO)
     {
+        //BOUNCING OFF WALLS
         if (position.y >= screenHeight || position.y <= 0)
         {
             velocity.dy = -velocity.dy;
@@ -69,11 +69,7 @@
             velocity.dx = -velocity.dx;
         }
         
-        position.x = position.x + velocity.dx*deltaTime;
-        position.y = position.y + velocity.dy*deltaTime;
-        
-        theImage.center = position;
-        
+        [self move];
     }
     else
     {
@@ -121,19 +117,22 @@
 
 -(void)detectCollision
 {
-    for (int i = 0; i < [objectArray count]; i = i + 1)
+    //ITERATE THROUGH OBJECTS IN LEVEL
+    for (id object in objectArray)
     {
-        id object = [objectArray objectAtIndex:i];
-        
-        if (object != self)
+        //IF OBJECT IS HEADLINK OR A BULLET, DO NOT INTERACT WITH IT AT ALL
+        if (object == self || [[NSString stringWithFormat:@"%@",[object class]] isEqualToString:@"Bullet"])
+        {
+            
+        }
+        else
         {
             if (fabs([object getPosition].x - [self getPosition].x) < [object getSize].width/2 + [self getSize].width/2 && fabs([object getPosition].y - [self getPosition].y) < [object getSize].height/2 + [self getSize].height/2)
             {
-                
                 [object crash];
                 break;
-
             }
+            
         }
     }
 }
@@ -143,6 +142,7 @@
     
     
 }
+
 
 
 @end

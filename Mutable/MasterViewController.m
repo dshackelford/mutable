@@ -14,7 +14,6 @@
 
 -(void)establishGestures
 {
-    
     singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didSingleTap:)];
     singleTap.numberOfTapsRequired = 1;
     

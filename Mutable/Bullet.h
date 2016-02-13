@@ -30,11 +30,15 @@
     
     BOOL didBulletHit;
     
+    BOOL wallBool;
+    
 }
 
 -(id)initBullet:(CGPoint)targetInit InitialPosition:(CGPoint)initialPosition Size:(CGSize)sizeInit Container:(UIView*)container PlaceHolder:(UIButton*)placeHolderButtonInit;
 
 
 -(void)detectCollision;
+
+-(void)setWallBool:(BOOL)boolInit;
 
 @end
