@@ -27,7 +27,6 @@
     {
            hardButton.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.45];
     }
-    
 }
 
 

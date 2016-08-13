@@ -61,7 +61,6 @@
     
     [container insertSubview:theImage belowSubview:placeHolderButtonInit];
     
-    
     [objectArray addObject:self];
     
     return self;

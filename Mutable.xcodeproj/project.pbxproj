@@ -75,6 +75,10 @@
 		69B84D3C1AC88F5A002BFF16 /* mineImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 69B84D3B1AC88F5A002BFF16 /* mineImage.png */; };
 		69B84D3E1AC893BE002BFF16 /* kamikaze.png in Resources */ = {isa = PBXBuildFile; fileRef = 69B84D3D1AC893BE002BFF16 /* kamikaze.png */; };
 		69C2BABC1B7BEEF500190EE1 /* Small Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 69C2BABB1B7BEEF500190EE1 /* Small Logo.png */; };
+		69D1DC841D5EEDC100DF29B5 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D1DC831D5EEDC100DF29B5 /* SettingsViewController.m */; };
+		69D1DC891D5EEF0B00DF29B5 /* arrowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D1DC871D5EEF0B00DF29B5 /* arrowCell.m */; };
+		69D1DC8A1D5EEF0B00DF29B5 /* arrowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69D1DC881D5EEF0B00DF29B5 /* arrowCell.xib */; };
+		69D1DC8C1D5EF40600DF29B5 /* HowToPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D1DC8B1D5EF40600DF29B5 /* HowToPlayViewController.m */; };
 		69D743011B86E0AB00844502 /* Tracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D743001B86E0AB00844502 /* Tracker.m */; };
 		69DB88611B4825EA00D84112 /* AppUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DB88601B4825EA00D84112 /* AppUtilities.m */; };
 		69DFF25B1AC0760B001D53CE /* HomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DFF25A1AC0760B001D53CE /* HomeView.m */; };
@@ -194,6 +198,13 @@
 		69B84D3B1AC88F5A002BFF16 /* mineImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mineImage.png; sourceTree = "<group>"; };
 		69B84D3D1AC893BE002BFF16 /* kamikaze.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kamikaze.png; sourceTree = "<group>"; };
 		69C2BABB1B7BEEF500190EE1 /* Small Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Small Logo.png"; path = "../../../Media/DshackTech Productions/DshackTech/Logos 2.0/Small Logo.png"; sourceTree = "<group>"; };
+		69D1DC821D5EEDB700DF29B5 /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		69D1DC831D5EEDC100DF29B5 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		69D1DC861D5EEF0B00DF29B5 /* arrowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = arrowCell.h; sourceTree = "<group>"; };
+		69D1DC871D5EEF0B00DF29B5 /* arrowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = arrowCell.m; sourceTree = "<group>"; };
+		69D1DC881D5EEF0B00DF29B5 /* arrowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = arrowCell.xib; sourceTree = "<group>"; };
+		69D1DC8B1D5EF40600DF29B5 /* HowToPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HowToPlayViewController.m; sourceTree = "<group>"; };
+		69D1DC8D1D5EF41100DF29B5 /* HowToPlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HowToPlayViewController.h; sourceTree = "<group>"; };
 		69D743001B86E0AB00844502 /* Tracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tracker.m; sourceTree = "<group>"; };
 		69D743021B86E0B200844502 /* Tracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tracker.h; sourceTree = "<group>"; };
 		69DB885F1B4825E200D84112 /* AppUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppUtilities.h; sourceTree = "<group>"; };
@@ -255,7 +266,6 @@
 				699B56B31B6069E100B735C7 /* System */,
 				69DFF25D1AC07618001D53CE /* ViewControllers */,
 				699B56B11B60665B00B735C7 /* MyObjects */,
-				691FE9F71ABA2F1700120DEA /* Main.storyboard */,
 				691FE9FA1ABA2F1700120DEA /* Images.xcassets */,
 				691FE9FC1ABA2F1700120DEA /* LaunchScreen.xib */,
 				691FE9ED1ABA2F1700120DEA /* Supporting Files */,
@@ -418,6 +428,7 @@
 		69DFF25D1AC07618001D53CE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				691FE9F71ABA2F1700120DEA /* Main.storyboard */,
 				69F647C61BA93B1000D8BD88 /* MasterViewController.h */,
 				69F647C41BA93B0800D8BD88 /* MasterViewController.m */,
 				697E125B1ABB6B5B0037D307 /* LevelViewController.h */,
@@ -428,10 +439,17 @@
 				69DFF25A1AC0760B001D53CE /* HomeView.m */,
 				69DFF25E1AC07774001D53CE /* SettingsView.h */,
 				69DFF25F1AC0777B001D53CE /* SettingsView.m */,
+				69D1DC821D5EEDB700DF29B5 /* SettingsViewController.h */,
+				69D1DC831D5EEDC100DF29B5 /* SettingsViewController.m */,
+				69D1DC8D1D5EF41100DF29B5 /* HowToPlayViewController.h */,
+				69D1DC8B1D5EF40600DF29B5 /* HowToPlayViewController.m */,
 				69DFF2671AC07D89001D53CE /* HowToPlayView.h */,
 				69DFF2651AC07D76001D53CE /* HowToPlayView.m */,
 				69196FCB1B3A369800DAB092 /* EasterEggView.h */,
 				69196FC91B3A368F00DAB092 /* EasterEggView.m */,
+				69D1DC861D5EEF0B00DF29B5 /* arrowCell.h */,
+				69D1DC871D5EEF0B00DF29B5 /* arrowCell.m */,
+				69D1DC881D5EEF0B00DF29B5 /* arrowCell.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -525,6 +543,7 @@
 				691FE9F91ABA2F1700120DEA /* Main.storyboard in Resources */,
 				6900A00C1B757DE800009C64 /* TriangleShape.png in Resources */,
 				69854FAF1AD24FFD00F5327D /* base.png in Resources */,
+				69D1DC8A1D5EEF0B00DF29B5 /* arrowCell.xib in Resources */,
 				69B84D3C1AC88F5A002BFF16 /* mineImage.png in Resources */,
 				6900A00A1B757DE800009C64 /* LineShape.png in Resources */,
 				6977B2601AC6048200D005FE /* PointGem.png in Resources */,
@@ -584,6 +603,7 @@
 				69A9FC6E1B388A6D00767670 /* Drone.m in Sources */,
 				69A9FC681B388A3900767670 /* BlockadeElement.m in Sources */,
 				69DB88611B4825EA00D84112 /* AppUtilities.m in Sources */,
+				69D1DC841D5EEDC100DF29B5 /* SettingsViewController.m in Sources */,
 				697E12581ABB691C0037D307 /* MovingObject.m in Sources */,
 				69A9FC641B388A2700767670 /* MineField.m in Sources */,
 				6941A5561B3CA3DE0014B916 /* Mine.m in Sources */,
@@ -598,11 +618,13 @@
 				69F647C51BA93B0800D8BD88 /* MasterViewController.m in Sources */,
 				6974E9511B68545300CE51B9 /* Barracade.m in Sources */,
 				69E955D51C2C64CF009F4C6D /* ViewPopulator.m in Sources */,
+				69D1DC891D5EEF0B00DF29B5 /* arrowCell.m in Sources */,
 				69DFF2661AC07D76001D53CE /* HowToPlayView.m in Sources */,
 				697E2DBB1B39BB8A00DD0696 /* Gem.m in Sources */,
 				697E125A1ABB6B4E0037D307 /* LevelViewController.m in Sources */,
 				693A8C191C29F10B0084BD61 /* MovingWall.m in Sources */,
 				69DFF25B1AC0760B001D53CE /* HomeView.m in Sources */,
+				69D1DC8C1D5EF40600DF29B5 /* HowToPlayViewController.m in Sources */,
 				691FE9F01ABA2F1700120DEA /* main.m in Sources */,
 				69A7B4601B4E0F0200E62477 /* TurretGun.m in Sources */,
 				6974E94A1B67187200CE51B9 /* DoubleBullet.m in Sources */,
@@ -729,6 +751,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Mutable/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -739,6 +762,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Mutable/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

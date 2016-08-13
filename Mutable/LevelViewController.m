@@ -144,8 +144,6 @@
     backgroundImage = [self makeGreyBackgroundMenuImage];
     
     [self.view insertSubview:backgroundImage aboveSubview:placeHolderButton];
-    
-    
 }
 
 
