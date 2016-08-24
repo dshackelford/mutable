@@ -23,8 +23,17 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"PLAY" style:UIBarButtonItemStylePlain target:self action:@selector(playButtonTapped:)];
-    
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"?" style:UIBarButtonItemStylePlain target:self action:@selector(howToPlayButtonTapped:)];
+
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"MAIN" style:UIBarButtonItemStylePlain target:self action:@selector(mainMenuButtonTapped:)];
+}
+
+-(IBAction)mainMenuButtonTapped:(id)sender
+{
+    //move to the main menu view controller to start playing
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LevelViewController* lvc = (LevelViewController *)[storyboard instantiateViewControllerWithIdentifier:@"HomeView"];
+    lvc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    [self presentViewController:lvc animated:YES completion:nil];
 }
 
 -(IBAction)playButtonTapped:(id)sender
@@ -36,23 +45,15 @@
     [self presentViewController:lvc animated:YES completion:nil];
 }
 
--(IBAction)howToPlayButtonTapped:(id)sender
-{
-    //move to the level view controller to start playing
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    HowToPlayViewController* lvc = (HowToPlayViewController *)[storyboard instantiateViewControllerWithIdentifier:@"HowToPlayViewController"];
-    lvc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-    [self presentViewController:lvc animated:YES completion:nil];
-}
 
 #pragma mark - UITableViewProtocols
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return 2;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -105,7 +106,33 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    _selectedRow = indexPath.row;
     
+    if (indexPath.row == 0)
+    {
+        [self performSelector:@selector(didPressRestartButton:) withObject:nil];
+        [self performSelector:@selector(playButtonTapped:) withObject:nil];
+    }
+    else
+    {
+        //go into another view controller
+        [self performSegueWithIdentifier:@"showDifficultyView" sender:self];
+    }
+    
+}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    //segmented control settings
+    if ([segue.identifier isEqualToString:@"showDifficultyView"])
+    {
+        SubSettingsViewController *destViewController = segue.destinationViewController;
+        
+        [destViewController setTableData:@[@"Easy",@"Medium",@"Hard"]];
+        
+        [destViewController setTitle:[tableData objectAtIndex:self.selectedRow]];
+    }
 }
 
 -(IBAction)didPressRestartButton:(id)sender

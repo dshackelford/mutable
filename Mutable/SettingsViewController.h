@@ -13,6 +13,8 @@
 #import "LevelViewController.h"
 #import "HowToPlayViewController.h"
 
+#import "SubSettingsViewController.h"
+
 @interface SettingsViewController : UITableViewController
 {
     NSArray* tableData;

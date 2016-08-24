@@ -26,7 +26,16 @@
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"PLAY" style:UIBarButtonItemStylePlain target:self action:@selector(playButtonTapped:)];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"SETTINGS" style:UIBarButtonItemStylePlain target:self action:@selector(settingsButtonTapped:)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"MAIN" style:UIBarButtonItemStylePlain target:self action:@selector(mainMenuButtonTapped:)];
+}
+
+-(IBAction)mainMenuButtonTapped:(id)sender
+{
+    //move to the main menu view controller to start playing
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LevelViewController* lvc = (LevelViewController *)[storyboard instantiateViewControllerWithIdentifier:@"HomeView"];
+    lvc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    [self presentViewController:lvc animated:YES completion:nil];
 }
 
 -(IBAction)playButtonTapped:(id)sender

@@ -16,6 +16,7 @@
 		690646651B8121A1004D6152 /* MutableIcon 80.png in Resources */ = {isa = PBXBuildFile; fileRef = 690646631B8121A1004D6152 /* MutableIcon 80.png */; };
 		69196FC81B3A024000DAB092 /* HeadLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 69196FC71B3A024000DAB092 /* HeadLink.m */; };
 		69196FCA1B3A368F00DAB092 /* EasterEggView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69196FC91B3A368F00DAB092 /* EasterEggView.m */; };
+		691FB30C1D6D7A8600EAD5EF /* SubSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 691FB30B1D6D7A8600EAD5EF /* SubSettingsViewController.m */; };
 		691FE9F01ABA2F1700120DEA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 691FE9EF1ABA2F1700120DEA /* main.m */; };
 		691FE9F31ABA2F1700120DEA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 691FE9F21ABA2F1700120DEA /* AppDelegate.m */; };
 		691FE9F91ABA2F1700120DEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 691FE9F71ABA2F1700120DEA /* Main.storyboard */; };
@@ -111,6 +112,8 @@
 		69196FC71B3A024000DAB092 /* HeadLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeadLink.m; sourceTree = "<group>"; };
 		69196FC91B3A368F00DAB092 /* EasterEggView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasterEggView.m; sourceTree = "<group>"; };
 		69196FCB1B3A369800DAB092 /* EasterEggView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EasterEggView.h; sourceTree = "<group>"; };
+		691FB30B1D6D7A8600EAD5EF /* SubSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubSettingsViewController.m; sourceTree = "<group>"; };
+		691FB30D1D6D7A9000EAD5EF /* SubSettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubSettingsViewController.h; sourceTree = "<group>"; };
 		691FE9EA1ABA2F1700120DEA /* Mutable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mutable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		691FE9EE1ABA2F1700120DEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		691FE9EF1ABA2F1700120DEA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -441,6 +444,8 @@
 				69DFF25F1AC0777B001D53CE /* SettingsView.m */,
 				69D1DC821D5EEDB700DF29B5 /* SettingsViewController.h */,
 				69D1DC831D5EEDC100DF29B5 /* SettingsViewController.m */,
+				691FB30D1D6D7A9000EAD5EF /* SubSettingsViewController.h */,
+				691FB30B1D6D7A8600EAD5EF /* SubSettingsViewController.m */,
 				69D1DC8D1D5EF41100DF29B5 /* HowToPlayViewController.h */,
 				69D1DC8B1D5EF40600DF29B5 /* HowToPlayViewController.m */,
 				69DFF2671AC07D89001D53CE /* HowToPlayView.h */,
@@ -595,6 +600,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				699B56AC1B6045B900B735C7 /* Squadron.m in Sources */,
+				691FB30C1D6D7A8600EAD5EF /* SubSettingsViewController.m in Sources */,
 				69196FC81B3A024000DAB092 /* HeadLink.m in Sources */,
 				69A9FC6A1B388A4600767670 /* Shifting.m in Sources */,
 				693A8C1C1C29F1D10084BD61 /* WallLink.m in Sources */,
