@@ -700,159 +700,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nFA-bM-RsU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-197" y="1035"/>
-        </scene>
-        <!--Settings View-->
-        <scene sceneID="bXU-h3-Ykn">
-            <objects>
-                <viewController storyboardIdentifier="LevelView" id="Na4-vL-RCq" customClass="SettingsView" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="dTG-ht-cVI"/>
-                        <viewControllerLayoutGuide type="bottom" id="h5E-aQ-PDk"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ibn-SG-pSf">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="SETTINGS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6mM-iH-CrC">
-                                <rect key="frame" x="41" y="63" width="238" height="59"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="45"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sn5-LM-Z0D">
-                                <rect key="frame" x="0.0" y="25" width="122" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="122" id="MU7-Gl-727"/>
-                                    <constraint firstAttribute="height" constant="30" id="mgr-eC-r4k"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="MAIN MENU" backgroundImage="buttonBackground.png">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="gH1-FD-FNq" kind="presentation" id="iH6-zv-hEy"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SIf-t3-Bu8">
-                                <rect key="frame" x="198" y="25" width="122" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="122" id="ADY-Lo-3b0"/>
-                                    <constraint firstAttribute="height" constant="30" id="fqz-TD-hlL"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="PLAY" backgroundImage="buttonBackground.png">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="hyD-Q8-Bup" kind="presentation" id="OGq-Mz-qzP"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Zo-Rd-QlB">
-                                <rect key="frame" x="73" y="166" width="174" height="33"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.45000000000000001" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="138" id="BZP-ws-cRj"/>
-                                    <constraint firstAttribute="width" constant="174" id="hQY-RU-KhE"/>
-                                    <constraint firstAttribute="height" constant="27" id="iyY-6f-0Ie"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Restart from Level 0">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="BZP-ws-cRj"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="didPressRestartButton:" destination="Na4-vL-RCq" eventType="touchUpInside" id="bcd-5E-tos"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Difficulty Setting" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nLc-Ah-zwg">
-                                <rect key="frame" x="0.0" y="269" width="145" height="30"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.45000000000000001" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pcd-SP-3r6">
-                                <rect key="frame" x="225" y="231" width="95" height="30"/>
-                                <state key="normal" title="Easy">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="didPressEasyButton:" destination="Na4-vL-RCq" eventType="touchUpInside" id="sYZ-yS-FOe"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7DA-qi-5CN">
-                                <rect key="frame" x="222" y="269" width="98" height="30"/>
-                                <state key="normal" title="Medium">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="didPressMediumButton:" destination="Na4-vL-RCq" eventType="touchUpInside" id="245-aU-6ox"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GZF-9G-AJq">
-                                <rect key="frame" x="219" y="307" width="101" height="30"/>
-                                <state key="normal" title="Stupid Hard">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="didPressHardButton:" destination="Na4-vL-RCq" eventType="touchUpInside" id="y3o-HP-Pzj"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="0.066666666669999999" green="0.37647058820000001" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="6mM-iH-CrC" firstAttribute="leading" secondItem="Ibn-SG-pSf" secondAttribute="leadingMargin" constant="25" id="0Xu-bq-IEB"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="6mM-iH-CrC" secondAttribute="trailing" constant="25" id="4M8-fA-ZVW"/>
-                            <constraint firstItem="sn5-LM-Z0D" firstAttribute="top" secondItem="Ibn-SG-pSf" secondAttribute="topMargin" constant="25" id="5gg-nq-7Ca"/>
-                            <constraint firstItem="SIf-t3-Bu8" firstAttribute="top" secondItem="Ibn-SG-pSf" secondAttribute="topMargin" constant="25" id="736-Oz-KqK"/>
-                            <constraint firstAttribute="centerX" secondItem="1Zo-Rd-QlB" secondAttribute="centerX" id="98L-wo-Lbp"/>
-                            <constraint firstItem="sn5-LM-Z0D" firstAttribute="leading" secondItem="Ibn-SG-pSf" secondAttribute="leadingMargin" constant="-16" id="aer-d3-no5"/>
-                            <constraint firstItem="sn5-LM-Z0D" firstAttribute="leading" secondItem="Ibn-SG-pSf" secondAttribute="leadingMargin" constant="-16" id="axl-EF-Zv1"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="SIf-t3-Bu8" secondAttribute="trailing" id="j7s-Nh-dcS"/>
-                            <constraint firstItem="1Zo-Rd-QlB" firstAttribute="top" secondItem="Ibn-SG-pSf" secondAttribute="topMargin" constant="167" id="jYH-YV-5sR"/>
-                            <constraint firstItem="1Zo-Rd-QlB" firstAttribute="leading" secondItem="Ibn-SG-pSf" secondAttribute="leadingMargin" constant="75" id="nkb-9e-kTz"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="1Zo-Rd-QlB" secondAttribute="trailing" constant="75" id="uRp-rF-5um"/>
-                            <constraint firstItem="6mM-iH-CrC" firstAttribute="top" secondItem="Ibn-SG-pSf" secondAttribute="topMargin" constant="63" id="wMp-Gv-Gfq"/>
-                            <constraint firstAttribute="centerX" secondItem="6mM-iH-CrC" secondAttribute="centerX" id="weZ-N0-ieU"/>
-                            <constraint firstAttribute="centerX" secondItem="1Zo-Rd-QlB" secondAttribute="centerX" id="xHE-oi-tDl"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="SIf-t3-Bu8" secondAttribute="trailing" constant="-16" id="ydw-US-jMx"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="aer-d3-no5"/>
-                                <exclude reference="0Xu-bq-IEB"/>
-                                <exclude reference="4M8-fA-ZVW"/>
-                                <exclude reference="98L-wo-Lbp"/>
-                                <exclude reference="nkb-9e-kTz"/>
-                                <exclude reference="uRp-rF-5um"/>
-                                <exclude reference="j7s-Nh-dcS"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="568"/>
-                    <connections>
-                        <outlet property="difficultyLabel" destination="nLc-Ah-zwg" id="1gs-Ra-cuw"/>
-                        <outlet property="easyButton" destination="pcd-SP-3r6" id="z0t-69-Z04"/>
-                        <outlet property="hardButton" destination="GZF-9G-AJq" id="e5P-uv-Rmo"/>
-                        <outlet property="mediumButton" destination="7DA-qi-5CN" id="rBt-dx-NAw"/>
-                        <outlet property="restartButton" destination="1Zo-Rd-QlB" id="Ed4-GK-vWg"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="a93-bB-guV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-780" y="1193"/>
+            <point key="canvasLocation" x="-197" y="1110"/>
         </scene>
         <!--Level View Controller-->
         <scene sceneID="CBc-Zj-Icv">
@@ -960,7 +808,7 @@
                                 </state>
                                 <connections>
                                     <action selector="didPressSettings:" destination="hyD-Q8-Bup" eventType="touchUpInside" id="k9b-Cl-vkF"/>
-                                    <segue destination="Na4-vL-RCq" kind="presentation" id="dNy-6p-0qm"/>
+                                    <segue destination="uGD-eb-FZr" kind="show" id="8pL-5X-aja"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9j5-yj-cRI">
@@ -1182,7 +1030,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NQA-gM-Fb3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="300" y="670"/>
+            <point key="canvasLocation" x="364" y="310"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="YRw-hF-uXI">
@@ -1211,7 +1059,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iaJ-iw-oAF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="696" y="1685"/>
+            <point key="canvasLocation" x="660" y="1110"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kE6-v2-jAT">
@@ -1227,7 +1075,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6d5-mg-oAr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="221" y="1685"/>
+            <point key="canvasLocation" x="221" y="1110"/>
         </scene>
         <!--Home View-->
         <scene sceneID="lWf-RO-72O">
@@ -1386,7 +1234,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Y3-On-XIm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1970" y="1271"/>
+            <point key="canvasLocation" x="-1216" y="305"/>
         </scene>
         <!--Sub Settings View Controller-->
         <scene sceneID="eHe-LE-V8Y">
@@ -1414,7 +1262,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vk2-iw-B0f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1422" y="1717"/>
+            <point key="canvasLocation" x="-1216" y="1027"/>
         </scene>
         <!--SETTINGS-->
         <scene sceneID="hfg-gP-6g1">
@@ -1430,7 +1278,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="198-6A-Svn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1368" y="587"/>
+            <point key="canvasLocation" x="-756" y="310"/>
         </scene>
         <!--Easter Egg View-->
         <scene sceneID="d3g-sv-EKL">
@@ -1600,24 +1448,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AsB-1q-972" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-650" y="310"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="BZh-Za-Z7a">
-            <objects>
-                <viewController id="q48-OR-fTS" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="obc-eF-et0"/>
-                        <viewControllerLayoutGuide type="bottom" id="VuL-CG-NGn"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="TFR-nI-ARr">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GMC-6S-8xa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
+            <point key="canvasLocation" x="-197" y="-474"/>
         </scene>
     </scenes>
     <resources>
@@ -1640,7 +1471,8 @@
         <image name="newKamikaze.png" width="80" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="P6k-iK-7Wa"/>
-        <segue reference="nDy-dK-Ha5"/>
+        <segue reference="dAf-tv-2lk"/>
+        <segue reference="Bu6-qs-DXt"/>
+        <segue reference="8pL-5X-aja"/>
     </inferredMetricsTieBreakers>
 </document>

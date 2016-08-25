@@ -7,17 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "arrowCell.h"
 #import "AppUtilities.h"
 #import "AppConstants.h"
 #import "LevelViewController.h"
 #import "SettingsViewController.h"
 
+#import "arrowCell.h"
+#import "HeaderCell.h"
+#import "DescriptionView.h"
+
 @interface HowToPlayViewController : UITableViewController
 {
     NSArray* tableData;
     NSArray* sectionTitles;
-    
+    NSArray* imageFileNames;
+    NSArray* descriptions;
     int rowHeight;
 }
 

@@ -17,13 +17,13 @@
     [self establishGestures];
     
     //NOTIFICATION INITILIZER, LIMITED TO ONLY ONE OBSERVER
-
+    NSLog(@"Level View Did Load");
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deathNotifcation:) name:@"DeathNotification" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backgroundActivityNotification:) name:@"BackgroundActivityStarted" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addLinksNotification:) name:@"AddLinks" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(youWonNotification:) name:@"YouWin" object:nil];
         
-
     //CREATE OBJECTS FILE IF FILE DOES NOT EXIST
     if ([AppUtilities doesFileExistAtPath:[AppUtilities getPathToLevelObjectsFile]] == NO)
     {
@@ -99,6 +99,15 @@
     [self placeStaticObjects];
     
     [super viewDidLoad];
+}
+-(void)viewDidDisappear:(BOOL)animated
+{
+    //clean up the notification center when the view disappears
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"DeathNotification" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"BackgroundActivityStarted" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"AddLinks" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"YouWin" object:nil];
+    NSLog(@"Level View did disappear");
 }
 
 #pragma mark - Notifications

@@ -21,6 +21,10 @@
     
     sectionTitles = @[@"OBJECTIVE",@"SNAKE MOVEMENT",@"SHAPE SHIFTING",@"ENEMIES",@"POWER UPS"];
     
+    //filler will never be called
+    //there should be a filler string in the enemy pictures as well
+    imageFileNames = @[@[@"base.png"],@[@"Snake.png"],@[@"filler",@"CircleShape.png",@"LineShape.png",@"SquareShape.png",@"TriangleShape"],@[@"mineImage2.png",@"blockadeElement.png",@"kamikaze.png",@"TurretGun.png"],@[@"lifePowerUp.png"]];
+    
     self.navigationItem.title = @"HOW TO PLAY";
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
@@ -86,61 +90,90 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 65; // you can have your own choice, of course
+    return 55; // you can have your own choice, of course
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return rowHeight;
+    if (indexPath.section < 2)
+    {
+        return 55;
+    }
+    else
+    {
+        return 300; //really tall description cells
+    }
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    static NSString *HeaderCellIdentifier = @"Header";
+    HeaderCell* cell = [[[NSBundle mainBundle] loadNibNamed:@"HeaderCell" owner:self options:nil] lastObject];
+    [tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+
+    cell.mainLabel.text = [sectionTitles objectAtIndex:section];
+    cell.mainLabel.font = [UIFont boldSystemFontOfSize:30];
+    cell.mainLabel.textAlignment = NSTextAlignmentCenter;
+    cell.mainLabel.textColor = [UIColor whiteColor];
+    cell.backgroundColor = [UIColor colorWithRed:22/255.f green:119/255.f blue:205/255.f alpha:1];
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:HeaderCellIdentifier];
-    
-    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:HeaderCellIdentifier];
-    
-    cell.backgroundColor = [UIColor blueColor]; //make this the RGB of the color that is always used
-    
-    cell.textLabel.text = [sectionTitles objectAtIndex:section];
-    cell.textLabel.font = [UIFont boldSystemFontOfSize:30];
-    cell.textLabel.textColor = [UIColor whiteColor];
     return cell;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    arrowCell* cell = [[[NSBundle mainBundle] loadNibNamed:@"arrowCell" owner:self options:nil] lastObject];
-    [tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-    
-    cell.textLabel.text = [[tableData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    
-//    cell.textLabel.text = [tableData objectAtIndex:indexPath.row];
-    
-//    if (indexPath.row == 3)
-//    {
-//        UISwitch* aSwicth= [[UISwitch alloc] initWithFrame:CGRectZero];
-//        [cell addSubview:aSwicth];
-//        [cell setAccessoryView:aSwicth];
-//    }
-//    else
-//    {
-//        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator]; //the grey chevron
-//    }
-    
-    //    cell.imageView.image = [UIImage imageNamed:@"units.png"];
-    return cell;
+    if (indexPath.section < 2)
+    {
+        arrowCell* cell = [[[NSBundle mainBundle] loadNibNamed:@"arrowCell" owner:self options:nil] lastObject];
+        [tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+        
+        cell.textLabel.text = [[tableData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+        
+        return cell;
+    }
+    else
+    {
+        if (indexPath.row == 0 && indexPath.section == 2)
+        {
+            arrowCell* cell = [[[NSBundle mainBundle] loadNibNamed:@"arrowCell" owner:self options:nil] lastObject];
+            [tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+            
+            cell.textLabel.text = [[tableData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+            
+            return cell;
+        }
+        else
+        {
+            DescriptionView* cell = [[[NSBundle mainBundle] loadNibNamed:@"DescriptionView" owner:self options:nil] lastObject];
+            [tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+            
+            cell.titleLabel.text = [[tableData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+            cell.titleLabel.textAlignment = NSTextAlignmentCenter;
+            cell.titleLabel.font = [UIFont boldSystemFontOfSize:20];
+            
+            cell.descriptionLabel.numberOfLines = 10;
+            cell.descriptionLabel.text = [NSString stringWithFormat:@"WEll this is point number 1.\n this is should be on a nother line \n and this will be the third point, but it is also a really long sentence which should cause a problem for the phone table view to handle??????\n what if there is even more informtion, the label should just rise up, and allow this text to fill in, righ? i hope so."];
+            
+            NSLog(@"section:%ld, row:%ld",(long)indexPath.section,(long)indexPath.row);
+            
+            NSString* imgStr = [[imageFileNames objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+            
+            cell.descriptionImageView.image = [UIImage imageNamed:imgStr];
+            
+            //        cell.descriptionImageView.image = [UIImage imageNamed:@"kamikaze.png"];
+            return cell;
+        }
+
+    }
+
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    self.selectedRow = (int)indexPath.row;
-    self.selectedSection = (int)indexPath.section;
-    self.actualSelectedIndex  = [self getActualIndex];
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    self.selectedRow = (int)indexPath.row;
+//    self.selectedSection = (int)indexPath.section;
+//    self.actualSelectedIndex  = [self getActualIndex];
     
 }
 

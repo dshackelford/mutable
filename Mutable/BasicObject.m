@@ -55,6 +55,7 @@
 -(void)crash
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"DeathNotification" object:self];
+    NSLog(@"crash!");
 }
 
 -(void)hit
