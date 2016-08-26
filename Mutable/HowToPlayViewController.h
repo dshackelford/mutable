@@ -15,6 +15,7 @@
 #import "arrowCell.h"
 #import "HeaderCell.h"
 #import "DescriptionView.h"
+#import "DescriptionTextView.h"
 
 @interface HowToPlayViewController : UITableViewController
 {
@@ -23,6 +24,7 @@
     NSArray* imageFileNames;
     NSArray* descriptions;
     int rowHeight;
+    CGSize screenSize;
 }
 
 @property int selectedRow;

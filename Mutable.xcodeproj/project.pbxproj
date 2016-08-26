@@ -15,7 +15,6 @@
 		690646641B8121A1004D6152 /* MutableIcon 58.png in Resources */ = {isa = PBXBuildFile; fileRef = 690646621B8121A1004D6152 /* MutableIcon 58.png */; };
 		690646651B8121A1004D6152 /* MutableIcon 80.png in Resources */ = {isa = PBXBuildFile; fileRef = 690646631B8121A1004D6152 /* MutableIcon 80.png */; };
 		69196FC81B3A024000DAB092 /* HeadLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 69196FC71B3A024000DAB092 /* HeadLink.m */; };
-		69196FCA1B3A368F00DAB092 /* EasterEggView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69196FC91B3A368F00DAB092 /* EasterEggView.m */; };
 		691FB30C1D6D7A8600EAD5EF /* SubSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 691FB30B1D6D7A8600EAD5EF /* SubSettingsViewController.m */; };
 		691FE9F01ABA2F1700120DEA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 691FE9EF1ABA2F1700120DEA /* main.m */; };
 		691FE9F31ABA2F1700120DEA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 691FE9F21ABA2F1700120DEA /* AppDelegate.m */; };
@@ -73,6 +72,9 @@
 		69A9FC681B388A3900767670 /* BlockadeElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A9FC671B388A3900767670 /* BlockadeElement.m */; };
 		69A9FC6A1B388A4600767670 /* Shifting.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A9FC691B388A4600767670 /* Shifting.m */; };
 		69A9FC6E1B388A6D00767670 /* Drone.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A9FC6D1B388A6D00767670 /* Drone.m */; };
+		69AE384F1D6FFC7C00A7C7E6 /* DescriptionTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69AE384E1D6FFC7C00A7C7E6 /* DescriptionTextView.xib */; };
+		69AE38511D6FFCA500A7C7E6 /* DescriptionTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AE38501D6FFCA500A7C7E6 /* DescriptionTextView.m */; };
+		69AE38541D70029700A7C7E6 /* EasterEggViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AE38531D70029700A7C7E6 /* EasterEggViewController.m */; };
 		69B1C3261D6EB6F30061EEA6 /* HeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69B1C3251D6EB6F30061EEA6 /* HeaderCell.xib */; };
 		69B1C3281D6EB7180061EEA6 /* HeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B1C3271D6EB7180061EEA6 /* HeaderCell.m */; };
 		69B1C32C1D6EB8F70061EEA6 /* DescriptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69B1C32B1D6EB8F70061EEA6 /* DescriptionView.xib */; };
@@ -87,7 +89,6 @@
 		69D743011B86E0AB00844502 /* Tracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D743001B86E0AB00844502 /* Tracker.m */; };
 		69DB88611B4825EA00D84112 /* AppUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DB88601B4825EA00D84112 /* AppUtilities.m */; };
 		69DFF25B1AC0760B001D53CE /* HomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DFF25A1AC0760B001D53CE /* HomeView.m */; };
-		69DFF2661AC07D76001D53CE /* HowToPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DFF2651AC07D76001D53CE /* HowToPlayView.m */; };
 		69E5F6A71B4CBEAD00BE4B6F /* lifePowerUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 69E5F6A61B4CBEAD00BE4B6F /* lifePowerUp.png */; };
 		69E955D51C2C64CF009F4C6D /* ViewPopulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E955D41C2C64CF009F4C6D /* ViewPopulator.m */; };
 		69F647C51BA93B0800D8BD88 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F647C41BA93B0800D8BD88 /* MasterViewController.m */; };
@@ -113,8 +114,6 @@
 		690646631B8121A1004D6152 /* MutableIcon 80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MutableIcon 80.png"; sourceTree = "<group>"; };
 		69196FC61B3A023800DAB092 /* HeadLink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeadLink.h; sourceTree = "<group>"; };
 		69196FC71B3A024000DAB092 /* HeadLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeadLink.m; sourceTree = "<group>"; };
-		69196FC91B3A368F00DAB092 /* EasterEggView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasterEggView.m; sourceTree = "<group>"; };
-		69196FCB1B3A369800DAB092 /* EasterEggView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EasterEggView.h; sourceTree = "<group>"; };
 		691FB30B1D6D7A8600EAD5EF /* SubSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubSettingsViewController.m; sourceTree = "<group>"; };
 		691FB30D1D6D7A9000EAD5EF /* SubSettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubSettingsViewController.h; sourceTree = "<group>"; };
 		691FE9EA1ABA2F1700120DEA /* Mutable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mutable.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -201,6 +200,11 @@
 		69A9FC6B1B388A4C00767670 /* Shifting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shifting.h; sourceTree = "<group>"; };
 		69A9FC6C1B388A6300767670 /* Drone.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Drone.h; sourceTree = "<group>"; };
 		69A9FC6D1B388A6D00767670 /* Drone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Drone.m; sourceTree = "<group>"; };
+		69AE384E1D6FFC7C00A7C7E6 /* DescriptionTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DescriptionTextView.xib; sourceTree = "<group>"; };
+		69AE38501D6FFCA500A7C7E6 /* DescriptionTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DescriptionTextView.m; sourceTree = "<group>"; };
+		69AE38521D6FFCAD00A7C7E6 /* DescriptionTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DescriptionTextView.h; sourceTree = "<group>"; };
+		69AE38531D70029700A7C7E6 /* EasterEggViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasterEggViewController.m; sourceTree = "<group>"; };
+		69AE38551D70029F00A7C7E6 /* EasterEggViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EasterEggViewController.h; sourceTree = "<group>"; };
 		69B1C3251D6EB6F30061EEA6 /* HeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderCell.xib; sourceTree = "<group>"; };
 		69B1C3271D6EB7180061EEA6 /* HeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderCell.m; sourceTree = "<group>"; };
 		69B1C3291D6EB7200061EEA6 /* HeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeaderCell.h; sourceTree = "<group>"; };
@@ -223,8 +227,6 @@
 		69DB88601B4825EA00D84112 /* AppUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppUtilities.m; sourceTree = "<group>"; };
 		69DFF25A1AC0760B001D53CE /* HomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeView.m; sourceTree = "<group>"; };
 		69DFF25C1AC07613001D53CE /* HomeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeView.h; sourceTree = "<group>"; };
-		69DFF2651AC07D76001D53CE /* HowToPlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HowToPlayView.m; sourceTree = "<group>"; };
-		69DFF2671AC07D89001D53CE /* HowToPlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HowToPlayView.h; sourceTree = "<group>"; };
 		69E5F6A61B4CBEAD00BE4B6F /* lifePowerUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lifePowerUp.png; sourceTree = "<group>"; };
 		69E955D31C2C64C6009F4C6D /* ViewPopulator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewPopulator.h; sourceTree = "<group>"; };
 		69E955D41C2C64CF009F4C6D /* ViewPopulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewPopulator.m; sourceTree = "<group>"; };
@@ -301,8 +303,8 @@
 				699B56A31B5F28DC00B735C7 /* arrow.png */,
 				699B56A11B5F27E000B735C7 /* base2.png */,
 				699B569D1B5F255D00B735C7 /* mineImage2.png */,
-				699B569F1B5F263E00B735C7 /* blockadeElement.png */,
 				695B1D301B5DC99400BAA2C9 /* greyBackground.png */,
+				699B569F1B5F263E00B735C7 /* blockadeElement.png */,
 				695B1D2E1B5DBDF900BAA2C9 /* redBackground.png */,
 				69A7B45C1B4E0EE000E62477 /* TurretGun.png */,
 				69E5F6A61B4CBEAD00BE4B6F /* lifePowerUp.png */,
@@ -434,6 +436,9 @@
 				69B1C32F1D6EB9080061EEA6 /* DescriptionView.h */,
 				69B1C32D1D6EB9020061EEA6 /* DescriptionView.m */,
 				69B1C32B1D6EB8F70061EEA6 /* DescriptionView.xib */,
+				69AE38521D6FFCAD00A7C7E6 /* DescriptionTextView.h */,
+				69AE38501D6FFCA500A7C7E6 /* DescriptionTextView.m */,
+				69AE384E1D6FFC7C00A7C7E6 /* DescriptionTextView.xib */,
 			);
 			name = "Table Cells";
 			sourceTree = "<group>";
@@ -469,10 +474,8 @@
 				691FB30B1D6D7A8600EAD5EF /* SubSettingsViewController.m */,
 				69D1DC8D1D5EF41100DF29B5 /* HowToPlayViewController.h */,
 				69D1DC8B1D5EF40600DF29B5 /* HowToPlayViewController.m */,
-				69DFF2671AC07D89001D53CE /* HowToPlayView.h */,
-				69DFF2651AC07D76001D53CE /* HowToPlayView.m */,
-				69196FCB1B3A369800DAB092 /* EasterEggView.h */,
-				69196FC91B3A368F00DAB092 /* EasterEggView.m */,
+				69AE38551D70029F00A7C7E6 /* EasterEggViewController.h */,
+				69AE38531D70029700A7C7E6 /* EasterEggViewController.m */,
 				69B1C32A1D6EB7290061EEA6 /* Table Cells */,
 			);
 			name = ViewControllers;
@@ -584,6 +587,7 @@
 				699B56A41B5F28DC00B735C7 /* arrow.png in Resources */,
 				69854FAD1AD24B6000F5327D /* health.png in Resources */,
 				691FE9FE1ABA2F1700120DEA /* LaunchScreen.xib in Resources */,
+				69AE384F1D6FFC7C00A7C7E6 /* DescriptionTextView.xib in Resources */,
 				69E5F6A71B4CBEAD00BE4B6F /* lifePowerUp.png in Resources */,
 				697574961B3F0243006C5344 /* HeadLink.png in Resources */,
 				699B56A81B5F2A6900B735C7 /* Laser.png in Resources */,
@@ -626,11 +630,11 @@
 				69A9FC6A1B388A4600767670 /* Shifting.m in Sources */,
 				693A8C1C1C29F1D10084BD61 /* WallLink.m in Sources */,
 				699B56B01B60655A00B735C7 /* BasicObject.m in Sources */,
-				69196FCA1B3A368F00DAB092 /* EasterEggView.m in Sources */,
 				69B1C32E1D6EB9020061EEA6 /* DescriptionView.m in Sources */,
 				69A9FC6E1B388A6D00767670 /* Drone.m in Sources */,
 				69A9FC681B388A3900767670 /* BlockadeElement.m in Sources */,
 				69DB88611B4825EA00D84112 /* AppUtilities.m in Sources */,
+				69AE38541D70029700A7C7E6 /* EasterEggViewController.m in Sources */,
 				69D1DC841D5EEDC100DF29B5 /* SettingsViewController.m in Sources */,
 				697E12581ABB691C0037D307 /* MovingObject.m in Sources */,
 				69B1C3281D6EB7180061EEA6 /* HeaderCell.m in Sources */,
@@ -648,13 +652,13 @@
 				6974E9511B68545300CE51B9 /* Barracade.m in Sources */,
 				69E955D51C2C64CF009F4C6D /* ViewPopulator.m in Sources */,
 				69D1DC891D5EEF0B00DF29B5 /* arrowCell.m in Sources */,
-				69DFF2661AC07D76001D53CE /* HowToPlayView.m in Sources */,
 				697E2DBB1B39BB8A00DD0696 /* Gem.m in Sources */,
 				697E125A1ABB6B4E0037D307 /* LevelViewController.m in Sources */,
 				693A8C191C29F10B0084BD61 /* MovingWall.m in Sources */,
 				69DFF25B1AC0760B001D53CE /* HomeView.m in Sources */,
 				69D1DC8C1D5EF40600DF29B5 /* HowToPlayViewController.m in Sources */,
 				691FE9F01ABA2F1700120DEA /* main.m in Sources */,
+				69AE38511D6FFCA500A7C7E6 /* DescriptionTextView.m in Sources */,
 				69A7B4601B4E0F0200E62477 /* TurretGun.m in Sources */,
 				6974E94A1B67187200CE51B9 /* DoubleBullet.m in Sources */,
 				692B65681B69C70F00878A0E /* Projectile.m in Sources */,
