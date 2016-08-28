@@ -48,7 +48,6 @@
     TurretGun* levelTurretGun;
     ViewPopulator* theViewPopulator;
     
-    
     double initialHeadLatitude;
     double initialHeadLongitude;
     double initialHeadVelocityX;
@@ -79,9 +78,7 @@
 
     //PROCEDURAL BUTTONS
     IBOutlet UIButton* placeHolderButton;
-    IBOutlet UIButton* keepPlayingButton;
-    IBOutlet UIButton* nextLevelButton;
-    IBOutlet UIButton* restartButton;
+    IBOutlet UIButton* gameActionButton;
    
     //LABELS
     IBOutlet UILabel* ammoCount;
@@ -102,6 +99,8 @@
     double turretGunCounter;
     double bigBulletCounter;
     double healthRegenerationCounter;
+    
+    BOOL paused;
 }
 
 -(void)placeStaticObjects;
@@ -131,6 +130,8 @@
 -(IBAction)didPressNextLevel:(id)sender;
 -(IBAction)didPressRestartButton:(id)sender;
 -(IBAction)didPressCirlcShapeShiftButton:(id)sender;
+
+-(IBAction)didPressGameActionButton:(id)sender;
 
 //GESTURE ACTIONS
 //-(void)didTwoFingerTouch:(UIPanGestureRecognizer*)aTwoFingerTouch;

@@ -70,7 +70,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 0; // you can have your own choice, of course
+    return 30; // you can have your own choice, of course
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -81,7 +81,7 @@
     }
     else if(indexPath.row == 4)
     {
-        return 175;
+        return 150;
     }
     else if(indexPath.row == 5)
     {
@@ -93,6 +93,18 @@
         return 150;
     }
 
+}
+
+//SECTIONS
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    static NSString *HeaderCellIdentifier = @"Header";
+    
+    UITableViewCell* cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:HeaderCellIdentifier];
+    
+    cell.backgroundColor = [UIColor colorWithRed:22/255.f green:119/255.f blue:205/255.f alpha:1];
+    
+    return cell;
 }
 
 
@@ -131,7 +143,6 @@
     }
     else if (indexPath.row != 5)
     {
-
         HeaderCell* cell = [[[NSBundle mainBundle] loadNibNamed:@"HeaderCell" owner:self options:nil] lastObject];
         [tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
         
@@ -168,6 +179,16 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         cell.descriptionImageView.image = [UIImage imageNamed:@"Small Logo.png"];
+        
+        UIView* topSeparatorLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 5)];/// change size as you need.
+        UIView* bottomSeparatorLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 45 - 5, tableView.frame.size.width, 5)];
+        topSeparatorLineView.backgroundColor = [UIColor whiteColor];
+        bottomSeparatorLineView.backgroundColor = [UIColor whiteColor];// you can also put image here
+        
+        [cell.contentView addSubview:topSeparatorLineView];
+//        [cell.contentView addSubview:bottomSeparatorLineView];
+        
+        
         
         return cell;
     }

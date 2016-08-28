@@ -27,6 +27,8 @@
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"MAIN" style:UIBarButtonItemStylePlain target:self action:@selector(mainMenuButtonTapped:)];
     
     self.tableView.scrollEnabled = NO;
+    
+    self.tableView.backgroundColor = [UIColor colorWithRed:22/255.f green:119/255.f blue:205/255.f alpha:1];
 }
 
 -(IBAction)mainMenuButtonTapped:(id)sender
@@ -85,9 +87,11 @@
     arrowCell* cell = [[[NSBundle mainBundle] loadNibNamed:@"arrowCell" owner:self options:nil] lastObject];
     [tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
     
-    
-//  cell.textLabel.text = [[tableData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     cell.textLabel.text = [tableData objectAtIndex:indexPath.row];
+    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.font = [UIFont systemFontOfSize:20];
+    
+    cell.backgroundColor = [UIColor colorWithRed:22/255.f green:119/255.f blue:205/255.f alpha:1];
     
     if (indexPath.row == 3)
     {
@@ -99,8 +103,7 @@
     {
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator]; //the grey chevron
     }
-    
-    //    cell.imageView.image = [UIImage imageNamed:@"units.png"];
+
     return cell;
 }
 

@@ -21,7 +21,9 @@
     //removes the lines around cells not being used!
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
-    self.tableView.backgroundColor = [UIColor colorWithRed:240/255.f green:240/255.f blue:240/255.f alpha:1];
+    self.tableView.backgroundColor = [UIColor colorWithRed:22/255.f green:119/255.f blue:205/255.f alpha:1];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,7 +64,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell* cell = [[[NSBundle mainBundle] loadNibNamed:@"arrowCell" owner:self options:nil] lastObject];
+    arrowCell* cell = [[[NSBundle mainBundle] loadNibNamed:@"arrowCell" owner:self options:nil] lastObject];
     
     [tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
     
@@ -74,6 +76,13 @@
 
 
     cell.textLabel.text = [tableData objectAtIndex:indexPath.row];
+    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.font = [UIFont systemFontOfSize:20];
+    
+    cell.backgroundColor = [UIColor colorWithRed:22/255.f green:119/255.f blue:205/255.f alpha:1];
+    
+    [cell setTintColor:[UIColor whiteColor]];
+    
     return cell;
     
 }
@@ -83,21 +92,16 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    int selectedRow = indexPath.row;
+    UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
     
-    //change the preference file to reflect this new status
-    
-    NSLog(@"touch on row %d", selectedRow);
+    if (cell.accessoryType != UITableViewCellAccessoryCheckmark)
+    {
+        //set this to the difficulty in the setting file
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        //not complete
+    }
     
 }
 
-
-- (void)updateSwitchAtIndexPath:(UISegmentedControl*)segControl
-{
-    NSLog(@"%d",(int)segControl.tag);
-    NSLog(@"valu: %d",(int)segControl.selectedSegmentIndex);
-    
-    //write the new indicator value to prefernce factory here
-}
 
 @end

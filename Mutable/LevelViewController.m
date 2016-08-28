@@ -19,6 +19,7 @@
     //NOTIFICATION INITILIZER, LIMITED TO ONLY ONE OBSERVER
     NSLog(@"Level View Did Load");
     
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deathNotifcation:) name:@"DeathNotification" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backgroundActivityNotification:) name:@"BackgroundActivityStarted" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addLinksNotification:) name:@"AddLinks" object:nil];
@@ -52,15 +53,13 @@
     mainMenuButton.hidden = YES;
     settingsButton.hidden = YES;
     howToPlayButton.hidden = YES;
-    keepPlayingButton.hidden = YES;
     placeHolderButton.hidden = YES;
     endLevelLabel.hidden = YES;
     endLevelLabel.numberOfLines = 2;
-    restartButton.hidden = YES;
-    nextLevelButton.hidden = YES;
     pauseButton.hidden = NO;
     ammoCount.hidden = NO;
     shapeUnlockLabel.hidden = YES;
+    gameActionButton.hidden = YES;
     
     levelCountLabel.hidden = NO;
     levelCountLabel.text = [NSString stringWithFormat:@"LEVEL: %.f",currentLevel];
@@ -142,7 +141,6 @@
     mainMenuButton.hidden = NO;
     settingsButton.hidden = NO;
     howToPlayButton.hidden = NO;
-    keepPlayingButton.hidden = NO;
     endLevelLabel.hidden = NO;
     endLevelLabel.text = [NSString stringWithFormat:@"PAUSED"];
     ammoCount.hidden = YES;
@@ -376,7 +374,7 @@
     
     [dictionaryFromFile writeToFile:[AppUtilities getPathToUserInfoFile] atomically:YES ];
     
-    won = NO;
+    won = YES;
     
     backgroundImage = [self makeGreenBackgroundMenuImage];
     
@@ -391,33 +389,12 @@
     pauseButton.hidden = YES;
     levelCountLabel.hidden = YES;
     
+    gameActionButton.hidden = YES;
+    [gameActionButton setTitle:@"NEXT LEVEL?" forState:UIControlStateNormal];
+    
     [[levelGem getImage] removeFromSuperview];
     
-    endLevelTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(delayWonResponse) userInfo:nil repeats:YES];
-}
-
-
--(void)delayWonResponse
-{
-    lostCounter = lostCounter + 1;
-    
-    if (lostCounter == 2)
-    {
-        nextLevelButton.hidden = NO;
-    }
-    if (lostCounter == 3)
-    {
-        mainMenuButton.hidden = NO;
-    }
-    if (lostCounter == 4)
-    {
-        settingsButton.hidden = NO;
-    }
-    if (lostCounter == 5)
-    {
-        howToPlayButton.hidden = NO;
-        [endLevelTimer invalidate];
-    }
+    endLevelTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(levelEndResponse) userInfo:nil repeats:YES];
 }
 
 
@@ -444,22 +421,25 @@
     levelCountLabel.hidden = YES;
     shapeUnlockLabel.hidden = YES;
     
+    gameActionButton.hidden = YES;
+    [gameActionButton setTitle:@"TRY AGAIN?" forState:UIControlStateNormal];
+    
     triangle = NO;
     square = NO;
     circle = NO;
     line = NO;
     
-    endLevelTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(delayLostResponse) userInfo:nil repeats:YES];
+    endLevelTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(levelEndResponse) userInfo:nil repeats:YES];
     
 }
 
--(void)delayLostResponse
+-(void)levelEndResponse
 {
     lostCounter = lostCounter + 1;
     
     if (lostCounter == 2)
     {
-        restartButton.hidden = NO;
+        gameActionButton.hidden = NO;
     }
     
     if (lostCounter == 3)
@@ -728,23 +708,27 @@
 {
     [theTimer invalidate];
     
+    paused = YES;
+    
     pauseButton.hidden = YES;
     mainMenuButton.hidden = NO;
     settingsButton.hidden = NO;
     howToPlayButton.hidden = NO;
-    keepPlayingButton.hidden = NO;
     endLevelLabel.hidden = NO;
     endLevelLabel.text = [NSString stringWithFormat:@"PAUSED"];
     ammoCount.hidden = YES;
     levelCountLabel.hidden = YES;
     shapeUnlockLabel.hidden = YES;
     
+    gameActionButton.hidden = NO;
+    [gameActionButton setTitle:@"KEEP PLAYING?" forState:UIControlStateNormal];
     
     backgroundImage = [self makeGreyBackgroundMenuImage];
     
     [self.view insertSubview:backgroundImage aboveSubview:placeHolderButton];
 }
 
+//GAME ACTION BUTTONS
 -(IBAction)didPressKeepPlaying:(id)sender
 {
     theTimer = [NSTimer scheduledTimerWithTimeInterval:deltaTime target:self selector:@selector(updateMovement) userInfo:nil repeats:YES];
@@ -753,13 +737,74 @@
     mainMenuButton.hidden = YES;
     settingsButton.hidden = YES;
     howToPlayButton.hidden = YES;
-    keepPlayingButton.hidden = YES;
     endLevelLabel.hidden = YES;
     ammoCount.hidden = NO;
     
     [backgroundImage removeFromSuperview];
 }
 
+-(IBAction)didPressGameActionButton:(id)sender
+{
+    if (paused) //keep playing becuase you paused the game
+    {
+        theTimer = [NSTimer scheduledTimerWithTimeInterval:deltaTime target:self selector:@selector(updateMovement) userInfo:nil repeats:YES];
+        pauseButton.hidden = NO;
+        mainMenuButton.hidden = YES;
+        settingsButton.hidden = YES;
+        howToPlayButton.hidden = YES;
+        endLevelLabel.hidden = YES;
+        ammoCount.hidden = NO;
+        
+        [backgroundImage removeFromSuperview];
+        
+        paused = NO;
+    }
+    else if(won == YES) //nextLevel beacsue you beat the level
+    {
+        restart = NO;
+        NSLog(@"%f",currentLevel);
+        UIStoryboard* storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        LevelViewController* lvc= (LevelViewController*)[storyBoard instantiateViewControllerWithIdentifier:@"PlayView"];
+        lvc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        [self presentViewController:lvc animated:YES completion:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self];
+        
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"DeathNotification" object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"BackgroundActivityStarted" object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"AddLinks" object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"YouWin" object:nil];
+    }
+    else //restart lev becasue you died
+    {
+        restart = YES;
+//        gameActionButton.hidden = @"YOU LOST. TRY AGAIN?";
+        UIStoryboard* storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        LevelViewController* lvc= (LevelViewController*)[storyBoard instantiateViewControllerWithIdentifier:@"PlayView"];
+        lvc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        [self presentViewController:lvc animated:YES completion:nil];
+        
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"DeathNotification" object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"BackgroundActivityStarted" object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"AddLinks" object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"YouWin" object:nil];
+    }
+    
+    gameActionButton.hidden = YES;
+}
+
+-(IBAction)didPressNextLevel:(id)sender
+{
+
+}
+
+-(IBAction)didPressRestartButton:(id)sender
+{
+    restart = YES;
+    NSLog(@"%f",currentLevel);
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+//MENU BUTTONS
 -(IBAction)didPressMainMenu:(id)sender
 {
     [theTimer invalidate];
@@ -783,18 +828,6 @@
 {
     globalSnakeLength  = [levelSnake getSnakeLength];
     [theTimer invalidate];
-}
-
--(IBAction)didPressNextLevel:(id)sender
-{
-  
-}
-
--(IBAction)didPressRestartButton:(id)sender
-{
-    restart = YES;
-    NSLog(@"%f",currentLevel);
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 
