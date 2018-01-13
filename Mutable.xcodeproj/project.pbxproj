@@ -369,7 +369,6 @@
 		69BBC84F200A7C740069A793 /* GameObjects */ = {
 			isa = PBXGroup;
 			children = (
-				69BBC850200A7C8C0069A793 /* MovingObjects */,
 				699B56AE1B60655000B735C7 /* BasicObject.h */,
 				699B56AF1B60655A00B735C7 /* BasicObject.m */,
 				697E2DB71B39BAD100DD0696 /* Base.h */,
@@ -386,6 +385,7 @@
 				69A9FC691B388A4600767670 /* Shifting.m */,
 				69A7B45E1B4E0EFA00E62477 /* TurretGun.h */,
 				69A7B45F1B4E0F0200E62477 /* TurretGun.m */,
+				69BBC850200A7C8C0069A793 /* MovingObjects */,
 			);
 			path = GameObjects;
 			sourceTree = "<group>";
@@ -393,7 +393,6 @@
 		69BBC850200A7C8C0069A793 /* MovingObjects */ = {
 			isa = PBXGroup;
 			children = (
-				69BBC851200A7C9D0069A793 /* Projectiles */,
 				697E12561ABB68710037D307 /* MovingObject.h */,
 				697E12571ABB691C0037D307 /* MovingObject.m */,
 				69196FC61B3A023800DAB092 /* HeadLink.h */,
@@ -410,6 +409,7 @@
 				693A8C181C29F10B0084BD61 /* MovingWall.m */,
 				693A8C1D1C29F1D60084BD61 /* WallLink.h */,
 				693A8C1B1C29F1D10084BD61 /* WallLink.m */,
+				69BBC851200A7C9D0069A793 /* Projectiles */,
 			);
 			path = MovingObjects;
 			sourceTree = "<group>";
@@ -417,7 +417,6 @@
 		69BBC851200A7C9D0069A793 /* Projectiles */ = {
 			isa = PBXGroup;
 			children = (
-				69BBC852200A7CAD0069A793 /* Trackers */,
 				692B65661B69C70700878A0E /* Projectile.h */,
 				692B65671B69C70F00878A0E /* Projectile.m */,
 				6974E94D1B6842CF00CE51B9 /* Arrow.h */,
@@ -426,6 +425,7 @@
 				6928114E1AC0E46A00697D34 /* Bullet.m */,
 				6974E94C1B67187C00CE51B9 /* DoubleBullet.h */,
 				6974E9491B67187200CE51B9 /* DoubleBullet.m */,
+				69BBC852200A7CAD0069A793 /* Trackers */,
 			);
 			path = Projectiles;
 			sourceTree = "<group>";
@@ -446,9 +446,7 @@
 		69BBC853200A7CC80069A793 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				69BBC84A200A7BA10069A793 /* Small Logo.png */,
-				690646621B8121A1004D6152 /* MutableIcon 58.png */,
-				690646631B8121A1004D6152 /* MutableIcon 80.png */,
+				69BBC854200A7D980069A793 /* Logos */,
 				6906465C1B811084004D6152 /* Snake.png */,
 				6900A0051B757DE800009C64 /* CircleShape.png */,
 				6900A0061B757DE800009C64 /* LineShape.png */,
@@ -478,7 +476,6 @@
 				6977B2661AC60F9E00D005FE /* GreenBackgroundMenu.png */,
 				6977B25F1AC6048200D005FE /* PointGem.png */,
 				6942A8D01AC5289F004DD764 /* LoadingIcon.png */,
-				6942A8CE1AC527F5004DD764 /* MutableIcon.png */,
 				6942A8C21AC523E1004DD764 /* Ring.png */,
 				6983BF401AC4FA7A0024585D /* LevelsView.png */,
 				6983BF3E1AC4F8DA0024585D /* HomePageView.png */,
@@ -487,6 +484,17 @@
 				691FEA2B1ABA547E00120DEA /* Point.png */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		69BBC854200A7D980069A793 /* Logos */ = {
+			isa = PBXGroup;
+			children = (
+				6942A8CE1AC527F5004DD764 /* MutableIcon.png */,
+				69BBC84A200A7BA10069A793 /* Small Logo.png */,
+				690646621B8121A1004D6152 /* MutableIcon 58.png */,
+				690646631B8121A1004D6152 /* MutableIcon 80.png */,
+			);
+			path = Logos;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
