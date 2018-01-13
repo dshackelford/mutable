@@ -81,7 +81,7 @@
 		69B1C32E1D6EB9020061EEA6 /* DescriptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B1C32D1D6EB9020061EEA6 /* DescriptionView.m */; };
 		69B84D3C1AC88F5A002BFF16 /* mineImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 69B84D3B1AC88F5A002BFF16 /* mineImage.png */; };
 		69B84D3E1AC893BE002BFF16 /* kamikaze.png in Resources */ = {isa = PBXBuildFile; fileRef = 69B84D3D1AC893BE002BFF16 /* kamikaze.png */; };
-		69C2BABC1B7BEEF500190EE1 /* Small Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 69C2BABB1B7BEEF500190EE1 /* Small Logo.png */; };
+		69BBC84B200A7BA10069A793 /* Small Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 69BBC84A200A7BA10069A793 /* Small Logo.png */; };
 		69D1DC841D5EEDC100DF29B5 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D1DC831D5EEDC100DF29B5 /* SettingsViewController.m */; };
 		69D1DC891D5EEF0B00DF29B5 /* arrowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D1DC871D5EEF0B00DF29B5 /* arrowCell.m */; };
 		69D1DC8A1D5EEF0B00DF29B5 /* arrowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69D1DC881D5EEF0B00DF29B5 /* arrowCell.xib */; };
@@ -213,7 +213,7 @@
 		69B1C32F1D6EB9080061EEA6 /* DescriptionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DescriptionView.h; sourceTree = "<group>"; };
 		69B84D3B1AC88F5A002BFF16 /* mineImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mineImage.png; sourceTree = "<group>"; };
 		69B84D3D1AC893BE002BFF16 /* kamikaze.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kamikaze.png; sourceTree = "<group>"; };
-		69C2BABB1B7BEEF500190EE1 /* Small Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Small Logo.png"; path = "../../../Media/DshackTech Productions/DshackTech/Logos 2.0/Small Logo.png"; sourceTree = "<group>"; };
+		69BBC84A200A7BA10069A793 /* Small Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Small Logo.png"; sourceTree = "<group>"; };
 		69D1DC821D5EEDB700DF29B5 /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		69D1DC831D5EEDC100DF29B5 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		69D1DC861D5EEF0B00DF29B5 /* arrowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = arrowCell.h; sourceTree = "<group>"; };
@@ -273,11 +273,12 @@
 		691FE9EC1ABA2F1700120DEA /* Mutable */ = {
 			isa = PBXGroup;
 			children = (
+				69BBC84D200A7C450069A793 /* ViewControllers */,
+				69BBC84F200A7C740069A793 /* GameObjects */,
+				69BBC853200A7CC80069A793 /* Images */,
+				69BBC84C200A7C2D0069A793 /* Utilities */,
 				691FE9F11ABA2F1700120DEA /* AppDelegate.h */,
 				691FE9F21ABA2F1700120DEA /* AppDelegate.m */,
-				699B56B31B6069E100B735C7 /* System */,
-				69DFF25D1AC07618001D53CE /* ViewControllers */,
-				699B56B11B60665B00B735C7 /* MyObjects */,
 				691FE9FA1ABA2F1700120DEA /* Images.xcassets */,
 				691FE9FC1ABA2F1700120DEA /* LaunchScreen.xib */,
 				691FE9ED1ABA2F1700120DEA /* Supporting Files */,
@@ -288,10 +289,167 @@
 		691FE9ED1ABA2F1700120DEA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				691FE9EE1ABA2F1700120DEA /* Info.plist */,
+				691FE9EF1ABA2F1700120DEA /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		691FEA061ABA2F1800120DEA /* MutableTests */ = {
+			isa = PBXGroup;
+			children = (
+				691FEA091ABA2F1800120DEA /* MutableTests.m */,
+				691FEA071ABA2F1800120DEA /* Supporting Files */,
+			);
+			path = MutableTests;
+			sourceTree = "<group>";
+		};
+		691FEA071ABA2F1800120DEA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				691FEA081ABA2F1800120DEA /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		69BBC84C200A7C2D0069A793 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				696F6C9B1ABE1E60007A7848 /* AppConstants.h */,
+				69DB885F1B4825E200D84112 /* AppUtilities.h */,
+				69DB88601B4825EA00D84112 /* AppUtilities.m */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		69BBC84D200A7C450069A793 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				69BBC84E200A7C590069A793 /* TableCells */,
+				691FE9F71ABA2F1700120DEA /* Main.storyboard */,
+				69F647C61BA93B1000D8BD88 /* MasterViewController.h */,
+				69F647C41BA93B0800D8BD88 /* MasterViewController.m */,
+				697E125B1ABB6B5B0037D307 /* LevelViewController.h */,
+				697E12591ABB6B4E0037D307 /* LevelViewController.m */,
+				69E955D31C2C64C6009F4C6D /* ViewPopulator.h */,
+				69E955D41C2C64CF009F4C6D /* ViewPopulator.m */,
+				69DFF25C1AC07613001D53CE /* HomeView.h */,
+				69DFF25A1AC0760B001D53CE /* HomeView.m */,
+				69D1DC821D5EEDB700DF29B5 /* SettingsViewController.h */,
+				69D1DC831D5EEDC100DF29B5 /* SettingsViewController.m */,
+				691FB30D1D6D7A9000EAD5EF /* SubSettingsViewController.h */,
+				691FB30B1D6D7A8600EAD5EF /* SubSettingsViewController.m */,
+				69D1DC8D1D5EF41100DF29B5 /* HowToPlayViewController.h */,
+				69D1DC8B1D5EF40600DF29B5 /* HowToPlayViewController.m */,
+				69AE38551D70029F00A7C7E6 /* EasterEggViewController.h */,
+				69AE38531D70029700A7C7E6 /* EasterEggViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		69BBC84E200A7C590069A793 /* TableCells */ = {
+			isa = PBXGroup;
+			children = (
+				69D1DC861D5EEF0B00DF29B5 /* arrowCell.h */,
+				69D1DC871D5EEF0B00DF29B5 /* arrowCell.m */,
+				69D1DC881D5EEF0B00DF29B5 /* arrowCell.xib */,
+				69B1C3291D6EB7200061EEA6 /* HeaderCell.h */,
+				69B1C3271D6EB7180061EEA6 /* HeaderCell.m */,
+				69B1C3251D6EB6F30061EEA6 /* HeaderCell.xib */,
+				69B1C32F1D6EB9080061EEA6 /* DescriptionView.h */,
+				69B1C32D1D6EB9020061EEA6 /* DescriptionView.m */,
+				69B1C32B1D6EB8F70061EEA6 /* DescriptionView.xib */,
+				69AE38521D6FFCAD00A7C7E6 /* DescriptionTextView.h */,
+				69AE38501D6FFCA500A7C7E6 /* DescriptionTextView.m */,
+				69AE384E1D6FFC7C00A7C7E6 /* DescriptionTextView.xib */,
+			);
+			path = TableCells;
+			sourceTree = "<group>";
+		};
+		69BBC84F200A7C740069A793 /* GameObjects */ = {
+			isa = PBXGroup;
+			children = (
+				69BBC850200A7C8C0069A793 /* MovingObjects */,
+				699B56AE1B60655000B735C7 /* BasicObject.h */,
+				699B56AF1B60655A00B735C7 /* BasicObject.m */,
+				697E2DB71B39BAD100DD0696 /* Base.h */,
+				697E2DB81B39BADB00DD0696 /* Base.m */,
+				697E2DBC1B39BB9000DD0696 /* Gem.h */,
+				697E2DBA1B39BB8A00DD0696 /* Gem.m */,
+				692B65631B6981B700878A0E /* Food.h */,
+				692B65641B6981BD00878A0E /* Food.m */,
+				6941A5541B3CA3D70014B916 /* Mine.h */,
+				6941A5551B3CA3DE0014B916 /* Mine.m */,
+				69A9FC651B388A2B00767670 /* MineField.h */,
+				69A9FC631B388A2700767670 /* MineField.m */,
+				69A9FC6B1B388A4C00767670 /* Shifting.h */,
+				69A9FC691B388A4600767670 /* Shifting.m */,
+				69A7B45E1B4E0EFA00E62477 /* TurretGun.h */,
+				69A7B45F1B4E0F0200E62477 /* TurretGun.m */,
+			);
+			path = GameObjects;
+			sourceTree = "<group>";
+		};
+		69BBC850200A7C8C0069A793 /* MovingObjects */ = {
+			isa = PBXGroup;
+			children = (
+				69BBC851200A7C9D0069A793 /* Projectiles */,
+				697E12561ABB68710037D307 /* MovingObject.h */,
+				697E12571ABB691C0037D307 /* MovingObject.m */,
+				69196FC61B3A023800DAB092 /* HeadLink.h */,
+				69196FC71B3A024000DAB092 /* HeadLink.m */,
+				69A9FC601B3889EC00767670 /* Snake.h */,
+				69A9FC611B3889F400767670 /* Snake.m */,
+				69A9FC661B388A3200767670 /* BlockadeElement.h */,
+				69A9FC671B388A3900767670 /* BlockadeElement.m */,
+				6974E9521B68545800CE51B9 /* Barracade.h */,
+				6974E9501B68545300CE51B9 /* Barracade.m */,
+				693A8C151C271CBF0084BD61 /* BlockadeBarricade.h */,
+				693A8C161C271CC80084BD61 /* BlockadeBarricade.m */,
+				693A8C1A1C29F1120084BD61 /* MovingWall.h */,
+				693A8C181C29F10B0084BD61 /* MovingWall.m */,
+				693A8C1D1C29F1D60084BD61 /* WallLink.h */,
+				693A8C1B1C29F1D10084BD61 /* WallLink.m */,
+			);
+			path = MovingObjects;
+			sourceTree = "<group>";
+		};
+		69BBC851200A7C9D0069A793 /* Projectiles */ = {
+			isa = PBXGroup;
+			children = (
+				69BBC852200A7CAD0069A793 /* Trackers */,
+				692B65661B69C70700878A0E /* Projectile.h */,
+				692B65671B69C70F00878A0E /* Projectile.m */,
+				6974E94D1B6842CF00CE51B9 /* Arrow.h */,
+				6974E94E1B6842D500CE51B9 /* Arrow.m */,
+				692811501AC0E47100697D34 /* Bullet.h */,
+				6928114E1AC0E46A00697D34 /* Bullet.m */,
+				6974E94C1B67187C00CE51B9 /* DoubleBullet.h */,
+				6974E9491B67187200CE51B9 /* DoubleBullet.m */,
+			);
+			path = Projectiles;
+			sourceTree = "<group>";
+		};
+		69BBC852200A7CAD0069A793 /* Trackers */ = {
+			isa = PBXGroup;
+			children = (
+				69D743021B86E0B200844502 /* Tracker.h */,
+				69D743001B86E0AB00844502 /* Tracker.m */,
+				69A9FC6C1B388A6300767670 /* Drone.h */,
+				69A9FC6D1B388A6D00767670 /* Drone.m */,
+				699B56AD1B6045C000B735C7 /* Squadron.h */,
+				699B56AB1B6045B900B735C7 /* Squadron.m */,
+			);
+			path = Trackers;
+			sourceTree = "<group>";
+		};
+		69BBC853200A7CC80069A793 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				69BBC84A200A7BA10069A793 /* Small Logo.png */,
 				690646621B8121A1004D6152 /* MutableIcon 58.png */,
 				690646631B8121A1004D6152 /* MutableIcon 80.png */,
 				6906465C1B811084004D6152 /* Snake.png */,
-				69C2BABB1B7BEEF500190EE1 /* Small Logo.png */,
 				6900A0051B757DE800009C64 /* CircleShape.png */,
 				6900A0061B757DE800009C64 /* LineShape.png */,
 				6900A0071B757DE800009C64 /* SquareShape.png */,
@@ -327,158 +485,8 @@
 				698743D71AC3939800A360C3 /* menuBackground.png */,
 				696F6C9C1ABE3FE1007A7848 /* Enemy.png */,
 				691FEA2B1ABA547E00120DEA /* Point.png */,
-				691FE9EE1ABA2F1700120DEA /* Info.plist */,
-				691FE9EF1ABA2F1700120DEA /* main.m */,
 			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		691FEA061ABA2F1800120DEA /* MutableTests */ = {
-			isa = PBXGroup;
-			children = (
-				691FEA091ABA2F1800120DEA /* MutableTests.m */,
-				691FEA071ABA2F1800120DEA /* Supporting Files */,
-			);
-			path = MutableTests;
-			sourceTree = "<group>";
-		};
-		691FEA071ABA2F1800120DEA /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				691FEA081ABA2F1800120DEA /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		692B65691B69C82700878A0E /* Projectiles */ = {
-			isa = PBXGroup;
-			children = (
-				692B65661B69C70700878A0E /* Projectile.h */,
-				692B65671B69C70F00878A0E /* Projectile.m */,
-				6974E94D1B6842CF00CE51B9 /* Arrow.h */,
-				6974E94E1B6842D500CE51B9 /* Arrow.m */,
-				692811501AC0E47100697D34 /* Bullet.h */,
-				6928114E1AC0E46A00697D34 /* Bullet.m */,
-				6974E94C1B67187C00CE51B9 /* DoubleBullet.h */,
-				6974E9491B67187200CE51B9 /* DoubleBullet.m */,
-				69D743031B86E0DF00844502 /* Trackers */,
-			);
-			name = Projectiles;
-			sourceTree = "<group>";
-		};
-		697E12621ABB8A980037D307 /* MovingObjects */ = {
-			isa = PBXGroup;
-			children = (
-				697E12561ABB68710037D307 /* MovingObject.h */,
-				697E12571ABB691C0037D307 /* MovingObject.m */,
-				69196FC61B3A023800DAB092 /* HeadLink.h */,
-				69196FC71B3A024000DAB092 /* HeadLink.m */,
-				69A9FC601B3889EC00767670 /* Snake.h */,
-				69A9FC611B3889F400767670 /* Snake.m */,
-				69A9FC661B388A3200767670 /* BlockadeElement.h */,
-				69A9FC671B388A3900767670 /* BlockadeElement.m */,
-				6974E9521B68545800CE51B9 /* Barracade.h */,
-				6974E9501B68545300CE51B9 /* Barracade.m */,
-				693A8C151C271CBF0084BD61 /* BlockadeBarricade.h */,
-				693A8C161C271CC80084BD61 /* BlockadeBarricade.m */,
-				693A8C1A1C29F1120084BD61 /* MovingWall.h */,
-				693A8C181C29F10B0084BD61 /* MovingWall.m */,
-				693A8C1D1C29F1D60084BD61 /* WallLink.h */,
-				693A8C1B1C29F1D10084BD61 /* WallLink.m */,
-				692B65691B69C82700878A0E /* Projectiles */,
-			);
-			name = MovingObjects;
-			sourceTree = "<group>";
-		};
-		699B56B11B60665B00B735C7 /* MyObjects */ = {
-			isa = PBXGroup;
-			children = (
-				699B56AE1B60655000B735C7 /* BasicObject.h */,
-				699B56AF1B60655A00B735C7 /* BasicObject.m */,
-				697E2DB71B39BAD100DD0696 /* Base.h */,
-				697E2DB81B39BADB00DD0696 /* Base.m */,
-				697E2DBC1B39BB9000DD0696 /* Gem.h */,
-				697E2DBA1B39BB8A00DD0696 /* Gem.m */,
-				692B65631B6981B700878A0E /* Food.h */,
-				692B65641B6981BD00878A0E /* Food.m */,
-				6941A5541B3CA3D70014B916 /* Mine.h */,
-				6941A5551B3CA3DE0014B916 /* Mine.m */,
-				69A9FC651B388A2B00767670 /* MineField.h */,
-				69A9FC631B388A2700767670 /* MineField.m */,
-				69A9FC6B1B388A4C00767670 /* Shifting.h */,
-				69A9FC691B388A4600767670 /* Shifting.m */,
-				69A7B45E1B4E0EFA00E62477 /* TurretGun.h */,
-				69A7B45F1B4E0F0200E62477 /* TurretGun.m */,
-				697E12621ABB8A980037D307 /* MovingObjects */,
-			);
-			name = MyObjects;
-			sourceTree = "<group>";
-		};
-		699B56B31B6069E100B735C7 /* System */ = {
-			isa = PBXGroup;
-			children = (
-				696F6C9B1ABE1E60007A7848 /* AppConstants.h */,
-				69DB885F1B4825E200D84112 /* AppUtilities.h */,
-				69DB88601B4825EA00D84112 /* AppUtilities.m */,
-			);
-			name = System;
-			sourceTree = "<group>";
-		};
-		69B1C32A1D6EB7290061EEA6 /* Table Cells */ = {
-			isa = PBXGroup;
-			children = (
-				69D1DC861D5EEF0B00DF29B5 /* arrowCell.h */,
-				69D1DC871D5EEF0B00DF29B5 /* arrowCell.m */,
-				69D1DC881D5EEF0B00DF29B5 /* arrowCell.xib */,
-				69B1C3291D6EB7200061EEA6 /* HeaderCell.h */,
-				69B1C3271D6EB7180061EEA6 /* HeaderCell.m */,
-				69B1C3251D6EB6F30061EEA6 /* HeaderCell.xib */,
-				69B1C32F1D6EB9080061EEA6 /* DescriptionView.h */,
-				69B1C32D1D6EB9020061EEA6 /* DescriptionView.m */,
-				69B1C32B1D6EB8F70061EEA6 /* DescriptionView.xib */,
-				69AE38521D6FFCAD00A7C7E6 /* DescriptionTextView.h */,
-				69AE38501D6FFCA500A7C7E6 /* DescriptionTextView.m */,
-				69AE384E1D6FFC7C00A7C7E6 /* DescriptionTextView.xib */,
-			);
-			name = "Table Cells";
-			sourceTree = "<group>";
-		};
-		69D743031B86E0DF00844502 /* Trackers */ = {
-			isa = PBXGroup;
-			children = (
-				69D743021B86E0B200844502 /* Tracker.h */,
-				69D743001B86E0AB00844502 /* Tracker.m */,
-				69A9FC6C1B388A6300767670 /* Drone.h */,
-				69A9FC6D1B388A6D00767670 /* Drone.m */,
-				699B56AD1B6045C000B735C7 /* Squadron.h */,
-				699B56AB1B6045B900B735C7 /* Squadron.m */,
-			);
-			name = Trackers;
-			sourceTree = "<group>";
-		};
-		69DFF25D1AC07618001D53CE /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				691FE9F71ABA2F1700120DEA /* Main.storyboard */,
-				69F647C61BA93B1000D8BD88 /* MasterViewController.h */,
-				69F647C41BA93B0800D8BD88 /* MasterViewController.m */,
-				697E125B1ABB6B5B0037D307 /* LevelViewController.h */,
-				697E12591ABB6B4E0037D307 /* LevelViewController.m */,
-				69E955D31C2C64C6009F4C6D /* ViewPopulator.h */,
-				69E955D41C2C64CF009F4C6D /* ViewPopulator.m */,
-				69DFF25C1AC07613001D53CE /* HomeView.h */,
-				69DFF25A1AC0760B001D53CE /* HomeView.m */,
-				69D1DC821D5EEDB700DF29B5 /* SettingsViewController.h */,
-				69D1DC831D5EEDC100DF29B5 /* SettingsViewController.m */,
-				691FB30D1D6D7A9000EAD5EF /* SubSettingsViewController.h */,
-				691FB30B1D6D7A8600EAD5EF /* SubSettingsViewController.m */,
-				69D1DC8D1D5EF41100DF29B5 /* HowToPlayViewController.h */,
-				69D1DC8B1D5EF40600DF29B5 /* HowToPlayViewController.m */,
-				69AE38551D70029F00A7C7E6 /* EasterEggViewController.h */,
-				69AE38531D70029700A7C7E6 /* EasterEggViewController.m */,
-				69B1C32A1D6EB7290061EEA6 /* Table Cells */,
-			);
-			name = ViewControllers;
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -578,11 +586,11 @@
 				6977B2691AC6116C00D005FE /* redBackgroundMenu.png in Resources */,
 				6906465D1B811084004D6152 /* Snake.png in Resources */,
 				699B56A21B5F27E000B735C7 /* base2.png in Resources */,
+				69BBC84B200A7BA10069A793 /* Small Logo.png in Resources */,
 				69B84D3E1AC893BE002BFF16 /* kamikaze.png in Resources */,
 				695B1D311B5DC99400BAA2C9 /* greyBackground.png in Resources */,
 				697574981B3F606D006C5344 /* circleShapeButton.png in Resources */,
 				6900A00B1B757DE800009C64 /* SquareShape.png in Resources */,
-				69C2BABC1B7BEEF500190EE1 /* Small Logo.png in Resources */,
 				69B1C32C1D6EB8F70061EEA6 /* DescriptionView.xib in Resources */,
 				699B56A41B5F28DC00B735C7 /* arrow.png in Resources */,
 				69854FAD1AD24B6000F5327D /* health.png in Resources */,
