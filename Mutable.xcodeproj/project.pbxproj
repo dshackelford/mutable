@@ -546,6 +546,7 @@
 				TargetAttributes = {
 					691FE9E91ABA2F1700120DEA = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 5C7WP8NCS7;
 					};
 					691FEA021ABA2F1800120DEA = {
 						CreatedOnToolsVersion = 6.2;
@@ -800,6 +801,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 5C7WP8NCS7;
 				INFOPLIST_FILE = Mutable/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -811,6 +813,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 5C7WP8NCS7;
 				INFOPLIST_FILE = Mutable/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
