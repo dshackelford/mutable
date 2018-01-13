@@ -1,0 +1,9 @@
+.DS_Store
+mutable/.DS_Store
+
+mutable.xcodeproj/xcuserdata/Dshack.xcuserdatad/*
+mutable.xcodeproj/xcuserdata/
+mutable.xcworkspace/xcuserdata/*
+mutable.xcodeproj/project.xcworkspace/xcuserdata/
+mutable.xcodeproj/xcuserdata/Dshack.xcuserdatad/xcdebugger/Breakpoints_points_v2.xcbkptlist
+
