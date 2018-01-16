@@ -83,6 +83,23 @@
 		69BBC857200A7E870069A793 /* Mine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BBC856200A7E870069A793 /* Mine.swift */; };
 		69BBC859200DC6790069A793 /* Squadron.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BBC858200DC6790069A793 /* Squadron.swift */; };
 		69BBC85B200DCC920069A793 /* Drone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BBC85A200DCC920069A793 /* Drone.swift */; };
+		69BBC870200DD59D0069A793 /* iPhone6Wall.png in Resources */ = {isa = PBXBuildFile; fileRef = 69BBC85F200DD59B0069A793 /* iPhone6Wall.png */; };
+		69BBC871200DD59D0069A793 /* iPhone4Base.png in Resources */ = {isa = PBXBuildFile; fileRef = 69BBC860200DD59B0069A793 /* iPhone4Base.png */; };
+		69BBC872200DD59D0069A793 /* iOS Simulator Screen Shot Aug 30, 2015, 4.56.58 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 69BBC861200DD59B0069A793 /* iOS Simulator Screen Shot Aug 30, 2015, 4.56.58 PM.png */; };
+		69BBC873200DD59D0069A793 /* iOS Simulator Screen Shot Aug 30, 2015, 4.45.32 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 69BBC862200DD59B0069A793 /* iOS Simulator Screen Shot Aug 30, 2015, 4.45.32 PM.png */; };
+		69BBC874200DD59D0069A793 /* iPhone6Drone.png in Resources */ = {isa = PBXBuildFile; fileRef = 69BBC863200DD59C0069A793 /* iPhone6Drone.png */; };
+		69BBC875200DD59D0069A793 /* iPhone4DoubleBullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 69BBC864200DD59C0069A793 /* iPhone4DoubleBullet.png */; };
+		69BBC876200DD59D0069A793 /* iPhone4Wall.png in Resources */ = {isa = PBXBuildFile; fileRef = 69BBC865200DD59C0069A793 /* iPhone4Wall.png */; };
+		69BBC877200DD59D0069A793 /* iPhone5HomeScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 69BBC866200DD59C0069A793 /* iPhone5HomeScreen.png */; };
+		69BBC878200DD59D0069A793 /* iPhone6PlusDoubleBullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 69BBC867200DD59C0069A793 /* iPhone6PlusDoubleBullet.png */; };
+		69BBC879200DD59D0069A793 /* iPhone6PlusWall.png in Resources */ = {isa = PBXBuildFile; fileRef = 69BBC868200DD59C0069A793 /* iPhone6PlusWall.png */; };
+		69BBC87A200DD59D0069A793 /* iPhone5DoubleBullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 69BBC869200DD59C0069A793 /* iPhone5DoubleBullet.png */; };
+		69BBC87B200DD59D0069A793 /* iPhone5Wall.png in Resources */ = {isa = PBXBuildFile; fileRef = 69BBC86A200DD59C0069A793 /* iPhone5Wall.png */; };
+		69BBC87C200DD59D0069A793 /* iPhone6Base.png in Resources */ = {isa = PBXBuildFile; fileRef = 69BBC86B200DD59C0069A793 /* iPhone6Base.png */; };
+		69BBC87D200DD59D0069A793 /* iPhone5Base.png in Resources */ = {isa = PBXBuildFile; fileRef = 69BBC86C200DD59C0069A793 /* iPhone5Base.png */; };
+		69BBC87E200DD59D0069A793 /* iPhone6DoubleBullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 69BBC86D200DD59C0069A793 /* iPhone6DoubleBullet.png */; };
+		69BBC87F200DD59D0069A793 /* iPhon6PlusMineField.png in Resources */ = {isa = PBXBuildFile; fileRef = 69BBC86E200DD59C0069A793 /* iPhon6PlusMineField.png */; };
+		69BBC880200DD59D0069A793 /* iPhone6PlusTurret.png in Resources */ = {isa = PBXBuildFile; fileRef = 69BBC86F200DD59D0069A793 /* iPhone6PlusTurret.png */; };
 		69D1DC841D5EEDC100DF29B5 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D1DC831D5EEDC100DF29B5 /* SettingsViewController.m */; };
 		69D1DC891D5EEF0B00DF29B5 /* arrowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D1DC871D5EEF0B00DF29B5 /* arrowCell.m */; };
 		69D1DC8A1D5EEF0B00DF29B5 /* arrowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69D1DC881D5EEF0B00DF29B5 /* arrowCell.xib */; };
@@ -215,6 +232,23 @@
 		69BBC856200A7E870069A793 /* Mine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mine.swift; sourceTree = "<group>"; };
 		69BBC858200DC6790069A793 /* Squadron.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Squadron.swift; sourceTree = "<group>"; };
 		69BBC85A200DCC920069A793 /* Drone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drone.swift; sourceTree = "<group>"; };
+		69BBC85F200DD59B0069A793 /* iPhone6Wall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPhone6Wall.png; sourceTree = "<group>"; };
+		69BBC860200DD59B0069A793 /* iPhone4Base.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPhone4Base.png; sourceTree = "<group>"; };
+		69BBC861200DD59B0069A793 /* iOS Simulator Screen Shot Aug 30, 2015, 4.56.58 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iOS Simulator Screen Shot Aug 30, 2015, 4.56.58 PM.png"; sourceTree = "<group>"; };
+		69BBC862200DD59B0069A793 /* iOS Simulator Screen Shot Aug 30, 2015, 4.45.32 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iOS Simulator Screen Shot Aug 30, 2015, 4.45.32 PM.png"; sourceTree = "<group>"; };
+		69BBC863200DD59C0069A793 /* iPhone6Drone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPhone6Drone.png; sourceTree = "<group>"; };
+		69BBC864200DD59C0069A793 /* iPhone4DoubleBullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPhone4DoubleBullet.png; sourceTree = "<group>"; };
+		69BBC865200DD59C0069A793 /* iPhone4Wall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPhone4Wall.png; sourceTree = "<group>"; };
+		69BBC866200DD59C0069A793 /* iPhone5HomeScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPhone5HomeScreen.png; sourceTree = "<group>"; };
+		69BBC867200DD59C0069A793 /* iPhone6PlusDoubleBullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPhone6PlusDoubleBullet.png; sourceTree = "<group>"; };
+		69BBC868200DD59C0069A793 /* iPhone6PlusWall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPhone6PlusWall.png; sourceTree = "<group>"; };
+		69BBC869200DD59C0069A793 /* iPhone5DoubleBullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPhone5DoubleBullet.png; sourceTree = "<group>"; };
+		69BBC86A200DD59C0069A793 /* iPhone5Wall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPhone5Wall.png; sourceTree = "<group>"; };
+		69BBC86B200DD59C0069A793 /* iPhone6Base.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPhone6Base.png; sourceTree = "<group>"; };
+		69BBC86C200DD59C0069A793 /* iPhone5Base.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPhone5Base.png; sourceTree = "<group>"; };
+		69BBC86D200DD59C0069A793 /* iPhone6DoubleBullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPhone6DoubleBullet.png; sourceTree = "<group>"; };
+		69BBC86E200DD59C0069A793 /* iPhon6PlusMineField.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPhon6PlusMineField.png; sourceTree = "<group>"; };
+		69BBC86F200DD59D0069A793 /* iPhone6PlusTurret.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPhone6PlusTurret.png; sourceTree = "<group>"; };
 		69D1DC821D5EEDB700DF29B5 /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		69D1DC831D5EEDC100DF29B5 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		69D1DC861D5EEF0B00DF29B5 /* arrowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = arrowCell.h; sourceTree = "<group>"; };
@@ -447,6 +481,7 @@
 		69BBC853200A7CC80069A793 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				69BBC85E200DD58F0069A793 /* MutableScreenCaptures */,
 				69BBC854200A7D980069A793 /* Logos */,
 				6906465C1B811084004D6152 /* Snake.png */,
 				6900A0051B757DE800009C64 /* CircleShape.png */,
@@ -496,6 +531,30 @@
 				690646631B8121A1004D6152 /* MutableIcon 80.png */,
 			);
 			path = Logos;
+			sourceTree = "<group>";
+		};
+		69BBC85E200DD58F0069A793 /* MutableScreenCaptures */ = {
+			isa = PBXGroup;
+			children = (
+				69BBC862200DD59B0069A793 /* iOS Simulator Screen Shot Aug 30, 2015, 4.45.32 PM.png */,
+				69BBC861200DD59B0069A793 /* iOS Simulator Screen Shot Aug 30, 2015, 4.56.58 PM.png */,
+				69BBC86E200DD59C0069A793 /* iPhon6PlusMineField.png */,
+				69BBC860200DD59B0069A793 /* iPhone4Base.png */,
+				69BBC864200DD59C0069A793 /* iPhone4DoubleBullet.png */,
+				69BBC865200DD59C0069A793 /* iPhone4Wall.png */,
+				69BBC86C200DD59C0069A793 /* iPhone5Base.png */,
+				69BBC869200DD59C0069A793 /* iPhone5DoubleBullet.png */,
+				69BBC866200DD59C0069A793 /* iPhone5HomeScreen.png */,
+				69BBC86A200DD59C0069A793 /* iPhone5Wall.png */,
+				69BBC86B200DD59C0069A793 /* iPhone6Base.png */,
+				69BBC86D200DD59C0069A793 /* iPhone6DoubleBullet.png */,
+				69BBC863200DD59C0069A793 /* iPhone6Drone.png */,
+				69BBC867200DD59C0069A793 /* iPhone6PlusDoubleBullet.png */,
+				69BBC86F200DD59D0069A793 /* iPhone6PlusTurret.png */,
+				69BBC868200DD59C0069A793 /* iPhone6PlusWall.png */,
+				69BBC85F200DD59B0069A793 /* iPhone6Wall.png */,
+			);
+			path = MutableScreenCaptures;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -588,29 +647,40 @@
 				6975749D1B3F9126006C5344 /* Barrack.png in Resources */,
 				691FE9F91ABA2F1700120DEA /* Main.storyboard in Resources */,
 				6900A00C1B757DE800009C64 /* TriangleShape.png in Resources */,
+				69BBC874200DD59D0069A793 /* iPhone6Drone.png in Resources */,
 				69854FAF1AD24FFD00F5327D /* base.png in Resources */,
 				69D1DC8A1D5EEF0B00DF29B5 /* arrowCell.xib in Resources */,
+				69BBC880200DD59D0069A793 /* iPhone6PlusTurret.png in Resources */,
 				69B84D3C1AC88F5A002BFF16 /* mineImage.png in Resources */,
 				6900A00A1B757DE800009C64 /* LineShape.png in Resources */,
 				6977B2601AC6048200D005FE /* PointGem.png in Resources */,
 				6942A8C31AC523E1004DD764 /* Ring.png in Resources */,
 				6977B2691AC6116C00D005FE /* redBackgroundMenu.png in Resources */,
 				6906465D1B811084004D6152 /* Snake.png in Resources */,
+				69BBC871200DD59D0069A793 /* iPhone4Base.png in Resources */,
 				699B56A21B5F27E000B735C7 /* base2.png in Resources */,
 				69BBC84B200A7BA10069A793 /* Small Logo.png in Resources */,
+				69BBC872200DD59D0069A793 /* iOS Simulator Screen Shot Aug 30, 2015, 4.56.58 PM.png in Resources */,
 				69B84D3E1AC893BE002BFF16 /* kamikaze.png in Resources */,
 				695B1D311B5DC99400BAA2C9 /* greyBackground.png in Resources */,
 				697574981B3F606D006C5344 /* circleShapeButton.png in Resources */,
 				6900A00B1B757DE800009C64 /* SquareShape.png in Resources */,
+				69BBC87A200DD59D0069A793 /* iPhone5DoubleBullet.png in Resources */,
 				69B1C32C1D6EB8F70061EEA6 /* DescriptionView.xib in Resources */,
 				699B56A41B5F28DC00B735C7 /* arrow.png in Resources */,
 				69854FAD1AD24B6000F5327D /* health.png in Resources */,
 				691FE9FE1ABA2F1700120DEA /* LaunchScreen.xib in Resources */,
+				69BBC87D200DD59D0069A793 /* iPhone5Base.png in Resources */,
+				69BBC875200DD59D0069A793 /* iPhone4DoubleBullet.png in Resources */,
+				69BBC873200DD59D0069A793 /* iOS Simulator Screen Shot Aug 30, 2015, 4.45.32 PM.png in Resources */,
+				69BBC87E200DD59D0069A793 /* iPhone6DoubleBullet.png in Resources */,
+				69BBC870200DD59D0069A793 /* iPhone6Wall.png in Resources */,
 				69AE384F1D6FFC7C00A7C7E6 /* DescriptionTextView.xib in Resources */,
 				69E5F6A71B4CBEAD00BE4B6F /* lifePowerUp.png in Resources */,
 				697574961B3F0243006C5344 /* HeadLink.png in Resources */,
 				699B56A81B5F2A6900B735C7 /* Laser.png in Resources */,
 				6977B2671AC60F9E00D005FE /* GreenBackgroundMenu.png in Resources */,
+				69BBC878200DD59D0069A793 /* iPhone6PlusDoubleBullet.png in Resources */,
 				69A7B45D1B4E0EE000E62477 /* TurretGun.png in Resources */,
 				691FEA2C1ABA547E00120DEA /* Point.png in Resources */,
 				6942A8D11AC5289F004DD764 /* LoadingIcon.png in Resources */,
@@ -620,11 +690,17 @@
 				690646641B8121A1004D6152 /* MutableIcon 58.png in Resources */,
 				695B1D2F1B5DBDF900BAA2C9 /* redBackground.png in Resources */,
 				696F6C9D1ABE3FE1007A7848 /* Enemy.png in Resources */,
+				69BBC876200DD59D0069A793 /* iPhone4Wall.png in Resources */,
 				6983BF411AC4FA7A0024585D /* LevelsView.png in Resources */,
+				69BBC87F200DD59D0069A793 /* iPhon6PlusMineField.png in Resources */,
 				698743D81AC3939800A360C3 /* menuBackground.png in Resources */,
 				699B56A01B5F263E00B735C7 /* blockadeElement.png in Resources */,
+				69BBC879200DD59D0069A793 /* iPhone6PlusWall.png in Resources */,
+				69BBC87C200DD59D0069A793 /* iPhone6Base.png in Resources */,
+				69BBC877200DD59D0069A793 /* iPhone5HomeScreen.png in Resources */,
 				6942A8CF1AC527F5004DD764 /* MutableIcon.png in Resources */,
 				6974E9541B686EA100CE51B9 /* wallLightning.png in Resources */,
+				69BBC87B200DD59D0069A793 /* iPhone5Wall.png in Resources */,
 				699B569E1B5F255D00B735C7 /* mineImage2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
