@@ -10,6 +10,7 @@
 #import "Base.h"
 #import "Mine.h"
 
+
 @interface MineField : Mine
 {
 

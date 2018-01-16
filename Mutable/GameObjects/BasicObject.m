@@ -132,5 +132,10 @@
     size = CGSizeMake(xInit, yInit);
 }
 
+-(void)setImageFileName:(NSString*)nameInit
+{
+    imageFileName = nameInit;
+}
+
 
 @end

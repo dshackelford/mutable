@@ -50,6 +50,7 @@
 -(void)setImage;
 -(void)setSize:(CGSize)sizeInit;
 -(void)setSize:(double)xInit :(double)yInit;
+-(void)setImageFileName:(NSString*)nameInit;
 
 
 @end

@@ -27,7 +27,7 @@
 #import "Barracade.h"
 #import "Arrow.h"
 #import "Drone.h"
-#import "Squadron.h"
+//#import "Squadron.h"
 #import "DoubleBullet.h"
 #import "BlockadeBarricade.h"
 #import "WallLink.h"
@@ -36,6 +36,7 @@
 #import "MasterViewController.h"
 #import "ViewPopulator.h"
 
+#import "Mutable-Swift.h"
 
 @interface LevelViewController : MasterViewController
 {
