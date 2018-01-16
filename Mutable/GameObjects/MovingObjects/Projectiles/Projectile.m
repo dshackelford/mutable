@@ -11,6 +11,13 @@
 
 @implementation Projectile
 
-
+-(void)setAngleOfRotation:(double)rotInit
+{
+    angleOfRotation = rotInit;
+}
+-(double)getAngleOfRotation
+{
+    return angleOfRotation;
+}
 
 @end

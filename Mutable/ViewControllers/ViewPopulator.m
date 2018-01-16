@@ -10,11 +10,12 @@
 #import "MovingObject.h"
 #import "TurretGun.h"
 #import "BlockadeElement.h"
-#import "Drone.h"
+//#import "Drone.h"
 #import "Food.h"
 #import "Arrow.h"
 #import "ViewPopulator.h"
 
+#import "Mutable-Swift.h"
 @implementation ViewPopulator
 
 
@@ -56,7 +57,7 @@
             {
                 droneCounter = 0;
                 
-                [[Drone alloc] initDrone:[levelHeadLink getPosition] Container:container PlaceHolderButton:placeHolderButton];
+                [[Drone alloc] initWithTargetInit:[levelHeadLink getPosition] viewInit:container placeHolderButton:placeHolderButton];
             }
         }
     }

@@ -8,6 +8,7 @@
 
 #import "Bullet.h"
 #import "TurretGun.h"
+#import "Projectile.h"
 
 @interface Arrow : Projectile
 {

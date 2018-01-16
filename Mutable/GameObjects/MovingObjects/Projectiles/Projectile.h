@@ -16,5 +16,6 @@
 
 
 -(double)findAngleOfRotation;
-
+-(void)setAngleOfRotation:(double)rotInit;
+-(double)getAngleOfRotation;
 @end

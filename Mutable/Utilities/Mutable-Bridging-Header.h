@@ -8,5 +8,7 @@
 //squadron.h
 #import "Base.h"
 #import "HeadLink.h"
-#import "Drone.h"
 #import "MovingObject.h"
+
+//Drone
+#import "Projectile.h"

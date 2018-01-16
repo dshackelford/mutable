@@ -70,7 +70,6 @@
 		69A9FC641B388A2700767670 /* MineField.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A9FC631B388A2700767670 /* MineField.m */; };
 		69A9FC681B388A3900767670 /* BlockadeElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A9FC671B388A3900767670 /* BlockadeElement.m */; };
 		69A9FC6A1B388A4600767670 /* Shifting.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A9FC691B388A4600767670 /* Shifting.m */; };
-		69A9FC6E1B388A6D00767670 /* Drone.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A9FC6D1B388A6D00767670 /* Drone.m */; };
 		69AE384F1D6FFC7C00A7C7E6 /* DescriptionTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69AE384E1D6FFC7C00A7C7E6 /* DescriptionTextView.xib */; };
 		69AE38511D6FFCA500A7C7E6 /* DescriptionTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AE38501D6FFCA500A7C7E6 /* DescriptionTextView.m */; };
 		69AE38541D70029700A7C7E6 /* EasterEggViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AE38531D70029700A7C7E6 /* EasterEggViewController.m */; };
@@ -83,6 +82,7 @@
 		69BBC84B200A7BA10069A793 /* Small Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 69BBC84A200A7BA10069A793 /* Small Logo.png */; };
 		69BBC857200A7E870069A793 /* Mine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BBC856200A7E870069A793 /* Mine.swift */; };
 		69BBC859200DC6790069A793 /* Squadron.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BBC858200DC6790069A793 /* Squadron.swift */; };
+		69BBC85B200DCC920069A793 /* Drone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BBC85A200DCC920069A793 /* Drone.swift */; };
 		69D1DC841D5EEDC100DF29B5 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D1DC831D5EEDC100DF29B5 /* SettingsViewController.m */; };
 		69D1DC891D5EEF0B00DF29B5 /* arrowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D1DC871D5EEF0B00DF29B5 /* arrowCell.m */; };
 		69D1DC8A1D5EEF0B00DF29B5 /* arrowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69D1DC881D5EEF0B00DF29B5 /* arrowCell.xib */; };
@@ -197,8 +197,6 @@
 		69A9FC671B388A3900767670 /* BlockadeElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockadeElement.m; sourceTree = "<group>"; };
 		69A9FC691B388A4600767670 /* Shifting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shifting.m; sourceTree = "<group>"; };
 		69A9FC6B1B388A4C00767670 /* Shifting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shifting.h; sourceTree = "<group>"; };
-		69A9FC6C1B388A6300767670 /* Drone.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Drone.h; sourceTree = "<group>"; };
-		69A9FC6D1B388A6D00767670 /* Drone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Drone.m; sourceTree = "<group>"; };
 		69AE384E1D6FFC7C00A7C7E6 /* DescriptionTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DescriptionTextView.xib; sourceTree = "<group>"; };
 		69AE38501D6FFCA500A7C7E6 /* DescriptionTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DescriptionTextView.m; sourceTree = "<group>"; };
 		69AE38521D6FFCAD00A7C7E6 /* DescriptionTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DescriptionTextView.h; sourceTree = "<group>"; };
@@ -216,6 +214,7 @@
 		69BBC855200A7E860069A793 /* Mutable-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mutable-Bridging-Header.h"; sourceTree = "<group>"; };
 		69BBC856200A7E870069A793 /* Mine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mine.swift; sourceTree = "<group>"; };
 		69BBC858200DC6790069A793 /* Squadron.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Squadron.swift; sourceTree = "<group>"; };
+		69BBC85A200DCC920069A793 /* Drone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drone.swift; sourceTree = "<group>"; };
 		69D1DC821D5EEDB700DF29B5 /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		69D1DC831D5EEDC100DF29B5 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		69D1DC861D5EEF0B00DF29B5 /* arrowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = arrowCell.h; sourceTree = "<group>"; };
@@ -439,8 +438,7 @@
 			children = (
 				69D743021B86E0B200844502 /* Tracker.h */,
 				69D743001B86E0AB00844502 /* Tracker.m */,
-				69A9FC6C1B388A6300767670 /* Drone.h */,
-				69A9FC6D1B388A6D00767670 /* Drone.m */,
+				69BBC85A200DCC920069A793 /* Drone.swift */,
 				69BBC858200DC6790069A793 /* Squadron.swift */,
 			);
 			path = Trackers;
@@ -651,7 +649,7 @@
 				693A8C1C1C29F1D10084BD61 /* WallLink.m in Sources */,
 				699B56B01B60655A00B735C7 /* BasicObject.m in Sources */,
 				69B1C32E1D6EB9020061EEA6 /* DescriptionView.m in Sources */,
-				69A9FC6E1B388A6D00767670 /* Drone.m in Sources */,
+				69BBC85B200DCC920069A793 /* Drone.swift in Sources */,
 				69A9FC681B388A3900767670 /* BlockadeElement.m in Sources */,
 				69DB88611B4825EA00D84112 /* AppUtilities.m in Sources */,
 				69AE38541D70029700A7C7E6 /* EasterEggViewController.m in Sources */,

@@ -19,13 +19,13 @@ class Squadron : Drone
         
         let triangleSqaudArray = NSMutableArray()
         
-        let leaderDrone:Drone = Drone(drone: aPosition, container: containerInit, placeHolderButton: placeHolderButton)
+        let leaderDrone:Drone = Drone(targetInit: aPosition, viewInit: containerInit, placeHolderButton: placeHolderButton)
         triangleSqaudArray.add(leaderDrone)
         
-        let leftDrone:Drone = Drone(drone: CGPoint(x:targetPosition.x-35,y:targetPosition.y-35), container: containerInit, placeHolderButton: placeHolderButton)
+        let leftDrone:Drone = Drone(targetInit: CGPoint(x:targetPosition.x-35,y:targetPosition.y-35), viewInit: containerInit, placeHolderButton: placeHolderButton)
         triangleSqaudArray.add(leftDrone)
         
-        let rightDrone:Drone = Drone(drone: CGPoint(x:targetPosition.x+35,y:targetPosition.y+35), container: containerInit, placeHolderButton: placeHolderButton)
+        let rightDrone:Drone = Drone(targetInit: CGPoint(x:targetPosition.x+35,y:targetPosition.y+35), viewInit: containerInit, placeHolderButton: placeHolderButton)
         triangleSqaudArray.add(rightDrone)
     }
 }
